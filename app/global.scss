@@ -1,0 +1,108 @@
+@import 'global/styles';
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  /**
+   * INFO: 10px = 1rem
+   */
+  font-size: 62.5%;
+
+  background: linear-gradient(90deg, $color-grey-100, transparent 70%),
+    linear-gradient(180deg, $color-grey-200, transparent 70%),
+    linear-gradient(270deg, $color-grey-100, transparent 70%),
+    linear-gradient(360deg, $color-grey-200, transparent 70%);
+}
+
+body {
+  display: flex;
+
+  margin: 0;
+
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  /**
+   * INFO: odstraneni modreho tap oznaceni
+   */
+  -webkit-tap-highlight-color: transparent;
+
+  & #__next {
+    width: 100%;
+  }
+
+  & h1 {
+    margin: 3.2rem 0.8rem 1.6rem 0.8rem;
+
+    color: $color-grey-200;
+    font-size: 3.2rem;
+  }
+
+  & h2 {
+    margin: 2.4rem 0.8rem 1.1rem 0.8rem;
+
+    color: $color-grey-300;
+    font-size: 2.4rem;
+  }
+
+  & h3 {
+    margin: 1.6rem 0.8rem 0.8rem 0.8rem;
+
+    color: $color-grey-400;
+    font-size: 1.6rem;
+  }
+
+  & a,
+  & p,
+  & span {
+    margin: 1.4rem 0.8rem 0.7rem 0.8rem;
+
+    color: $color-grey-900;
+    font-size: 1.4rem;
+  }
+
+  & a,
+  & button {
+    border-radius: 0.8rem;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+
+    &:focus {
+      outline: 0.1rem solid rgba($color-peach, 0.4);
+      outline-offset: 0.8rem;
+    }
+  }
+
+  /**
+   * INFO: pro zachovani stejneho stylovani na ios
+   */
+  & button,
+  & input,
+  & textarea {
+    -webkit-appearance: none;
+  }
+
+  & * {
+    box-sizing: border-box;
+
+    transition: all 0.2s ease-in-out;
+
+    &::placeholder {
+      transition: all 0.2s ease-in-out;
+    }
+
+    &::before {
+      transition: all 0.2s ease-in-out;
+    }
+
+    &::after {
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}

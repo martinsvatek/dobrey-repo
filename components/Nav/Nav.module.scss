@@ -1,0 +1,24 @@
+@import 'global/styles';
+
+.nav {
+  display: flex;
+
+  border-bottom: 0.1rem solid $color-grey-200;
+  height: 8rem;
+  margin: 0 auto;
+  max-width: 160rem;
+  padding: 0.8rem;
+  width: 100%;
+
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+  display: flex;
+
+  margin-right: 1.6rem;
+
+  align-items: center;
+  justify-content: center;
+}

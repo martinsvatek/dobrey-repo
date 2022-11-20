@@ -1,0 +1,17 @@
+@import 'global/styles';
+
+.footer {
+  display: flex;
+
+  border-top: 0.1rem solid $color-grey-200;
+  height: 8rem;
+  margin: 0 auto;
+  max-width: 160rem;
+  padding: 0.8rem;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
