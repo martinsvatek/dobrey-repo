@@ -1,4 +1,6 @@
-const AppHead = () => (
+import { FC } from 'react';
+
+const AppHead: FC = () => (
   <>
     <title>Dobrey | App</title>
     <link rel="icon" type="image/svg+xml" href="/dobrey_logo.svg" />
