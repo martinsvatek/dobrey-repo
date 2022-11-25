@@ -3,3 +3,9 @@
 .visualizer {
   margin: 0.8rem;
 }
+
+@media (max-width: 1322px) {
+  .visualizer {
+    display: none;
+  }
+}

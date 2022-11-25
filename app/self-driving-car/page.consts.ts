@@ -5,7 +5,7 @@ export const CAR_DEFAULT_POSITION_Y = 600;
 export const CARS_COUNT = 100;
 
 export const ROAD_CANVAS_HEIGHT = 680;
-export const ROAD_CANVAS_WIDTH = 274;
+export const ROAD_CANVAS_WIDTH = 260;
 export const ROAD_INFINITY = 10e6;
 export const ROAD_LANE_COUNT = 3;
 export const ROAD_LANE_LEFT_POSITION = 20;

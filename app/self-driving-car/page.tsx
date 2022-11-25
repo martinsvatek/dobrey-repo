@@ -40,13 +40,13 @@ const SelfDrivingCar: FC = () => {
      * INFO: pokud jiz mame nejakou neuronovou sit, ktera se nam libila a my si ji ulozili,
      * tak se tato sit stava vychozim stavem pro generovani dalsich - nepouzivame jiz nahodnou inicializaci
      */
-    if (getLocalStorage('bestNeuralNetwork', false)) {
+    if (getLocalStorage('bestNeuralNetwork', []).length) {
       cars.forEach((car, index) => {
         /**
          * INFO: auto s indexem 0 ma zachovanou neuronovou sit presne v te podobe, v jake jsme ji ulozili
          */
         car.setLevels(getLocalStorage('bestNeuralNetwork', []) as Level[]);
-        index !== 0 && car.setLevels(getNeuralNetworkLevelsMutation(car.getLevels(), 0.1));
+        index !== 0 && car.setLevels(getNeuralNetworkLevelsMutation(car.getLevels(), 0.2));
       });
     }
 
