@@ -1,0 +1,25 @@
+.selfDrivingCar,
+.canvases,
+.controls {
+  display: flex;
+}
+
+.selfDrivingCar,
+.canvases,
+.controls {
+  justify-content: center;
+}
+
+.selfDrivingCar {
+  width: 100%;
+
+  align-items: center;
+  flex-direction: column;
+}
+
+.canvases,
+.controls {
+  width: 100%;
+
+  flex-wrap: nowrap;
+}

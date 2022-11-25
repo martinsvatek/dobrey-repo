@@ -1,7 +1,21 @@
 @import 'global/styles';
 
-.title {
-  margin: 2.4rem 0.8rem 1.2rem 0.8rem;
+.image {
+  animation: pulse 20s ease-in-out infinite;
+  filter: drop-shadow($shadow-grey-200);
+}
 
-  font-size: 4.8rem;
+@keyframes pulse {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(0.96);
+  }
 }

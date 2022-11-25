@@ -1,0 +1,1 @@
+export { getLinearInterpolation } from './getLinearInterpolation';

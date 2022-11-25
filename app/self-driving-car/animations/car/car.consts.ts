@@ -1,0 +1,10 @@
+export const CAR_ACCELERATION = 0.1;
+export const CAR_ANGLE_INCREMENT = 0.01;
+export const CAR_DEFAULT_ANGLE = 0;
+export const CAR_DEFAULT_SPEED = 0;
+export const CAR_FRICTION = 0.03;
+export const CAR_MAX_FORWARD_SPEED = 2;
+export const CAR_MAX_REVERSE_SPEED = 1;
+export const CAR_POSSIBLE_MOVE_DIRECTIONS_COUNT = 4;
+
+export const VISUALIZER_HIDDEN_LAYER_ARBITRARY_NUMBER = 5;

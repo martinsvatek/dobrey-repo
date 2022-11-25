@@ -4,8 +4,13 @@ import styles from './page.module.scss';
 
 const App: FC = () => (
   <>
-    <Image alt="Dobrey Logo" height={220} src="/dobrey_logo.svg" width={220} />
-    <h1 className={styles.title}>DOBREY</h1>
+    <Image
+      alt="Dobrey Logo"
+      className={styles.image}
+      height={220}
+      src="/dobrey_logo_grey_100.svg"
+      width={220}
+    />
   </>
 );
 

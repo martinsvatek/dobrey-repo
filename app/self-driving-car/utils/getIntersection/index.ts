@@ -1,0 +1,1 @@
+export { getIntersection } from './getIntersection';

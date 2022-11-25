@@ -1,0 +1,1 @@
+export { getNeuralNetworkLevelInicialization } from './getNeuralNetworkLevelInicialization';

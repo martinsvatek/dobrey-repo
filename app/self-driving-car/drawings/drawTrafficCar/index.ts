@@ -1,0 +1,1 @@
+export { drawTrafficCar } from './drawTrafficCar';

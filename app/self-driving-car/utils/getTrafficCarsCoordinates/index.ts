@@ -1,0 +1,1 @@
+export { getTrafficCarsCoordinates } from './getTrafficCarsCoordinates';

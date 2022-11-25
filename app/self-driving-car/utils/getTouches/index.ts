@@ -1,0 +1,1 @@
+export { getTouches } from './getTouches';
