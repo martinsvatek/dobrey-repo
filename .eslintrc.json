@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "react-app"],
+  "extends": ["react-app", "next/core-web-vitals"],
   "plugins": ["@typescript-eslint"],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": ["error"],

@@ -2,7 +2,6 @@
 
 import { Button } from 'components';
 import { getLocalStorage, removeLocalStorage, setLocalStorage } from 'global/utils';
-import { useRouter } from 'next/navigation';
 import { FC, useEffect, useRef } from 'react';
 import { car, trafficCars } from './animations';
 import { Car } from './animations/car/car.types';
@@ -22,12 +21,10 @@ import { getNeuralNetworkLevelsMutation } from './utils';
 let bestCar: Car;
 
 const SelfDrivingCar: FC = () => {
-  const router = useRouter();
-
   const roadRef = useRef<HTMLCanvasElement>(null);
   const visualizerRef = useRef<HTMLCanvasElement>(null);
 
-  useEffect((): void => {
+  useEffect(() => {
     const cars: Car[] = [];
     const traffic = trafficCars();
 
@@ -46,7 +43,7 @@ const SelfDrivingCar: FC = () => {
          * INFO: auto s indexem 0 ma zachovanou neuronovou sit presne v te podobe, v jake jsme ji ulozili
          */
         car.setLevels(getLocalStorage('bestNeuralNetwork', []) as Level[]);
-        index !== 0 && car.setLevels(getNeuralNetworkLevelsMutation(car.getLevels(), 0.2));
+        index !== 0 && car.setLevels(getNeuralNetworkLevelsMutation(car.getLevels(), 0.1));
       });
     }
 

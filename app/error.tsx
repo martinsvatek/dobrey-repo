@@ -15,7 +15,7 @@ const AppError: FC<AppErrorProps> = ({ error, reset }) => {
   return (
     <>
       <p>Something went wrong...</p>
-      <Button onClick={() => reset()}>Reset</Button>
+      <Button onClick={(): void => reset()}>Reset</Button>
     </>
   );
 };
