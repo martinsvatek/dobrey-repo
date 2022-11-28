@@ -5,19 +5,13 @@ import { ButtonProps } from './Button.types';
 
 export const Button: FC<ButtonProps> = ({
   children,
-  className,
   color = 'grey-200',
   isDisabled = false,
   onClick,
   type = 'button',
 }) => (
   <button
-    className={joinClassNames([
-      styles.button,
-      styles[color],
-      isDisabled && styles.disabled,
-      className,
-    ])}
+    className={joinClassNames([styles.button, styles[color], isDisabled && styles.disabled])}
     disabled={isDisabled}
     onClick={onClick}
     type={type}

@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from 'components';
 import { FC, MouseEvent, useEffect, useRef, useState } from 'react';
 import { drawGrid, drawShortestPath } from './drawings';
 import { GRID_CANVAS_HEIGHT, GRID_CANVAS_WIDTH } from './page.consts';
@@ -15,8 +16,6 @@ const ShortestPath: FC = () => {
   const [finishNode, setFinishNode] = useState<Coordinate>();
   const [grid, setGrid] = useState<Node[]>([]);
   const [shortestPathInOrder, setShortestPathInOrder] = useState<Node[]>([]);
-  const [showClearButton, setShowClearButton] = useState(false);
-  const [showVisualizeButton, setShowVisualizeButton] = useState(false);
   const [startNode, setStartNode] = useState<Coordinate>();
   const [visitedGridInOrder, setVisitedGridInOrder] = useState<Node[]>([]);
   const [walls, setWalls] = useState<Coordinate[]>([]);
@@ -61,17 +60,17 @@ const ShortestPath: FC = () => {
     }
   }, [shortestPathInOrder, visitedGridInOrder]);
 
-  /* set start and finish node */
+  /* set start/finish node and walls */
   const onMouseMoveCanvasHandler = (event: MouseEvent<HTMLCanvasElement>): void => {
     if (canvasRef.current) {
-      const canvas: HTMLCanvasElement = canvasRef.current;
-      const context: CanvasRenderingContext2D | null = canvas.getContext('2d');
+      const canvas = canvasRef.current;
+      const context = canvas.getContext('2d');
 
       if (context) {
-        const { clientX, clientY } = event;
+        const { pageX, pageY } = event;
 
-        const rowPosition: number = clientY - canvasRef.current.offsetTop;
-        const columnPosition: number = clientX - canvasRef.current.offsetLeft;
+        const rowPosition = pageY - canvasRef.current.offsetTop;
+        const columnPosition = pageX - canvasRef.current.offsetLeft;
 
         let row: number = 0;
         const rowReminder: number = rowPosition % 10;
@@ -111,7 +110,7 @@ const ShortestPath: FC = () => {
           /* definition of start node */
           context.fillStyle = '#fff';
           context.beginPath();
-          context.arc(column, row, 5, 0, 2 * Math.PI);
+          context.arc(column, row, 4, 0, 2 * Math.PI);
           context.fill();
 
           return setStartNode({ row, column });
@@ -120,16 +119,19 @@ const ShortestPath: FC = () => {
         /* definition of finish node */
         if (startNode && !finishNode) {
           context.fillStyle = '#fff';
-          context.fillRect(column - 5, row - 5, 10, 10);
+          context.beginPath();
+          context.arc(column, row, 4, 0, 2 * Math.PI);
+          context.fill();
 
-          setShowVisualizeButton(true);
           return setFinishNode({ row, column });
         }
 
         /* definition of walls */
         if (startNode && finishNode && allowDrawing) {
-          context.fillStyle = '#ff007f';
-          context.fillRect(column - 5, row - 5, 10, 10);
+          context.fillStyle = '#000';
+          context.beginPath();
+          context.arc(column, row, 4, 0, 2 * Math.PI);
+          context.fill();
 
           return setWalls([...walls, { row, column }]);
         }
@@ -167,8 +169,6 @@ const ShortestPath: FC = () => {
           /* if we hit the finish node */
           if (row === finishNode.row && column === finishNode.column) {
             setFinalNode(closestNode);
-            setShowClearButton(true);
-            setShowVisualizeButton(false);
             return setVisitedGridInOrder(visitedNodesInOrder);
           }
 
@@ -207,12 +207,9 @@ const ShortestPath: FC = () => {
             unvisitedNeighborNode.previousNode = closestNode;
           });
         } else {
-          setShowVisualizeButton(false);
           return setVisitedGridInOrder(visitedNodesInOrder);
         }
       }
-
-      setShowVisualizeButton(false);
     }
   };
 
@@ -235,8 +232,6 @@ const ShortestPath: FC = () => {
     setFinishNode(undefined);
     setGrid([]);
     setShortestPathInOrder([]);
-    setShowClearButton(false);
-    setShowVisualizeButton(false);
     setStartNode(undefined);
     setVisitedGridInOrder([]);
     setWalls([]);
@@ -258,16 +253,8 @@ const ShortestPath: FC = () => {
         }}
         ref={canvasRef}
       />
-      {showVisualizeButton && (
-        <button onClick={onClickVisualizeHandler} className={styles.button}>
-          Vizualizovat
-        </button>
-      )}
-      {showClearButton && (
-        <button onClick={onClickClearHandler} className={styles.button}>
-          Vyčistit
-        </button>
-      )}
+      <Button onClick={onClickVisualizeHandler}>Vizualizovat</Button>
+      <Button onClick={onClickClearHandler}>Vyčistit</Button>
     </>
   );
 };

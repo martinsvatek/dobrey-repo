@@ -12,7 +12,7 @@ export const drawShortestPath = (
 
       canvasContext.fillStyle = SEARCH_COLOR;
       canvasContext.beginPath();
-      canvasContext.arc(column, row, 2, 0, 2 * Math.PI);
+      canvasContext.arc(column, row, 3, 0, 2 * Math.PI);
       canvasContext.fill();
     }, i);
   }
