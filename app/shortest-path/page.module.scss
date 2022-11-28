@@ -8,3 +8,18 @@
 
   box-shadow: $shadow-grey-200;
 }
+
+.shortestPath,
+.controls {
+  display: flex;
+
+  width: 100%;
+
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.shortestPath {
+  align-items: center;
+  flex-direction: column;
+}

@@ -2,11 +2,18 @@
 
 import { Button } from 'components';
 import { FC, MouseEvent, useEffect, useRef, useState } from 'react';
-import { drawGrid, drawShortestPath } from './drawings';
-import { GRID_CANVAS_HEIGHT, GRID_CANVAS_WIDTH } from './page.consts';
+import { drawGrid, drawNode, drawShortestPath } from './drawings';
+import {
+  FINISH_NODE_COLOR,
+  GRID_CANVAS_HEIGHT,
+  GRID_CANVAS_WIDTH,
+  START_NODE_COLOR,
+  WALL_NODE_COLOR,
+} from './page.consts';
 import styles from './Page.module.scss';
 import { Coordinate, Node } from './page.types';
 import { getShortestPathNodesInOrder, getUpdatedGrid } from './utils';
+import { getCoordinates } from './utils/getCoordinates';
 
 const ShortestPath: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -60,8 +67,10 @@ const ShortestPath: FC = () => {
     }
   }, [shortestPathInOrder, visitedGridInOrder]);
 
-  /* set start/finish node and walls */
-  const onMouseMoveCanvasHandler = (event: MouseEvent<HTMLCanvasElement>): void => {
+  /**
+   * INFO: vykreslim bod zacatku/konce a sten
+   */
+  const onMouseInteractionHandler = (event: MouseEvent<HTMLCanvasElement>): void => {
     if (canvasRef.current) {
       const canvas = canvasRef.current;
       const context = canvas.getContext('2d');
@@ -69,87 +78,39 @@ const ShortestPath: FC = () => {
       if (context) {
         const { pageX, pageY } = event;
 
-        const rowPosition = pageY - canvasRef.current.offsetTop;
-        const columnPosition = pageX - canvasRef.current.offsetLeft;
-
-        let row: number = 0;
-        const rowReminder: number = rowPosition % 10;
-
-        if (rowPosition < 5) {
-          row = 5;
-        } else if (rowPosition > GRID_CANVAS_HEIGHT - 5) {
-          row = GRID_CANVAS_HEIGHT - 5;
-        } else if (rowReminder === 0) {
-          row = rowPosition + 5;
-        } else if (rowReminder === 5) {
-          row = rowPosition;
-        } else if (rowReminder < 5) {
-          row = rowPosition - rowReminder + 5;
-        } else {
-          row = rowPosition - rowReminder + 5;
-        }
-
-        let column: number = 0;
-        const columnReminder: number = columnPosition % 10;
-
-        if (columnPosition < 5) {
-          column = 5;
-        } else if (columnPosition > GRID_CANVAS_WIDTH - 5) {
-          column = GRID_CANVAS_WIDTH - 5;
-        } else if (columnReminder === 0) {
-          column = columnPosition + 5;
-        } else if (columnReminder === 5) {
-          column = columnPosition;
-        } else if (columnReminder < 5) {
-          column = columnPosition - columnReminder + 5;
-        } else {
-          column = columnPosition - columnReminder + 5;
-        }
+        const rowClickPosition = pageY - canvasRef.current.offsetTop;
+        const columnClickPosition = pageX - canvasRef.current.offsetLeft;
+        const { row, column } = getCoordinates(rowClickPosition, columnClickPosition);
 
         if (!startNode) {
-          /* definition of start node */
-          context.fillStyle = '#fff';
-          context.beginPath();
-          context.arc(column, row, 4, 0, 2 * Math.PI);
-          context.fill();
-
+          drawNode(context, column, row, START_NODE_COLOR);
           return setStartNode({ row, column });
         }
 
-        /* definition of finish node */
         if (startNode && !finishNode) {
-          context.fillStyle = '#fff';
-          context.beginPath();
-          context.arc(column, row, 4, 0, 2 * Math.PI);
-          context.fill();
-
+          drawNode(context, column, row, FINISH_NODE_COLOR);
           return setFinishNode({ row, column });
         }
 
-        /* definition of walls */
-        if (startNode && finishNode && allowDrawing) {
-          context.fillStyle = '#000';
-          context.beginPath();
-          context.arc(column, row, 4, 0, 2 * Math.PI);
-          context.fill();
-
-          return setWalls([...walls, { row, column }]);
+        if (startNode && finishNode) {
+          drawNode(context, column, row, WALL_NODE_COLOR);
+          return setWalls((prevWalls) => [...prevWalls, { row, column }]);
         }
       }
     }
   };
 
-  /* start dijkstra algorithm */
-  const onClickVisualizeHandler = (): void => {
+  /**
+   * INFO: dijkstra algorithm
+   */
+  const onClickVisualizeButtonHandler = (): void => {
     if (startNode && finishNode) {
       const visitedNodesInOrder: Node[] = [];
-      const unvisitedNodes: Node[] = [...grid];
+      const unvisitedNodes = [...grid];
 
       while (unvisitedNodes.length > 0) {
-        /* sort unvisited nodes by distance */
-        unvisitedNodes.sort((nodeA: Node, nodeB: Node) => nodeA.distance - nodeB.distance);
-
-        const closestNode: Node | undefined = unvisitedNodes.shift();
+        unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
+        const closestNode = unvisitedNodes.shift();
 
         if (closestNode) {
           const { row, column, distance, type } = closestNode;
@@ -213,49 +174,34 @@ const ShortestPath: FC = () => {
     }
   };
 
-  /* clear canvas */
-  const onClickClearHandler = (): void => {
-    if (canvasRef.current) {
-      const canvas: HTMLCanvasElement = canvasRef.current;
-      const context: CanvasRenderingContext2D | null = canvas.getContext('2d');
-
-      /* set background black color */
-      if (context) {
-        context.fillStyle = '#000';
-        context.fillRect(0, 0, GRID_CANVAS_WIDTH, GRID_CANVAS_HEIGHT);
-      }
-    }
-
-    /* set default states */
-    setAllowDrawing(false);
-    setFinalNode(null);
-    setFinishNode(undefined);
-    setGrid([]);
-    setShortestPathInOrder([]);
-    setStartNode(undefined);
-    setVisitedGridInOrder([]);
-    setWalls([]);
-  };
-
   return (
-    <>
+    <div className={styles.shortestPath}>
       <canvas
-        height={GRID_CANVAS_HEIGHT}
-        width={GRID_CANVAS_WIDTH}
         className={styles.grid}
-        onClick={onMouseMoveCanvasHandler}
+        height={GRID_CANVAS_HEIGHT}
+        onClick={onMouseInteractionHandler}
         onMouseDown={(): void => setAllowDrawing(true)}
-        onMouseMove={(event): void | false | undefined =>
-          startNode && finishNode && allowDrawing && onMouseMoveCanvasHandler(event)
-        }
+        onMouseLeave={(): void => {
+          setAllowDrawing(false);
+        }}
+        onMouseMove={(event): void => {
+          allowDrawing && onMouseInteractionHandler(event);
+        }}
         onMouseUp={(): void => {
           setAllowDrawing(false);
         }}
         ref={canvasRef}
+        width={GRID_CANVAS_WIDTH}
       />
-      <Button onClick={onClickVisualizeHandler}>Vizualizovat</Button>
-      <Button onClick={onClickClearHandler}>Vyčistit</Button>
-    </>
+      <div className={styles.controls}>
+        <Button color="grey-700" onClick={onClickVisualizeButtonHandler}>
+          VIsualize
+        </Button>
+        <Button color="peach" onClick={(): void => window.location.reload()}>
+          Reload
+        </Button>
+      </div>
+    </div>
   );
 };
 
