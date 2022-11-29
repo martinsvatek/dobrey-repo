@@ -113,13 +113,15 @@ const ShortestPath: FC = () => {
         const closestNode = unvisitedNodes.shift();
 
         if (closestNode) {
-          const { row, column, distance, type } = closestNode;
+          const { column, distance, row, type } = closestNode;
 
           if (type === 'wall') {
             continue;
           }
 
-          /* way doesn`t exists */
+          /**
+           * INFO: cesta neexistuje
+           */
           if (closestNode.distance === Infinity) {
             return setVisitedGridInOrder(visitedNodesInOrder);
           }
@@ -127,13 +129,17 @@ const ShortestPath: FC = () => {
           closestNode.isVisited = true;
           visitedNodesInOrder.push(closestNode);
 
-          /* if we hit the finish node */
+          /**
+           * INFO: dostaneme se do cile
+           */
           if (row === finishNode.row && column === finishNode.column) {
             setFinalNode(closestNode);
             return setVisitedGridInOrder(visitedNodesInOrder);
           }
 
-          /* find closest neighbors of the current closest node */
+          /**
+           * INFO: sousedske nody aktualni nody (nahore, dole, doleva, doprava)
+           */
           const neighborNodes: Node[] = [];
 
           if (row > 5) {
@@ -157,16 +163,15 @@ const ShortestPath: FC = () => {
             );
           }
 
-          /* not use visited again */
-          const unvisitedNeighborNodes: Node[] = neighborNodes.filter(
-            (neighbor) => !neighbor.isVisited
-          );
-
-          /* define them distance and previous node */
-          unvisitedNeighborNodes.forEach((unvisitedNeighborNode: Node) => {
-            unvisitedNeighborNode.distance = distance + 1;
-            unvisitedNeighborNode.previousNode = closestNode;
-          });
+          /**
+           * INFO: nechceme znova navstivovat jiz navstivene -> definujeme vzdalenost a predchozi node
+           */
+          neighborNodes
+            .filter((neighbor) => !neighbor.isVisited)
+            .forEach((neighbor) => {
+              neighbor.distance = distance + 1;
+              neighbor.previousNode = closestNode;
+            });
         } else {
           return setVisitedGridInOrder(visitedNodesInOrder);
         }
@@ -180,7 +185,9 @@ const ShortestPath: FC = () => {
         className={styles.grid}
         height={GRID_CANVAS_HEIGHT}
         onClick={onMouseInteractionHandler}
-        onMouseDown={(): void => setAllowDrawing(true)}
+        onMouseDown={(): void => {
+          finishNode && startNode && setAllowDrawing(true);
+        }}
         onMouseLeave={(): void => {
           setAllowDrawing(false);
         }}

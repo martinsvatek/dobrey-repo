@@ -8,12 +8,14 @@ export const drawShortestPath = (
 ): void => {
   for (let i = 0; i < visitedGridInOrder.length; i++) {
     setTimeout(() => {
-      const { column, row } = visitedGridInOrder[i];
+      const { column, row, type } = visitedGridInOrder[i];
 
-      canvasContext.fillStyle = SEARCH_COLOR;
-      canvasContext.beginPath();
-      canvasContext.arc(column, row, 3, 0, 2 * Math.PI);
-      canvasContext.fill();
+      if (type === 'default') {
+        canvasContext.fillStyle = SEARCH_COLOR;
+        canvasContext.beginPath();
+        canvasContext.arc(column, row, 3, 0, 2 * Math.PI);
+        canvasContext.fill();
+      }
     }, i);
   }
 
