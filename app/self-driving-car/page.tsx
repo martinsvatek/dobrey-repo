@@ -43,7 +43,7 @@ const SelfDrivingCar: FC = () => {
          * INFO: auto s indexem 0 ma zachovanou neuronovou sit presne v te podobe, v jake jsme ji ulozili
          */
         car.setLevels(getLocalStorage('bestNeuralNetwork', []) as Level[]);
-        index !== 0 && car.setLevels(getNeuralNetworkLevelsMutation(car.getLevels(), 0.1));
+        index !== 0 && car.setLevels(getNeuralNetworkLevelsMutation(car.getLevels(), 0.08));
       });
     }
 
