@@ -1,0 +1,81 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[3].oneOf[12].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[3].oneOf[12].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[3].oneOf[12].use[5]!./app/_global.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  /**
+  * INFO: 10px = 1rem
+  */
+  font-size: 62.5%;
+  background-color: #e5e5e5;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  /**
+   * INFO: odstraneni modreho tap oznaceni
+   */
+  -webkit-tap-highlight-color: transparent;
+  /**
+   * INFO: pro zachovani stejneho stylovani na ios
+   */
+}
+body h1 {
+  margin: 3.2rem 0.8rem 1.6rem 0.8rem;
+  color: #cccccc;
+  font-size: 3.2rem;
+}
+body h2 {
+  margin: 2.4rem 0.8rem 1.1rem 0.8rem;
+  color: #b2b2b2;
+  font-size: 2.4rem;
+}
+body h3 {
+  margin: 1.6rem 0.8rem 0.8rem 0.8rem;
+  color: #999999;
+  font-size: 1.6rem;
+}
+body a, body p, body span {
+  margin: 1.4rem 0.8rem 0.7rem 0.8rem;
+  color: #1a1a1a;
+  font-size: 1.4rem;
+}
+body a, body button {
+  border-radius: 0.8rem;
+}
+body a:hover, body button:hover {
+  opacity: 0.8;
+}
+body a:active, body button:active {
+  opacity: 0.6;
+}
+body a:focus, body button:focus {
+  outline: 0.1rem solid rgba(220, 48, 60, 0.4);
+  outline-offset: 0.8rem;
+}
+body button, body input, body textarea {
+  -webkit-appearance: none;
+}
+body * {
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+body *::placeholder {
+  transition: all 0.2s ease-in-out;
+}
+body *::before {
+  transition: all 0.2s ease-in-out;
+}
+body *::after {
+  transition: all 0.2s ease-in-out;
+}
+
+@layer base {
+  [data-nextjs-scroll-focus-boundary] {
+    display: contents;
+  }
+}

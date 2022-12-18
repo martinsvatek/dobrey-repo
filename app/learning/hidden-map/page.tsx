@@ -2,16 +2,8 @@
 
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import { FC } from 'react';
+import { CENTER, OPTIONS } from './page.consts';
 import styles from './page.module.scss';
-
-const CENTER: google.maps.LatLngLiteral = { lat: 50, lng: 14 };
-
-const OPTIONS = {
-  minZoom: 5,
-  disableDefaultUI: true,
-  mapId: '35bc84e349dca82f',
-  maxZoom: 15,
-};
 
 const HiddenMap: FC = () => {
   const { isLoaded } = useLoadScript({
@@ -25,16 +17,7 @@ const HiddenMap: FC = () => {
 
   return (
     <>
-      <GoogleMap
-        onIdle={() => console.log('idle')}
-        onTilesLoaded={() => console.log('tiles loaded')}
-        onLoad={() => console.log('load')}
-        onUnmount={() => console.log('unmount')}
-        center={CENTER}
-        mapContainerClassName={styles.map}
-        options={OPTIONS}
-        zoom={12}
-      />
+      <GoogleMap center={CENTER} mapContainerClassName={styles.map} options={OPTIONS} zoom={12} />
     </>
   );
 };
