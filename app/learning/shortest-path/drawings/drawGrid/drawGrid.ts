@@ -1,4 +1,4 @@
-import { GRID_CANVAS_HEIGHT, GRID_CANVAS_WIDTH } from 'app/shortest-path/page.consts';
+import { GRID_CANVAS_HEIGHT, GRID_CANVAS_WIDTH } from 'app/learning/shortest-path/page.consts';
 import { GRID_COLOR } from './drawGrid.consts';
 
 export const drawGrid = (canvasContext: CanvasRenderingContext2D): void => {

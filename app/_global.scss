@@ -3,14 +3,11 @@
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   /**
-   * INFO: 10px = 1rem
-   */
+  * INFO: 10px = 1rem
+  */
   font-size: 62.5%;
 
-  background: linear-gradient(90deg, $color-grey-100, transparent 70%),
-    linear-gradient(180deg, $color-grey-200, transparent 70%),
-    linear-gradient(270deg, $color-grey-100, transparent 70%),
-    linear-gradient(360deg, $color-grey-200, transparent 70%);
+  background-color: $color-grey-100;
 }
 
 body {

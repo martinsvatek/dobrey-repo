@@ -1,5 +1,5 @@
-import { GRID_CANVAS_HEIGHT, GRID_CANVAS_WIDTH } from 'app/shortest-path/page.consts';
-import { Coordinate } from 'app/shortest-path/page.types';
+import { GRID_CANVAS_HEIGHT, GRID_CANVAS_WIDTH } from 'app/learning/shortest-path/page.consts';
+import { Coordinate } from 'app/learning/shortest-path/page.types';
 
 export const getCoordinates = (
   rowClickPosition: number,

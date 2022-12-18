@@ -1,4 +1,4 @@
-import { Node } from 'app/shortest-path/page.types';
+import { Node } from 'app/learning/shortest-path/page.types';
 
 export const getShortestPathNodesInOrder = (finalNode: Node | null): Node[] => {
   const shortestPathNodesInOrder: Node[] = [];

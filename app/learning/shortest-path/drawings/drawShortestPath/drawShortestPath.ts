@@ -1,4 +1,4 @@
-import { Node } from 'app/shortest-path/page.types';
+import { Node } from 'app/learning/shortest-path/page.types';
 import { SEARCH_COLOR, SHORTEST_PATH_COLOR } from './drawShortestPath.consts';
 
 export const drawShortestPath = (
