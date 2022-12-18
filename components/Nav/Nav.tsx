@@ -11,5 +11,6 @@ export const Nav: FC = () => (
     <Link href="/learning/self-driving-car">Self driving car</Link>
     <Link href="/learning/shortest-path">Shortest path</Link>
     <Link href="/learning/hidden-map">Hidden map</Link>
+    <Link href="/learning/web-scraper">Hidden map</Link>
   </nav>
 );
