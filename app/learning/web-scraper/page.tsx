@@ -1,6 +1,7 @@
 'use client';
 
 import { Button, Input } from 'components';
+import { ResponseData } from 'pages/api/getDownloads/getDownloads.types';
 import { ChangeEvent, FC, useState } from 'react';
 
 const WebScraper: FC = () => {
@@ -16,7 +17,7 @@ const WebScraper: FC = () => {
       method: 'POST',
       body: JSON.stringify({ packageName }),
     });
-    const { downloads } = await res.json();
+    const { downloads, message } = (await res.json()) as ResponseData;
 
     setDownloads(downloads);
   };
