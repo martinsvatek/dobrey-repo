@@ -7,7 +7,7 @@ import { AppErrorProps } from './error.types';
 const AppError: FC<AppErrorProps> = ({ error, reset }) => {
   useEffect(() => {
     /**
-     * INFO: tady muzeme poslat error do nejakeho reportovaciho systemu
+     * @NOTE: tady muzeme poslat error do nejakeho reportovaciho systemu
      */
     console.error(error);
   }, [error]);

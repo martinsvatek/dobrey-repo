@@ -6,7 +6,7 @@ import {
 import { Coordinate } from '../../page.types';
 
 /**
- * INFO: souradnice krajnic
+ * @NOTE: souradnice krajnic
  */
 export const getRoadSides = (): Coordinate[][] => {
   const bottomLeft = { x: ROAD_LANE_LEFT_POSITION, y: ROAD_INFINITY };

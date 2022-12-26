@@ -14,7 +14,7 @@ export const drawRoad = (canvasContext: CanvasRenderingContext2D): void => {
   canvasContext.lineWidth = ROAD_LANE_WIDTH;
   canvasContext.strokeStyle = ROAD_LANE_COLOR;
   /**
-   * INFO: vykresleni krajnicovych car
+   * @NOTE: vykresleni krajnicovych car
    */
   roadSides.forEach((roadSide) => {
     canvasContext.beginPath();
@@ -24,7 +24,7 @@ export const drawRoad = (canvasContext: CanvasRenderingContext2D): void => {
   });
 
   /**
-   * INFO: vykresleni stredovych car
+   * @NOTE: vykresleni stredovych car
    */
   canvasContext.setLineDash([30, 60]);
   for (let i = 1; i <= ROAD_LANE_COUNT - 1; i++) {

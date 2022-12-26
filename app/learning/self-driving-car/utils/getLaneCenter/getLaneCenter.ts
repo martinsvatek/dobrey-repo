@@ -8,7 +8,7 @@ import {
 export const getLaneCenter = (laneIndex: number): number => {
   const roadSideWidth = ROAD_LANE_LEFT_POSITION + ROAD_LANE_WIDTH / 2;
   /**
-   * INFO: vypocet sirky vsech pruhu silnice bez krajnic vcetne car a stredovych car
+   * @NOTE: vypocet sirky vsech pruhu silnice bez krajnic vcetne car a stredovych car
    * vypocet = sirka canvasu - sirky krajnic vcetne car - sirky stredovych car na silnici
    */
   const lanesWidth =
@@ -16,7 +16,7 @@ export const getLaneCenter = (laneIndex: number): number => {
   const laneWidth = lanesWidth / ROAD_LANE_COUNT;
 
   /**
-   * INFO: vypocet x-ovych stredovych souradnic pro jednotlive pruhy silnice
+   * @NOTE: vypocet x-ovych stredovych souradnic pro jednotlive pruhy silnice
    * vypocet = sirka krajnice vcetne cary + polovicni sirka pruhu silnice + pripadne dalsi pruhy silnice a stredove pruhy
    */
   const laneCenterPositionX =

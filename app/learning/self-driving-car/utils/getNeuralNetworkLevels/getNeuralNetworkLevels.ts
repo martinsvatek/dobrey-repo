@@ -1,11 +1,11 @@
 import { Level } from '../../page.types';
 
 /**
- * INFO: aktivacni funkce - predvari sumaci vstupnich hodnot s vahamy vstupy na vystupy
+ * @NOTE: aktivacni funkce - predvari sumaci vstupnich hodnot s vahamy vstupy na vystupy
  */
 const getUpdatedNeuralNetworkLevel = (offsets: number[], level: Level): Level => {
   /**
-   * INFO: v prvnim levelu jsou vstupy offsety senzoru, ve druhem levelu jsou vstupy vystupy predchoziho levelu
+   * @NOTE: v prvnim levelu jsou vstupy offsety senzoru, ve druhem levelu jsou vstupy vystupy predchoziho levelu
    */
   for (let i = 0; i <= level.inputs.length - 1; i++) {
     level.inputs[i] = offsets[i];

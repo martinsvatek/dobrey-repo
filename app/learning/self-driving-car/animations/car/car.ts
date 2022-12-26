@@ -67,7 +67,7 @@ export const car = (): Car => {
       right = levels[1].outputs[3];
 
       /**
-       * INFO: akcelerace rychlosti
+       * @NOTE: akcelerace rychlosti
        */
       if (forward && !reverse) {
         carSpeed += CAR_ACCELERATION;
@@ -76,11 +76,11 @@ export const car = (): Car => {
         carSpeed -= CAR_ACCELERATION;
       }
       /**
-       * INFO: auto se nemuze otacet pri temer nulovem pohybu v pred
+       * @NOTE: auto se nemuze otacet pri temer nulovem pohybu v pred
        */
       if (Math.abs(carSpeed) > CAR_ACCELERATION) {
         /**
-         * INFO: prevraceni ovladani pri couvani
+         * @NOTE: prevraceni ovladani pri couvani
          */
         const flipCoefficient = carSpeed < 0 ? -1 : 1;
 
@@ -93,7 +93,7 @@ export const car = (): Car => {
       }
 
       /**
-       * INFO: omezeni rychlosti
+       * @NOTE: omezeni rychlosti
        */
       if (carSpeed > CAR_MAX_FORWARD_SPEED) {
         carSpeed = CAR_MAX_FORWARD_SPEED;
@@ -103,7 +103,7 @@ export const car = (): Car => {
       }
 
       /**
-       * INFO: setrvacnost auta bere v potaz treni
+       * @NOTE: setrvacnost auta bere v potaz treni
        */
       if (carSpeed > 0) {
         carSpeed -= CAR_FRICTION;

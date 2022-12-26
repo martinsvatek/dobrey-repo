@@ -34,13 +34,13 @@ const SelfDrivingCar: FC = () => {
 
     bestCar = cars[0];
     /**
-     * INFO: pokud jiz mame nejakou neuronovou sit, ktera se nam libila a my si ji ulozili,
+     * @NOTE: pokud jiz mame nejakou neuronovou sit, ktera se nam libila a my si ji ulozili,
      * tak se tato sit stava vychozim stavem pro generovani dalsich - nepouzivame jiz nahodnou inicializaci
      */
     if (getLocalStorage('bestNeuralNetwork', []).length) {
       cars.forEach((car, index) => {
         /**
-         * INFO: auto s indexem 0 ma zachovanou neuronovou sit presne v te podobe, v jake jsme ji ulozili
+         * @NOTE: auto s indexem 0 ma zachovanou neuronovou sit presne v te podobe, v jake jsme ji ulozili
          */
         car.setLevels(getLocalStorage('bestNeuralNetwork', []) as Level[]);
         index !== 0 && car.setLevels(getNeuralNetworkLevelsMutation(car.getLevels(), 0.08));
@@ -55,11 +55,11 @@ const SelfDrivingCar: FC = () => {
       const visualizerContext = visualizerCanvas.getContext('2d');
       if (roadContext && visualizerContext) {
         /**
-         * INFO: funkce ktera se pousti stale dokola diky requestAnimationFrame()
+         * @NOTE: funkce ktera se pousti stale dokola diky requestAnimationFrame()
          */
         const animate = (time?: number): void => {
           /**
-           * INFO: rozpohybovani cele dopravy
+           * @NOTE: rozpohybovani cele dopravy
            */
           traffic.animate();
           cars.forEach((car) => {
@@ -67,7 +67,7 @@ const SelfDrivingCar: FC = () => {
           });
 
           /**
-           * INFO: aby se auto netahlo jako jedna cara, ale furt zachovavalo svuj puvodni tvar
+           * @NOTE: aby se auto netahlo jako jedna cara, ale furt zachovavalo svuj puvodni tvar
            */
           bestCar =
             cars.find(
@@ -76,13 +76,13 @@ const SelfDrivingCar: FC = () => {
             ) || cars[0];
 
           /**
-           * INFO: aby se auto netahlo jako jedna cara, ale furt zachovavalo svuj puvodni tvar
+           * @NOTE: aby se auto netahlo jako jedna cara, ale furt zachovavalo svuj puvodni tvar
            */
           roadCanvas.height = ROAD_CANVAS_HEIGHT;
           visualizerCanvas.height = VISUALIZER_CANVAS_HEIGHT;
 
           /**
-           * INFO: auto stoji na miste a pohybuje se silnice pod nim
+           * @NOTE: auto stoji na miste a pohybuje se silnice pod nim
            */
           roadContext.save();
           roadContext.translate(0, -bestCar.getCarPositionY() + CAR_DEFAULT_POSITION_Y);

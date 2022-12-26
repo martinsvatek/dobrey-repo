@@ -30,7 +30,7 @@ export const getIsDamaged = (
   let isDamaged = false;
 
   /**
-   * INFO: kontrola kolize s krajnici
+   * @NOTE: kontrola kolize s krajnici
    */
   roadSides.forEach((roadSide): void => {
     const isObstacleTouched = getCarTouchedObstacle(carCoordinates, roadSide);
@@ -41,7 +41,7 @@ export const getIsDamaged = (
   });
 
   /**
-   * INFO: kontrola kolize s jinym autem
+   * @NOTE: kontrola kolize s jinym autem
    */
   trafficCarsCoordinates.forEach((trafficCarsCoordinate): void => {
     const isObstacleTouched = getCarTouchedObstacle(carCoordinates, trafficCarsCoordinate);

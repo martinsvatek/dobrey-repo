@@ -14,11 +14,11 @@ export const drawSensorRays = (
   canvasContext.setLineDash([]);
   for (let i = 0; i <= SENSOR_RAYS_COUNT - 1; i++) {
     /**
-     * INFO: nejvzdalenejsi bod senzoroveho paprsku
+     * @NOTE: nejvzdalenejsi bod senzoroveho paprsku
      */
     let to: Coordinate | Touch = sensorRays[i][1];
     /**
-     * INFO: nejvzdalenejsi bod doteku paprsku s prekazkou
+     * @NOTE: nejvzdalenejsi bod doteku paprsku s prekazkou
      */
     const touch = touches[i];
     if (touch) {

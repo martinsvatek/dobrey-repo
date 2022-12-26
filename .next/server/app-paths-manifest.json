@@ -1,1 +1,4 @@
-{}
+{
+  "/learning/hidden-map/page": "app/learning/hidden-map/page.js",
+  "/learning/web-scraper/page": "app/learning/web-scraper/page.js"
+}

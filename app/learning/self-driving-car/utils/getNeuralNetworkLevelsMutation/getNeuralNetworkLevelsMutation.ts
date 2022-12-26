@@ -2,7 +2,7 @@ import { Level } from '../../page.types';
 import { getLinearInterpolation } from '../getLinearInterpolation';
 
 /**
- * INFO: mutuje neuronovou sit na zaklade procenta, jak moc chceme, aby byla odlisna od predchozi (ulozene)
+ * @NOTE: mutuje neuronovou sit na zaklade procenta, jak moc chceme, aby byla odlisna od predchozi (ulozene)
  */
 export const getNeuralNetworkLevelsMutation = (
   levels: Level[],

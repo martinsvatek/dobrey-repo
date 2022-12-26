@@ -14,7 +14,7 @@ export const drawCar = (
     canvasContext.fillStyle = carIndex === 0 ? CAR_COLOR_SAVED : CAR_COLOR;
   }
   /**
-   * INFO: pruhlednost aut pro lepsi prehlednost
+   * @NOTE: pruhlednost aut pro lepsi prehlednost
    */
   canvasContext.globalAlpha = isSensorVisible ? 1 : 0.2;
   canvasContext.beginPath();

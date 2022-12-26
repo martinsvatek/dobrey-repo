@@ -2,7 +2,7 @@ import { Coordinate, Touch } from '../../page.types';
 import { getLinearInterpolation } from '../getLinearInterpolation';
 
 /**
- * INFO: zisk dotyku dvou usecek
+ * @NOTE: zisk dotyku dvou usecek
  */
 export const getIntersection = (
   sensorRayFrom: Coordinate,
@@ -25,7 +25,7 @@ export const getIntersection = (
     const u = uTop / bottom;
 
     /**
-     * INFO: chceme jen pruniky usecek, ne nekonecnych primek
+     * @NOTE: chceme jen pruniky usecek, ne nekonecnych primek
      */
     if (t >= 0 && t <= 1 && u >= 0 && u <= 1) {
       return {

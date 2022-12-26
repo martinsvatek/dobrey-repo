@@ -7,11 +7,11 @@ export interface Level {
   inputs: number[];
   outputs: ZeroOne[];
   /**
-   * INFO: zkresleni - pouziva se k vyrovnani vysledku. Pomaha modelum posunout aktivacni funkci smerek k pozitivni nebo negetivni strane.
+   * @NOTE: zkresleni - pouziva se k vyrovnani vysledku. Pomaha modelum posunout aktivacni funkci smerek k pozitivni nebo negetivni strane.
    */
   biases: number[];
   /**
-   * INFO: vahy - vypovidaji o dulezitosti kazdeho prvku, ktery je predan jako vstup do umele neuronove site.
+   * @NOTE: vahy - vypovidaji o dulezitosti kazdeho prvku, ktery je predan jako vstup do umele neuronove site.
    */
   weights: number[][];
 }

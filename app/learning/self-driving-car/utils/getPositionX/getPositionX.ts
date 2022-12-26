@@ -1,7 +1,7 @@
 import { getLinearInterpolation } from '../getLinearInterpolation';
 
 /**
- * INFO: vypocet rovnomerneho rozlozeni s ohlidanim toho, ze by byla pouze jedna pozice (napr. kvuli jednomu senzoru)
+ * @NOTE: vypocet rovnomerneho rozlozeni s ohlidanim toho, ze by byla pouze jedna pozice (napr. kvuli jednomu senzoru)
  */
 export const getPositionX = (
   leftPosition: number,

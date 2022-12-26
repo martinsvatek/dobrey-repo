@@ -11,7 +11,7 @@ const getTouchWithMinOffset = (
 
   roadSides.forEach((roadSide) => {
     /**
-     * INFO: souradnice a offset mista doteku
+     * @NOTE: souradnice a offset mista doteku
      */
     const touch = getIntersection(sensorRay[0], sensorRay[1], roadSide[0], roadSide[1]);
     touch && touches.push(touch);
@@ -22,7 +22,7 @@ const getTouchWithMinOffset = (
 
     for (let i = 0; i <= carCoordinates.length - 1; i++) {
       /**
-       * INFO: souradnice a offset mista doteku
+       * @NOTE: souradnice a offset mista doteku
        */
       const touch = getIntersection(
         sensorRay[0],
@@ -39,7 +39,7 @@ const getTouchWithMinOffset = (
   }
 
   /**
-   * INFO: nejblizsi misto doteku
+   * @NOTE: nejblizsi misto doteku
    */
   const offsets = touches.map((touch) => touch.offset);
   const minOffset = Math.min(...offsets);

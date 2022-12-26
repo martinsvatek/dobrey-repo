@@ -12,7 +12,7 @@ export const getSensorRays = (
 
   for (let i = 0; i <= SENSOR_RAYS_COUNT - 1; i++) {
     /**
-     * INFO: uhel paprsku senzoru
+     * @NOTE: uhel paprsku senzoru
      */
     const rayAngle =
       getPositionX(SENSOR_RAYS_SPREAD / 2, -SENSOR_RAYS_SPREAD / 2, SENSOR_RAYS_COUNT, i) +

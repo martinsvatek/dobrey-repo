@@ -5,7 +5,7 @@ export const getNeuralNetworkLevelInicialization = (
   outputsCount: number
 ): Level => {
   /**
-   * INFO: predpripravene formaty prazdnych arrays
+   * @NOTE: predpripravene formaty prazdnych arrays
    */
   const inputs: number[] = new Array(inputsCount);
   const outputs: ZeroOne[] = new Array(outputsCount);
@@ -16,7 +16,7 @@ export const getNeuralNetworkLevelInicialization = (
   }
 
   /**
-   * INFO: pro zacatek randomizace dat, pokud jiz nemame ulozenou nejakou neuronovou sit
+   * @NOTE: pro zacatek randomizace dat, pokud jiz nemame ulozenou nejakou neuronovou sit
    */
   for (let i = 0; i <= inputsCount - 1; i++) {
     for (let j = 0; j <= outputsCount - 1; j++) {

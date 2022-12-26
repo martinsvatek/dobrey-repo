@@ -2,7 +2,7 @@ import { Coordinate } from '../../page.types';
 import { CAR_HEIGHT, CAR_WIDTH } from './getCarCoordinatest.consts';
 
 /**
- * INFO: souradnice auta, kterou berou v potaz i uhel
+ * @NOTE: souradnice auta, kterou berou v potaz i uhel
  */
 export const getCarCoordinates = (
   carPositionX: number,

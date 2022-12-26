@@ -1,5 +1,5 @@
 /**
- * INFO: zaporne hodnoty jsou cervene, kladne hodnoty jsou bile
+ * @NOTE: zaporne hodnoty jsou cervene, kladne hodnoty jsou bile
  */
 export const getRGBA = (weight: number): string => {
   const R = weight > 0 ? 51 : 220;

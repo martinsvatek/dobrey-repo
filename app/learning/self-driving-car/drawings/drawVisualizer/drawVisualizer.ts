@@ -20,7 +20,7 @@ export const drawVisualizer = (
   time?: number
 ): void => {
   /**
-   * INFO: animace pohybu
+   * @NOTE: animace pohybu
    */
   if (time) {
     canvasContext.lineDashOffset = -time / 40;
@@ -40,7 +40,7 @@ export const drawVisualizer = (
     const levelPositionBottom = levelPositionTop + levelHeight;
 
     /**
-     * INFO: linie spojujici nody
+     * @NOTE: linie spojujici nody
      */
     for (let j = 0; j <= inputs.length - 1; j++) {
       for (let k = 0; k <= outputs.length - 1; k++) {
@@ -70,7 +70,7 @@ export const drawVisualizer = (
     }
 
     /**
-     * INFO: nody na vstupu
+     * @NOTE: nody na vstupu
      */
     for (let j = 0; j <= inputs.length - 1; j++) {
       const nodePositionX = getPositionX(
@@ -87,7 +87,7 @@ export const drawVisualizer = (
     }
 
     /**
-     * INFO: nody ve vrstvach
+     * @NOTE: nody ve vrstvach
      */
     for (let j = 0; j <= outputs.length - 1; j++) {
       const nodePositionX = getPositionX(
@@ -114,7 +114,7 @@ export const drawVisualizer = (
       }
 
       /**
-       * INFO: tendence kolem nodu
+       * @NOTE: tendence kolem nodu
        */
       canvasContext.setLineDash([1, 1]);
       canvasContext.lineWidth = VISUALIZER_LINE_WIDTH * 4;

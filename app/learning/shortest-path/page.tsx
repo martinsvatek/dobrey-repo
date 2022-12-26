@@ -28,7 +28,7 @@ const ShortestPath: FC = () => {
   const [walls, setWalls] = useState<Coordinate[]>([]);
 
   /**
-   * INFO: vykreslim mrizku 10x10px
+   * @NOTE: vykreslim mrizku 10x10px
    */
   useEffect(() => {
     if (canvasRef.current) {
@@ -39,7 +39,7 @@ const ShortestPath: FC = () => {
   }, []);
 
   /**
-   * INFO: zisk nejkratsi cesty
+   * @NOTE: zisk nejkratsi cesty
    */
   useEffect(() => {
     if (finalNode) {
@@ -49,7 +49,7 @@ const ShortestPath: FC = () => {
   }, [finalNode]);
 
   /**
-   * INFO: neustala aktualizace gridu dle toho, jak si vse naklikame
+   * @NOTE: neustala aktualizace gridu dle toho, jak si vse naklikame
    */
   useEffect(() => {
     const updatedGrid = getUpdatedGrid(walls, startNode, finishNode);
@@ -57,7 +57,7 @@ const ShortestPath: FC = () => {
   }, [finishNode, startNode, walls]);
 
   /**
-   * INFO: animace hledani cesty
+   * @NOTE: animace hledani cesty
    */
   useEffect(() => {
     if (canvasRef.current) {
@@ -68,7 +68,7 @@ const ShortestPath: FC = () => {
   }, [shortestPathInOrder, visitedGridInOrder]);
 
   /**
-   * INFO: vykreslim bod zacatku/konce a sten
+   * @NOTE: vykreslim bod zacatku/konce a sten
    */
   const onMouseInteractionHandler = (event: MouseEvent<HTMLCanvasElement>): void => {
     if (canvasRef.current) {
@@ -101,7 +101,7 @@ const ShortestPath: FC = () => {
   };
 
   /**
-   * INFO: dijkstra algorithm
+   * @NOTE: dijkstra algorithm
    */
   const onClickVisualizeButtonHandler = (): void => {
     if (startNode && finishNode) {
@@ -120,7 +120,7 @@ const ShortestPath: FC = () => {
           }
 
           /**
-           * INFO: cesta neexistuje
+           * @NOTE: cesta neexistuje
            */
           if (closestNode.distance === Infinity) {
             return setVisitedGridInOrder(visitedNodesInOrder);
@@ -130,7 +130,7 @@ const ShortestPath: FC = () => {
           visitedNodesInOrder.push(closestNode);
 
           /**
-           * INFO: dostaneme se do cile
+           * @NOTE: dostaneme se do cile
            */
           if (row === finishNode.row && column === finishNode.column) {
             setFinalNode(closestNode);
@@ -138,7 +138,7 @@ const ShortestPath: FC = () => {
           }
 
           /**
-           * INFO: sousedske nody aktualni nody (nahore, dole, doleva, doprava)
+           * @NOTE: sousedske nody aktualni nody (nahore, dole, doleva, doprava)
            */
           const neighborNodes: Node[] = [];
 
@@ -164,7 +164,7 @@ const ShortestPath: FC = () => {
           }
 
           /**
-           * INFO: nechceme znova navstivovat jiz navstivene -> definujeme vzdalenost a predchozi node
+           * @NOTE: nechceme znova navstivovat jiz navstivene -> definujeme vzdalenost a predchozi node
            */
           neighborNodes
             .filter((neighbor) => !neighbor.isVisited)

@@ -17,12 +17,12 @@ export const trafficCars = (): TrafficCars => {
 
   const animate = (): void => {
     /**
-     * INFO: akcelerace rychlosti
+     * @NOTE: akcelerace rychlosti
      */
     trafficCarSpeed += TRAFFIC_CAR_ACCELERATION;
 
     /**
-     * INFO: omezeni rychlosti
+     * @NOTE: omezeni rychlosti
      */
     if (trafficCarSpeed > TRAFFIC_CAR_MAX_FORWARD_SPEED) {
       trafficCarSpeed = TRAFFIC_CAR_MAX_FORWARD_SPEED;
