@@ -4,4 +4,5 @@ export interface RequestBody {
 
 export interface ResponseData {
   downloads: number;
+  message: string;
 }

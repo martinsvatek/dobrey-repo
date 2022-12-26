@@ -18,11 +18,12 @@ const WebScraper: FC = () => {
     });
     const { downloads } = await res.json();
 
-    downloads && setDownloads(downloads);
+    setDownloads(downloads);
   };
 
   return (
     <>
+      <h1>Web scraper</h1>
       <Input
         name="packageName"
         onChange={onInputChangeHandler}
@@ -30,7 +31,7 @@ const WebScraper: FC = () => {
         value={packageName}
       />
       <Button color="peach" onClick={onButtonClickHandler}>
-        Reload
+        Get downloads count
       </Button>
       <p>{downloads}</p>
     </>

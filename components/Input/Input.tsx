@@ -1,5 +1,3 @@
-'use client';
-
 import { FC, KeyboardEvent } from 'react';
 import { UNWANTED_CHARACTERS } from './Input.consts';
 import styles from './Input.module.scss';

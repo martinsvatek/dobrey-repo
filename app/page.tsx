@@ -11,6 +11,10 @@ const App: FC = () => (
       src="/dobrey_logo_grey_100.svg"
       width={220}
     />
+    <p>
+      Welcome to my personal website where I try to improve my programming skills.{' '}
+      <i>Martin Svátek</i>
+    </p>
   </>
 );
 

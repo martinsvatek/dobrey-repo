@@ -1,21 +1,21 @@
 {
   "pages": {
-    "/page": [
+    "/learning/web-scraper/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/css/app/learning/web-scraper/page.css",
+      "static/chunks/app/learning/web-scraper/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/layout.js"
     ],
     "/error": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/error.css",
       "static/chunks/app/error.js"
-    ],
-    "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
     ],
     "/loading": [
       "static/chunks/webpack.js",
@@ -27,28 +27,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/head.js"
     ],
-    "/learning/shortest-path/head": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/learning/shortest-path/head.js"
-    ],
-    "/learning/shortest-path/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/shortest-path/page.css",
-      "static/chunks/app/learning/shortest-path/page.js"
-    ],
-    "/learning/hidden-map/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/hidden-map/page.css",
-      "static/chunks/app/learning/hidden-map/page.js"
-    ],
-    "/learning/web-scraper/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/web-scraper/page.css",
-      "static/chunks/app/learning/web-scraper/page.js"
+      "static/chunks/app/page.js"
     ],
     "/learning/self-driving-car/page": [
       "static/chunks/webpack.js",
@@ -60,6 +42,28 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/learning/self-driving-car/head.js"
+    ],
+    "/learning/shortest-path/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/learning/shortest-path/page.css",
+      "static/chunks/app/learning/shortest-path/page.js"
+    ],
+    "/learning/shortest-path/head": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/shortest-path/head.js"
+    ],
+    "/learning/hidden-map/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/learning/hidden-map/page.css",
+      "static/chunks/app/learning/hidden-map/page.js"
+    ],
+    "/learning/web-scraper/head": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/web-scraper/head.js"
     ]
   }
 }

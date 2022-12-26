@@ -1,4 +1,5 @@
 {
+  "/learning/self-driving-car/page": "app/learning/self-driving-car/page.js",
   "/learning/web-scraper/page": "app/learning/web-scraper/page.js",
-  "/learning/self-driving-car/page": "app/learning/self-driving-car/page.js"
+  "/learning/shortest-path/page": "app/learning/shortest-path/page.js"
 }

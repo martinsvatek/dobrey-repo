@@ -101,7 +101,7 @@ const ShortestPath: FC = () => {
   };
 
   /**
-   * @NOTE: dijkstra algorithm
+   * @NOTE: dijkstra algoritmus
    */
   const onClickVisualizeButtonHandler = (): void => {
     if (startNode && finishNode) {
