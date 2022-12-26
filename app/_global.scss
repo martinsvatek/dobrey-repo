@@ -55,7 +55,8 @@ body {
   }
 
   & a,
-  & button {
+  & button,
+  & input {
     border-radius: 0.8rem;
 
     &:hover {
@@ -68,7 +69,7 @@ body {
 
     &:focus {
       outline: 0.1rem solid rgba($color-peach, 0.4);
-      outline-offset: 0.8rem;
+      outline-offset: 0.6rem;
     }
   }
 
@@ -100,6 +101,9 @@ body {
   }
 }
 
+/**
+ * @NOTE: nereagovani na div, ktery si nextjs sam vytvari
+ */
 @layer base {
   [data-nextjs-scroll-focus-boundary] {
     display: contents;

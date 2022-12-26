@@ -15,10 +15,13 @@ export const Input: FC<InputProps> = ({
   type = 'text',
   value,
 }) => (
-  <div className={styles.input}>
-    <label htmlFor={name}>{placeholder}</label>
+  <>
+    <label className={styles.label} htmlFor={name}>
+      {placeholder}
+    </label>
     <input
       autoComplete={autoComplete}
+      className={styles.input}
       id={name}
       max={max}
       min={min}
@@ -31,5 +34,5 @@ export const Input: FC<InputProps> = ({
       type={type}
       value={value}
     />
-  </div>
+  </>
 );

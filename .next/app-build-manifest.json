@@ -49,6 +49,17 @@
       "static/chunks/main-app.js",
       "static/css/app/learning/web-scraper/page.css",
       "static/chunks/app/learning/web-scraper/page.js"
+    ],
+    "/learning/self-driving-car/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/learning/self-driving-car/page.css",
+      "static/chunks/app/learning/self-driving-car/page.js"
+    ],
+    "/learning/self-driving-car/head": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/self-driving-car/head.js"
     ]
   }
 }
