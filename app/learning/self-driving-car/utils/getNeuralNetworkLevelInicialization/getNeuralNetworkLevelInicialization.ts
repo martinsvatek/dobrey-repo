@@ -1,9 +1,6 @@
 import { Level, ZeroOne } from '../../page.types';
 
-export const getNeuralNetworkLevelInicialization = (
-  inputsCount: number,
-  outputsCount: number
-): Level => {
+export const getNeuralNetworkLevelInicialization = (inputsCount: number, outputsCount: number): Level => {
   /**
    * @NOTE: predpripravene formaty prazdnych arrays
    */

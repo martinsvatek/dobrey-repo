@@ -25,9 +25,9 @@ export const Input: FC<InputProps> = ({
       min={min}
       name={name}
       onChange={onChange}
-      onKeyDown={(event: KeyboardEvent<HTMLInputElement>) =>
-        type === 'number' && UNWANTED_CHARACTERS.includes(event.key) && event.preventDefault()
-      }
+      onKeyDown={(event: KeyboardEvent<HTMLInputElement>): void => {
+        type === 'number' && UNWANTED_CHARACTERS.includes(event.key) && event.preventDefault();
+      }}
       placeholder={placeholder}
       type={type}
       value={value}

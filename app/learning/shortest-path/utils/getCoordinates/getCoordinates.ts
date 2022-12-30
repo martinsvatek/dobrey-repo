@@ -1,10 +1,7 @@
 import { GRID_CANVAS_HEIGHT, GRID_CANVAS_WIDTH } from 'app/learning/shortest-path/page.consts';
 import { Coordinate } from 'app/learning/shortest-path/page.types';
 
-export const getCoordinates = (
-  rowClickPosition: number,
-  columnClickPosition: number
-): Coordinate => {
+export const getCoordinates = (rowClickPosition: number, columnClickPosition: number): Coordinate => {
   let row = 0;
   const rowReminder = rowClickPosition % 10;
 

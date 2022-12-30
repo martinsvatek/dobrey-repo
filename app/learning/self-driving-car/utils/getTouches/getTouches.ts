@@ -48,10 +48,7 @@ const getTouchWithMinOffset = (
   return touchWithMinOffset;
 };
 
-export const getTouches = (
-  sensorRays: Coordinate[][],
-  trafficCarsCoordinates: Coordinate[][]
-): (Touch | null)[] => {
+export const getTouches = (sensorRays: Coordinate[][], trafficCarsCoordinates: Coordinate[][]): (Touch | null)[] => {
   const roadSides = getRoadSides();
 
   const touches: (Touch | null)[] = [];

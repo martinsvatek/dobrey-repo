@@ -1,10 +1,6 @@
 import { SENSOR_RAYS_COUNT } from '../../page.consts';
 import { Coordinate, Touch } from '../../page.types';
-import {
-  SENSOR_RAYS_COLOR,
-  SENSOR_RAYS_CONFLICT_COLOR,
-  SENSOR_RAYS_WIDTH,
-} from './drawSensorRays.consts';
+import { SENSOR_RAYS_COLOR, SENSOR_RAYS_CONFLICT_COLOR, SENSOR_RAYS_WIDTH } from './drawSensorRays.consts';
 
 export const drawSensorRays = (
   canvasContext: CanvasRenderingContext2D,

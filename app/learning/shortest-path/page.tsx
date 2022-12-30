@@ -143,24 +143,16 @@ const ShortestPath: FC = () => {
           const neighborNodes: Node[] = [];
 
           if (row > 5) {
-            neighborNodes.push(
-              grid[(GRID_CANVAS_WIDTH / 10) * (Math.floor(row / 10) - 1) + Math.floor(column / 10)]
-            );
+            neighborNodes.push(grid[(GRID_CANVAS_WIDTH / 10) * (Math.floor(row / 10) - 1) + Math.floor(column / 10)]);
           }
           if (row < GRID_CANVAS_HEIGHT - 5) {
-            neighborNodes.push(
-              grid[(GRID_CANVAS_WIDTH / 10) * (Math.floor(row / 10) + 1) + Math.floor(column / 10)]
-            );
+            neighborNodes.push(grid[(GRID_CANVAS_WIDTH / 10) * (Math.floor(row / 10) + 1) + Math.floor(column / 10)]);
           }
           if (column > 5) {
-            neighborNodes.push(
-              grid[(GRID_CANVAS_WIDTH / 10) * Math.floor(row / 10) + Math.floor(column / 10) - 1]
-            );
+            neighborNodes.push(grid[(GRID_CANVAS_WIDTH / 10) * Math.floor(row / 10) + Math.floor(column / 10) - 1]);
           }
           if (column < GRID_CANVAS_WIDTH - 5) {
-            neighborNodes.push(
-              grid[(GRID_CANVAS_WIDTH / 10) * Math.floor(row / 10) + Math.floor(column / 10) + 1]
-            );
+            neighborNodes.push(grid[(GRID_CANVAS_WIDTH / 10) * Math.floor(row / 10) + Math.floor(column / 10) + 1]);
           }
 
           /**
@@ -180,35 +172,38 @@ const ShortestPath: FC = () => {
   };
 
   return (
-    <div className={styles.shortestPath}>
-      <canvas
-        className={styles.grid}
-        height={GRID_CANVAS_HEIGHT}
-        onClick={onMouseInteractionHandler}
-        onMouseDown={(): void => {
-          finishNode && startNode && setAllowDrawing(true);
-        }}
-        onMouseLeave={(): void => {
-          setAllowDrawing(false);
-        }}
-        onMouseMove={(event): void => {
-          allowDrawing && onMouseInteractionHandler(event);
-        }}
-        onMouseUp={(): void => {
-          setAllowDrawing(false);
-        }}
-        ref={canvasRef}
-        width={GRID_CANVAS_WIDTH}
-      />
-      <div className={styles.controls}>
-        <Button color="grey-700" onClick={onClickVisualizeButtonHandler}>
-          VIsualize
-        </Button>
-        <Button color="peach" onClick={(): void => window.location.reload()}>
-          Reload
-        </Button>
+    <>
+      <h1>Shortest path</h1>
+      <div className={styles.shortestPath}>
+        <canvas
+          className={styles.grid}
+          height={GRID_CANVAS_HEIGHT}
+          onClick={onMouseInteractionHandler}
+          onMouseDown={(): void => {
+            finishNode && startNode && setAllowDrawing(true);
+          }}
+          onMouseLeave={(): void => {
+            setAllowDrawing(false);
+          }}
+          onMouseMove={(event): void => {
+            allowDrawing && onMouseInteractionHandler(event);
+          }}
+          onMouseUp={(): void => {
+            setAllowDrawing(false);
+          }}
+          ref={canvasRef}
+          width={GRID_CANVAS_WIDTH}
+        />
+        <div className={styles.controls}>
+          <Button color="grey-700" onClick={onClickVisualizeButtonHandler}>
+            VIsualize
+          </Button>
+          <Button color="peach" onClick={window.location.reload}>
+            Reload
+          </Button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

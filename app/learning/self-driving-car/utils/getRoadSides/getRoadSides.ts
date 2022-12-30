@@ -1,8 +1,4 @@
-import {
-  ROAD_INFINITY,
-  ROAD_LANE_LEFT_POSITION,
-  ROAD_LANE_RIGHT_POSITION,
-} from '../../page.consts';
+import { ROAD_INFINITY, ROAD_LANE_LEFT_POSITION, ROAD_LANE_RIGHT_POSITION } from '../../page.consts';
 import { Coordinate } from '../../page.types';
 
 /**

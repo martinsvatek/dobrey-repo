@@ -9,8 +9,4 @@ export const getPositionX = (
   positionsCount: number,
   index: number
 ): number =>
-  getLinearInterpolation(
-    leftPosition,
-    rightPosition,
-    positionsCount > 1 ? index / (positionsCount - 1) : 0.5
-  );
+  getLinearInterpolation(leftPosition, rightPosition, positionsCount > 1 ? index / (positionsCount - 1) : 0.5);

@@ -70,10 +70,8 @@ const SelfDrivingCar: FC = () => {
            * @NOTE: aby se auto netahlo jako jedna cara, ale furt zachovavalo svuj puvodni tvar
            */
           bestCar =
-            cars.find(
-              (car) =>
-                car.getCarPositionY() === Math.min(...cars.map((car) => car.getCarPositionY()))
-            ) || cars[0];
+            cars.find((car) => car.getCarPositionY() === Math.min(...cars.map((car) => car.getCarPositionY()))) ||
+            cars[0];
 
           /**
            * @NOTE: aby se auto netahlo jako jedna cara, ale furt zachovavalo svuj puvodni tvar
@@ -105,30 +103,27 @@ const SelfDrivingCar: FC = () => {
   }, []);
 
   return (
-    <div className={styles.selfDrivingCar}>
-      <div className={styles.canvases}>
-        <Road roadRef={roadRef} key="zadek" />
-        <Visualizer visualizerRef={visualizerRef} />
+    <>
+      <h1>Self driving car</h1>
+      <div className={styles.selfDrivingCar}>
+        <div className={styles.canvases}>
+          <Road roadRef={roadRef} key="zadek" />
+          <Visualizer visualizerRef={visualizerRef} />
+        </div>
+        <div className={styles.controls}>
+          <Button onClick={(): void => window.location.reload()}>Reload</Button>
+          <Button color="grey-700" onClick={(): void => setLocalStorage('bestNeuralNetwork', bestCar.getLevels())}>
+            Save
+          </Button>
+          <Button color="grey-700" onClick={(): void => setLocalStorage('bestNeuralNetwork', BEST_CAR)}>
+            Set best saved
+          </Button>
+          <Button color="peach" onClick={(): void => removeLocalStorage('bestNeuralNetwork')}>
+            Clear
+          </Button>
+        </div>
       </div>
-      <div className={styles.controls}>
-        <Button onClick={(): void => window.location.reload()}>Reload</Button>
-        <Button
-          color="grey-700"
-          onClick={(): void => setLocalStorage('bestNeuralNetwork', bestCar.getLevels())}
-        >
-          Save
-        </Button>
-        <Button
-          color="grey-700"
-          onClick={(): void => setLocalStorage('bestNeuralNetwork', BEST_CAR)}
-        >
-          Set best saved
-        </Button>
-        <Button color="peach" onClick={(): void => removeLocalStorage('bestNeuralNetwork')}>
-          Clear
-        </Button>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -34,11 +34,7 @@ export const car = (): Car => {
   let carPositionY = CAR_DEFAULT_POSITION_Y;
   let carSpeed = CAR_DEFAULT_SPEED;
 
-  const neurons = [
-    SENSOR_RAYS_COUNT,
-    VISUALIZER_HIDDEN_LAYER_ARBITRARY_NUMBER,
-    CAR_POSSIBLE_MOVE_DIRECTIONS_COUNT,
-  ];
+  const neurons = [SENSOR_RAYS_COUNT, VISUALIZER_HIDDEN_LAYER_ARBITRARY_NUMBER, CAR_POSSIBLE_MOVE_DIRECTIONS_COUNT];
 
   let levels: Level[] = [];
   if (!levels.length) {
@@ -120,11 +116,7 @@ export const car = (): Car => {
     }
   };
 
-  const draw = (
-    roadContext: CanvasRenderingContext2D,
-    isSensorVisible: boolean,
-    carIndex: number
-  ): void => {
+  const draw = (roadContext: CanvasRenderingContext2D, isSensorVisible: boolean, carIndex: number): void => {
     isSensorVisible && drawSensorRays(roadContext, sensorRays, touches);
     drawCar(roadContext, carCoordinates, isDamaged, isSensorVisible, carIndex);
   };

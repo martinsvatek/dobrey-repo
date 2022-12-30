@@ -1,6 +1,4 @@
 {
   "/page": "app/page.js",
-  "/learning/shortest-path/page": "app/learning/shortest-path/page.js",
-  "/learning/hidden-map/page": "app/learning/hidden-map/page.js",
   "/learning/web-scraper/page": "app/learning/web-scraper/page.js"
 }

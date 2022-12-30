@@ -3,20 +3,14 @@ import { Coordinate } from '../../page.types';
 import { getPositionX } from '../getPositionX';
 import { SENSOR_RAYS_LENGTH, SENSOR_RAYS_SPREAD } from './getSensorRays.consts';
 
-export const getSensorRays = (
-  carPositionX: number,
-  carPositionY: number,
-  carAngle: number
-): Coordinate[][] => {
+export const getSensorRays = (carPositionX: number, carPositionY: number, carAngle: number): Coordinate[][] => {
   const sensorRays: Coordinate[][] = [];
 
   for (let i = 0; i <= SENSOR_RAYS_COUNT - 1; i++) {
     /**
      * @NOTE: uhel paprsku senzoru
      */
-    const rayAngle =
-      getPositionX(SENSOR_RAYS_SPREAD / 2, -SENSOR_RAYS_SPREAD / 2, SENSOR_RAYS_COUNT, i) +
-      carAngle;
+    const rayAngle = getPositionX(SENSOR_RAYS_SPREAD / 2, -SENSOR_RAYS_SPREAD / 2, SENSOR_RAYS_COUNT, i) + carAngle;
 
     const from = { x: carPositionX, y: carPositionY };
     const to = {

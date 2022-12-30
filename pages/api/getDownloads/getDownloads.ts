@@ -1,27 +1,22 @@
 import { JSDOM } from 'jsdom';
 import type { NextApiRequest, NextApiResponse } from 'next/types';
-import {
-  DOWNLOADS_CLASSNAME,
-  MESSAGE_FAIL,
-  MESSAGE_SUCCESS,
-  NPM_REGISTER_PACKAGE_URL,
-} from './getDownloads.consts';
+import { DOWNLOADS_CLASSNAME, MESSAGE_FAIL, MESSAGE_SUCCESS, NPM_REGISTER_PACKAGE_URL } from './getDownloads.consts';
 import { RequestBody, ResponseData } from './getDownloads.types';
 
-export const getDownloads = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
+export const getDownloads = async (req: NextApiRequest, res: NextApiResponse<ResponseData>): Promise<void> => {
   const { packageName } = JSON.parse(req.body) as RequestBody;
-  const packageNameInLowerCase = packageName.trim().toLowerCase();
+  const trimedPackageNameInLowerCase = packageName.trim().toLowerCase();
 
-  const fetchedPage = await fetch(NPM_REGISTER_PACKAGE_URL + packageNameInLowerCase);
-  console.log(fetchedPage.status);
+  const fetchedPage = await fetch(NPM_REGISTER_PACKAGE_URL + trimedPackageNameInLowerCase);
 
   if (fetchedPage.status !== 200) {
     return res.status(fetchedPage.status).json({ downloads: 0, message: MESSAGE_FAIL });
   }
 
   const html = await fetchedPage.text();
-  const dom = new JSDOM(html);
-  const { document } = dom.window;
+  const {
+    window: { document },
+  } = new JSDOM(html);
 
   const downloadsTextContent = document.querySelector(DOWNLOADS_CLASSNAME)?.textContent;
   /**

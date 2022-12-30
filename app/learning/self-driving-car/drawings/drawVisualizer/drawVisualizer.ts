@@ -14,11 +14,7 @@ import {
 } from './drawVisualizer.consts';
 import { getRGBA } from './drawVisualizer.utils';
 
-export const drawVisualizer = (
-  canvasContext: CanvasRenderingContext2D,
-  levels: Level[],
-  time?: number
-): void => {
+export const drawVisualizer = (canvasContext: CanvasRenderingContext2D, levels: Level[], time?: number): void => {
   /**
    * @NOTE: animace pohybu
    */

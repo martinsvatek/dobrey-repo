@@ -4,11 +4,7 @@ import { CAR_HEIGHT, CAR_WIDTH } from './getCarCoordinatest.consts';
 /**
  * @NOTE: souradnice auta, kterou berou v potaz i uhel
  */
-export const getCarCoordinates = (
-  carPositionX: number,
-  carPositionY: number,
-  carAngle: number
-): Coordinate[] => {
+export const getCarCoordinates = (carPositionX: number, carPositionY: number, carAngle: number): Coordinate[] => {
   const carCoordinates: Coordinate[] = [];
 
   const radius = Math.hypot(CAR_WIDTH, CAR_HEIGHT) / 2;

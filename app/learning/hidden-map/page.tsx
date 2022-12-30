@@ -17,6 +17,7 @@ const HiddenMap: FC = () => {
 
   return (
     <>
+      <h1>Hidden map</h1>
       <GoogleMap center={CENTER} mapContainerClassName={styles.map} options={OPTIONS} zoom={12} />
     </>
   );

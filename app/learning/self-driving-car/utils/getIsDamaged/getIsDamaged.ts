@@ -21,10 +21,7 @@ const getCarTouchedObstacle = (carCoordinates: Coordinate[], obstacle: Coordinat
   return false;
 };
 
-export const getIsDamaged = (
-  carCoordinates: Coordinate[],
-  trafficCarsCoordinates: Coordinate[][]
-): boolean => {
+export const getIsDamaged = (carCoordinates: Coordinate[], trafficCarsCoordinates: Coordinate[][]): boolean => {
   const roadSides = getRoadSides();
 
   let isDamaged = false;
