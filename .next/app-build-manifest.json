@@ -1,10 +1,5 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -26,6 +21,39 @@
       "static/chunks/main-app.js",
       "static/chunks/app/head.js"
     ],
+    "/learning/hidden-map/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/learning/hidden-map/page.css",
+      "static/chunks/app/learning/hidden-map/page.js"
+    ],
+    "/learning/hidden-map/head": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/hidden-map/head.js"
+    ],
+    "/learning/web-scraper/head": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/web-scraper/head.js"
+    ],
+    "/learning/web-scraper/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/learning/web-scraper/page.css",
+      "static/chunks/app/learning/web-scraper/page.js"
+    ],
+    "/learning/czech-robot/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/learning/czech-robot/page.css",
+      "static/chunks/app/learning/czech-robot/page.js"
+    ],
+    "/learning/czech-robot/head": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/czech-robot/head.js"
+    ],
     "/learning/self-driving-car/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -37,33 +65,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/learning/self-driving-car/head.js"
     ],
-    "/learning/shortest-path/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/learning/shortest-path/page.css",
-      "static/chunks/app/learning/shortest-path/page.js"
-    ],
-    "/learning/shortest-path/head": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/learning/shortest-path/head.js"
-    ],
-    "/learning/hidden-map/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/hidden-map/page.css",
-      "static/chunks/app/learning/hidden-map/page.js"
-    ],
-    "/learning/web-scraper/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/web-scraper/page.css",
-      "static/chunks/app/learning/web-scraper/page.js"
-    ],
-    "/learning/web-scraper/head": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/learning/web-scraper/head.js"
+      "static/chunks/app/page.js"
     ]
   }
 }

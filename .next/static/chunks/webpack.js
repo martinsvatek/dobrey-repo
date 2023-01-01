@@ -192,7 +192,7 @@
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "e23777b4eb527db5"; }
+/******/ 		__webpack_require__.h = function() { return "38c3d7e1d6f360b6"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -798,7 +798,7 @@
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = function(chunkId, promises) {
-/******/ 			var cssChunks = {"_app-client_app_page_module_scss":1,"_app-client_components_Button_Button_module_scss":1,"_app-client_components_Footer_Footer_module_scss":1,"_app-client_components_Input_Input_module_scss":1,"_app-client_components_Main_Main_module_scss":1,"_app-client_components_Nav_Nav_module_scss":1,"_app-client_app__global_scss":1};
+/******/ 			var cssChunks = {"_app-client_components_Button_Button_module_scss":1,"_app-client_components_Footer_Footer_module_scss":1,"_app-client_components_Input_Input_module_scss":1,"_app-client_components_Main_Main_module_scss":1,"_app-client_components_Nav_Nav_module_scss":1,"_app-client_app__global_scss":1,"_app-client_app_page_module_scss":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(function() {

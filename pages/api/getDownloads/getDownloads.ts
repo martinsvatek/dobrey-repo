@@ -4,7 +4,7 @@ import { DOWNLOADS_CLASSNAME, MESSAGE_FAIL, MESSAGE_SUCCESS, NPM_REGISTER_PACKAG
 import { RequestBody, ResponseData } from './getDownloads.types';
 
 export const getDownloads = async (req: NextApiRequest, res: NextApiResponse<ResponseData>): Promise<void> => {
-  const { packageName } = JSON.parse(req.body) as RequestBody;
+  const { packageName } = req.body as RequestBody;
   const trimedPackageNameInLowerCase = packageName.trim().toLowerCase();
 
   const fetchedPage = await fetch(NPM_REGISTER_PACKAGE_URL + trimedPackageNameInLowerCase);

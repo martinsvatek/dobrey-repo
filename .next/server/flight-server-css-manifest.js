@@ -1,7 +1,6 @@
 self.__RSC_CSS_MANIFEST={
   "__entry_css_mods__": {
-    "/Users/martin.svatek/Development/dobrey-repo/app/page": [
-      "/Users/martin.svatek/Development/dobrey-repo/app/page.module.scss",
+    "/Users/martin.svatek/Development/dobrey-repo/app/learning/czech-robot/page": [
       "/Users/martin.svatek/Development/dobrey-repo/components/Button/Button.module.scss",
       "/Users/martin.svatek/Development/dobrey-repo/components/Footer/Footer.module.scss",
       "/Users/martin.svatek/Development/dobrey-repo/components/Input/Input.module.scss",
@@ -28,8 +27,12 @@ self.__RSC_CSS_MANIFEST={
       "/Users/martin.svatek/Development/dobrey-repo/components/Nav/Nav.module.scss"
     ]
   },
-  "/Users/martin.svatek/Development/dobrey-repo/app/page.tsx": [
-    "/Users/martin.svatek/Development/dobrey-repo/app/page.module.scss"
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/czech-robot/page.tsx": [
+    "/Users/martin.svatek/Development/dobrey-repo/components/Button/Button.module.scss",
+    "/Users/martin.svatek/Development/dobrey-repo/components/Footer/Footer.module.scss",
+    "/Users/martin.svatek/Development/dobrey-repo/components/Input/Input.module.scss",
+    "/Users/martin.svatek/Development/dobrey-repo/components/Main/Main.module.scss",
+    "/Users/martin.svatek/Development/dobrey-repo/components/Nav/Nav.module.scss"
   ],
   "/Users/martin.svatek/Development/dobrey-repo/app/layout.tsx": [
     "/Users/martin.svatek/Development/dobrey-repo/components/Button/Button.module.scss",

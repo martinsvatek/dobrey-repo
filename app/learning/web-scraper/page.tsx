@@ -20,6 +20,9 @@ const WebScraper: FC = () => {
 
     const res = await fetch(`http://localhost:3000/api/getDownloads`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ packageName }),
     });
     const { downloads, message } = (await res.json()) as ResponseData;
