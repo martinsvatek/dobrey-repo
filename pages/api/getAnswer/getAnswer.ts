@@ -15,7 +15,7 @@ export const getAnswer = async (req: NextApiRequest, res: NextApiResponse<Respon
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: question,
-    max_tokens: 7,
+    max_tokens: 10,
     temperature: 0,
   });
 
