@@ -15,10 +15,10 @@ export const getAnswer = async (req: NextApiRequest, res: NextApiResponse<Respon
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: question,
-    max_tokens: 10,
-    temperature: 0,
+    max_tokens: 80,
+    temperature: 0.1,
   });
-
+  console.log(response.data);
   const answer = response.data.choices[0].text;
 
   if (answer) {

@@ -7,7 +7,7 @@ const nextConfig = {
   swcMinify: true,
   env: {
     GOOGLE_MAPS_API_KEY: 'AIzaSyBxDOIU7ucS-xy9GenrajkWINWsjVGNUi4',
-    OPENAI_API_KEY: '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',
+    OPENAI_API_KEY: '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',
   },
 };
 

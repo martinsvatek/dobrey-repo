@@ -1,1 +1,4 @@
-{}
+{
+  "/learning/shortest-path/page": "app/learning/shortest-path/page.js",
+  "/learning/czech-robot/page": "app/learning/czech-robot/page.js"
+}

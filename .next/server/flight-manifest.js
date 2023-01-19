@@ -1,5 +1,57 @@
 self.__RSC_MANIFEST={
   "__ssr_module_mapping__": {
+    "(app-client)/./node_modules/next/dist/client/image.js": {
+      "": {
+        "id": "(sc_client)/./node_modules/next/dist/client/image.js",
+        "name": "",
+        "chunks": [
+          "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/image.js",
+        "name": "*",
+        "chunks": [
+          "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./node_modules/next/dist/client/image.js",
+        "name": "default",
+        "chunks": [
+          "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/link.js": {
+      "": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "",
+        "chunks": [
+          "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "*",
+        "chunks": [
+          "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "default",
+        "chunks": [
+          "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+        ],
+        "async": false
+      }
+    },
     "(app-client)/./app/error.tsx": {
       "": {
         "id": "(sc_client)/./app/error.tsx",
@@ -26,80 +78,28 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./node_modules/next/dist/client/image.js": {
+    "(app-client)/./app/learning/czech-robot/page.tsx": {
       "": {
-        "id": "(sc_client)/./node_modules/next/dist/client/image.js",
+        "id": "(sc_client)/./app/learning/czech-robot/page.tsx",
         "name": "",
         "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
+          "app/learning/czech-robot/page:app/learning/czech-robot/page"
         ],
         "async": false
       },
       "*": {
-        "id": "(sc_client)/./node_modules/next/dist/client/image.js",
+        "id": "(sc_client)/./app/learning/czech-robot/page.tsx",
         "name": "*",
         "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
+          "app/learning/czech-robot/page:app/learning/czech-robot/page"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./node_modules/next/dist/client/image.js",
+        "id": "(sc_client)/./app/learning/czech-robot/page.tsx",
         "name": "default",
         "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./node_modules/next/dist/client/link.js": {
-      "": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "",
-        "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
-        ],
-        "async": false
-      },
-      "*": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "*",
-        "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "default",
-        "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./app/learning/shortest-path/page.tsx": {
-      "": {
-        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
-        "name": "",
-        "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
-        ],
-        "async": false
-      },
-      "*": {
-        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
-        "name": "*",
-        "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
-        "name": "default",
-        "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
+          "app/learning/czech-robot/page:app/learning/czech-robot/page"
         ],
         "async": false
       }
@@ -207,6 +207,110 @@ self.__RSC_MANIFEST={
         ],
         "async": false
       }
+    },
+    "(app-client)/./app/learning/shortest-path/page.tsx": {
+      "": {
+        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
+        "name": "",
+        "chunks": [
+          "app/learning/shortest-path/page:app/learning/shortest-path/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
+        "name": "*",
+        "chunks": [
+          "app/learning/shortest-path/page:app/learning/shortest-path/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
+        "name": "default",
+        "chunks": [
+          "app/learning/shortest-path/page:app/learning/shortest-path/page"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/learning/hidden-map/page.tsx": {
+      "": {
+        "id": "(sc_client)/./app/learning/hidden-map/page.tsx",
+        "name": "",
+        "chunks": [
+          "app/learning/hidden-map/page:app/learning/hidden-map/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/learning/hidden-map/page.tsx",
+        "name": "*",
+        "chunks": [
+          "app/learning/hidden-map/page:app/learning/hidden-map/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/learning/hidden-map/page.tsx",
+        "name": "default",
+        "chunks": [
+          "app/learning/hidden-map/page:app/learning/hidden-map/page"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/learning/web-scraper/page.tsx": {
+      "": {
+        "id": "(sc_client)/./app/learning/web-scraper/page.tsx",
+        "name": "",
+        "chunks": [
+          "app/learning/web-scraper/page:app/learning/web-scraper/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/learning/web-scraper/page.tsx",
+        "name": "*",
+        "chunks": [
+          "app/learning/web-scraper/page:app/learning/web-scraper/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/learning/web-scraper/page.tsx",
+        "name": "default",
+        "chunks": [
+          "app/learning/web-scraper/page:app/learning/web-scraper/page"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/learning/self-driving-car/page.tsx": {
+      "": {
+        "id": "(sc_client)/./app/learning/self-driving-car/page.tsx",
+        "name": "",
+        "chunks": [
+          "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/learning/self-driving-car/page.tsx",
+        "name": "*",
+        "chunks": [
+          "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/learning/self-driving-car/page.tsx",
+        "name": "default",
+        "chunks": [
+          "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+        ],
+        "async": false
+      }
     }
   },
   "__edge_ssr_module_mapping__": {},
@@ -214,8 +318,23 @@ self.__RSC_MANIFEST={
     "/Users/martin.svatek/Development/dobrey-repo/app/error": [
       "static/css/app/error.css"
     ],
+    "/Users/martin.svatek/Development/dobrey-repo/app/learning/czech-robot/page": [
+      "static/css/app/learning/czech-robot/page.css"
+    ],
     "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/page": [
       "static/css/app/learning/shortest-path/page.css"
+    ],
+    "/Users/martin.svatek/Development/dobrey-repo/app/learning/hidden-map/page": [
+      "static/css/app/learning/hidden-map/page.css"
+    ],
+    "/Users/martin.svatek/Development/dobrey-repo/app/learning/web-scraper/page": [
+      "static/css/app/learning/web-scraper/page.css"
+    ],
+    "/Users/martin.svatek/Development/dobrey-repo/app/learning/self-driving-car/page": [
+      "static/css/app/learning/self-driving-car/page.css"
+    ],
+    "/Users/martin.svatek/Development/dobrey-repo/app/page": [
+      "static/css/_app-client_app_page_module_scss.css"
     ],
     "/Users/martin.svatek/Development/dobrey-repo/app/layout": [
       "static/css/_app-client_app__global_scss.css",
@@ -226,13 +345,120 @@ self.__RSC_MANIFEST={
       "static/css/_app-client_components_Button_Button_module_scss.css"
     ]
   },
+  "/Users/martin.svatek/Development/dobrey-repo/node_modules/next/dist/client/image.js": {
+    "": {
+      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "name": "",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "name": "*",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "name": "default",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/node_modules/next/dist/esm/client/image.js": {
+    "": {
+      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "name": "",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "name": "*",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "name": "default",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/node_modules/next/dist/client/link.js": {
+    "": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "default",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/node_modules/next/dist/esm/client/link.js": {
+    "": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "default",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    }
+  },
   "/Users/martin.svatek/Development/dobrey-repo/components/Button/Button.module.scss": {
     "default": {
       "id": "null",
       "name": "default",
       "chunks": [
         "static/css/app/error.css",
+        "static/css/app/learning/czech-robot/page.css",
         "static/css/app/learning/shortest-path/page.css",
+        "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Button_Button_module_scss.css"
       ]
     }
@@ -243,7 +469,10 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "static/css/app/error.css",
+        "static/css/app/learning/czech-robot/page.css",
         "static/css/app/learning/shortest-path/page.css",
+        "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Footer_Footer_module_scss.css"
       ]
     }
@@ -254,7 +483,10 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "static/css/app/error.css",
+        "static/css/app/learning/czech-robot/page.css",
         "static/css/app/learning/shortest-path/page.css",
+        "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Input_Input_module_scss.css"
       ]
     }
@@ -265,7 +497,10 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "static/css/app/error.css",
+        "static/css/app/learning/czech-robot/page.css",
         "static/css/app/learning/shortest-path/page.css",
+        "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Main_Main_module_scss.css"
       ]
     }
@@ -276,7 +511,10 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "static/css/app/error.css",
+        "static/css/app/learning/czech-robot/page.css",
         "static/css/app/learning/shortest-path/page.css",
+        "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Nav_Nav_module_scss.css"
       ]
     }
@@ -307,141 +545,28 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/Users/martin.svatek/Development/dobrey-repo/node_modules/next/dist/client/image.js": {
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/czech-robot/page.tsx": {
     "": {
-      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "id": "(app-client)/./app/learning/czech-robot/page.tsx",
       "name": "",
       "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
+        "app/learning/czech-robot/page:app/learning/czech-robot/page"
       ],
       "async": false
     },
     "*": {
-      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "id": "(app-client)/./app/learning/czech-robot/page.tsx",
       "name": "*",
       "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
+        "app/learning/czech-robot/page:app/learning/czech-robot/page"
       ],
       "async": false
     },
     "default": {
-      "id": "(app-client)/./node_modules/next/dist/client/image.js",
+      "id": "(app-client)/./app/learning/czech-robot/page.tsx",
       "name": "default",
       "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    }
-  },
-  "/Users/martin.svatek/Development/dobrey-repo/node_modules/next/dist/esm/client/image.js": {
-    "": {
-      "id": "(app-client)/./node_modules/next/dist/client/image.js",
-      "name": "",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./node_modules/next/dist/client/image.js",
-      "name": "*",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./node_modules/next/dist/client/image.js",
-      "name": "default",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    }
-  },
-  "/Users/martin.svatek/Development/dobrey-repo/node_modules/next/dist/client/link.js": {
-    "": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "*",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "default",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    }
-  },
-  "/Users/martin.svatek/Development/dobrey-repo/node_modules/next/dist/esm/client/link.js": {
-    "": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "*",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "default",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    }
-  },
-  "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/Page.module.scss": {
-    "default": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/learning/shortest-path/page.css"
-      ]
-    }
-  },
-  "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/page.tsx": {
-    "": {
-      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
-      "name": "",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
-      "name": "*",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
-      "name": "default",
-      "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
+        "app/learning/czech-robot/page:app/learning/czech-robot/page"
       ],
       "async": false
     }
@@ -652,6 +777,164 @@ self.__RSC_MANIFEST={
         "app-client-internals:app-client-internals"
       ],
       "async": false
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/Page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/learning/shortest-path/page.css"
+      ]
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/page.tsx": {
+    "": {
+      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
+      "name": "",
+      "chunks": [
+        "app/learning/shortest-path/page:app/learning/shortest-path/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/learning/shortest-path/page:app/learning/shortest-path/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
+      "name": "default",
+      "chunks": [
+        "app/learning/shortest-path/page:app/learning/shortest-path/page"
+      ],
+      "async": false
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/hidden-map/page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/learning/hidden-map/page.css"
+      ]
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/hidden-map/page.tsx": {
+    "": {
+      "id": "(app-client)/./app/learning/hidden-map/page.tsx",
+      "name": "",
+      "chunks": [
+        "app/learning/hidden-map/page:app/learning/hidden-map/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/learning/hidden-map/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/learning/hidden-map/page:app/learning/hidden-map/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/learning/hidden-map/page.tsx",
+      "name": "default",
+      "chunks": [
+        "app/learning/hidden-map/page:app/learning/hidden-map/page"
+      ],
+      "async": false
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/web-scraper/page.tsx": {
+    "": {
+      "id": "(app-client)/./app/learning/web-scraper/page.tsx",
+      "name": "",
+      "chunks": [
+        "app/learning/web-scraper/page:app/learning/web-scraper/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/learning/web-scraper/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/learning/web-scraper/page:app/learning/web-scraper/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/learning/web-scraper/page.tsx",
+      "name": "default",
+      "chunks": [
+        "app/learning/web-scraper/page:app/learning/web-scraper/page"
+      ],
+      "async": false
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/self-driving-car/components/Road/Road.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/learning/self-driving-car/page.css"
+      ]
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/self-driving-car/components/Visualizer/Visualizer.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/learning/self-driving-car/page.css"
+      ]
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/self-driving-car/page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/learning/self-driving-car/page.css"
+      ]
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/self-driving-car/page.tsx": {
+    "": {
+      "id": "(app-client)/./app/learning/self-driving-car/page.tsx",
+      "name": "",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/learning/self-driving-car/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/learning/self-driving-car/page.tsx",
+      "name": "default",
+      "chunks": [
+        "app/learning/self-driving-car/page:app/learning/self-driving-car/page"
+      ],
+      "async": false
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/_app-client_app_page_module_scss.css"
+      ]
     }
   },
   "/Users/martin.svatek/Development/dobrey-repo/app/_global.scss": {
