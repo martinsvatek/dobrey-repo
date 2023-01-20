@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { createContext, Dispatch, FC, memo, ReactNode, SetStateAction, useContext, useMemo, useState } from 'react';
 
 const MyContext = createContext<{ count: number; setCount: Dispatch<SetStateAction<number>> }>({
