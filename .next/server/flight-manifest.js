@@ -78,32 +78,6 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./app/learning/czech-robot/page.tsx": {
-      "": {
-        "id": "(sc_client)/./app/learning/czech-robot/page.tsx",
-        "name": "",
-        "chunks": [
-          "app/learning/czech-robot/page:app/learning/czech-robot/page"
-        ],
-        "async": false
-      },
-      "*": {
-        "id": "(sc_client)/./app/learning/czech-robot/page.tsx",
-        "name": "*",
-        "chunks": [
-          "app/learning/czech-robot/page:app/learning/czech-robot/page"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/learning/czech-robot/page.tsx",
-        "name": "default",
-        "chunks": [
-          "app/learning/czech-robot/page:app/learning/czech-robot/page"
-        ],
-        "async": false
-      }
-    },
     "(app-client)/./node_modules/next/dist/client/components/app-router.js": {
       "": {
         "id": "(sc_client)/./node_modules/next/dist/client/components/app-router.js",
@@ -208,28 +182,54 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./app/learning/shortest-path/page.tsx": {
+    "(app-client)/./app/learning/czech-robot/page.tsx": {
       "": {
-        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
+        "id": "(sc_client)/./app/learning/czech-robot/page.tsx",
         "name": "",
         "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
+          "app/learning/czech-robot/page:app/learning/czech-robot/page"
         ],
         "async": false
       },
       "*": {
-        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
+        "id": "(sc_client)/./app/learning/czech-robot/page.tsx",
         "name": "*",
         "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
+          "app/learning/czech-robot/page:app/learning/czech-robot/page"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
+        "id": "(sc_client)/./app/learning/czech-robot/page.tsx",
         "name": "default",
         "chunks": [
-          "app/learning/shortest-path/page:app/learning/shortest-path/page"
+          "app/learning/czech-robot/page:app/learning/czech-robot/page"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/learning/web-scraper/page.tsx": {
+      "": {
+        "id": "(sc_client)/./app/learning/web-scraper/page.tsx",
+        "name": "",
+        "chunks": [
+          "app/learning/web-scraper/page:app/learning/web-scraper/page"
+        ],
+        "async": false
+      },
+      "*": {
+        "id": "(sc_client)/./app/learning/web-scraper/page.tsx",
+        "name": "*",
+        "chunks": [
+          "app/learning/web-scraper/page:app/learning/web-scraper/page"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/learning/web-scraper/page.tsx",
+        "name": "default",
+        "chunks": [
+          "app/learning/web-scraper/page:app/learning/web-scraper/page"
         ],
         "async": false
       }
@@ -260,28 +260,28 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./app/learning/web-scraper/page.tsx": {
+    "(app-client)/./app/learning/shortest-path/page.tsx": {
       "": {
-        "id": "(sc_client)/./app/learning/web-scraper/page.tsx",
+        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
         "name": "",
         "chunks": [
-          "app/learning/web-scraper/page:app/learning/web-scraper/page"
+          "app/learning/shortest-path/page:app/learning/shortest-path/page"
         ],
         "async": false
       },
       "*": {
-        "id": "(sc_client)/./app/learning/web-scraper/page.tsx",
+        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
         "name": "*",
         "chunks": [
-          "app/learning/web-scraper/page:app/learning/web-scraper/page"
+          "app/learning/shortest-path/page:app/learning/shortest-path/page"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./app/learning/web-scraper/page.tsx",
+        "id": "(sc_client)/./app/learning/shortest-path/page.tsx",
         "name": "default",
         "chunks": [
-          "app/learning/web-scraper/page:app/learning/web-scraper/page"
+          "app/learning/shortest-path/page:app/learning/shortest-path/page"
         ],
         "async": false
       }
@@ -321,28 +321,29 @@ self.__RSC_MANIFEST={
     "/Users/martin.svatek/Development/dobrey-repo/app/learning/czech-robot/page": [
       "static/css/app/learning/czech-robot/page.css"
     ],
-    "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/page": [
-      "static/css/app/learning/shortest-path/page.css"
+    "/Users/martin.svatek/Development/dobrey-repo/app/learning/web-scraper/page": [
+      "static/css/app/learning/web-scraper/page.css"
     ],
     "/Users/martin.svatek/Development/dobrey-repo/app/learning/hidden-map/page": [
       "static/css/app/learning/hidden-map/page.css"
     ],
-    "/Users/martin.svatek/Development/dobrey-repo/app/learning/web-scraper/page": [
-      "static/css/app/learning/web-scraper/page.css"
+    "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/page": [
+      "static/css/app/learning/shortest-path/page.css"
     ],
     "/Users/martin.svatek/Development/dobrey-repo/app/learning/self-driving-car/page": [
       "static/css/app/learning/self-driving-car/page.css"
-    ],
-    "/Users/martin.svatek/Development/dobrey-repo/app/page": [
-      "static/css/_app-client_app_page_module_scss.css"
     ],
     "/Users/martin.svatek/Development/dobrey-repo/app/layout": [
       "static/css/_app-client_app__global_scss.css",
       "static/css/_app-client_components_Nav_Nav_module_scss.css",
       "static/css/_app-client_components_Main_Main_module_scss.css",
       "static/css/_app-client_components_Input_Input_module_scss.css",
+      "static/css/_app-client_components_Form_Form_module_scss.css",
       "static/css/_app-client_components_Footer_Footer_module_scss.css",
       "static/css/_app-client_components_Button_Button_module_scss.css"
+    ],
+    "/Users/martin.svatek/Development/dobrey-repo/app/page": [
+      "static/css/_app-client_app_page_module_scss.css"
     ]
   },
   "/Users/martin.svatek/Development/dobrey-repo/node_modules/next/dist/client/image.js": {
@@ -456,8 +457,8 @@ self.__RSC_MANIFEST={
       "chunks": [
         "static/css/app/error.css",
         "static/css/app/learning/czech-robot/page.css",
-        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Button_Button_module_scss.css"
       ]
@@ -470,10 +471,24 @@ self.__RSC_MANIFEST={
       "chunks": [
         "static/css/app/error.css",
         "static/css/app/learning/czech-robot/page.css",
-        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Footer_Footer_module_scss.css"
+      ]
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/components/Form/Form.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/error.css",
+        "static/css/app/learning/czech-robot/page.css",
+        "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/shortest-path/page.css",
+        "static/css/app/learning/self-driving-car/page.css",
+        "static/css/_app-client_components_Form_Form_module_scss.css"
       ]
     }
   },
@@ -484,8 +499,8 @@ self.__RSC_MANIFEST={
       "chunks": [
         "static/css/app/error.css",
         "static/css/app/learning/czech-robot/page.css",
-        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Input_Input_module_scss.css"
       ]
@@ -498,8 +513,8 @@ self.__RSC_MANIFEST={
       "chunks": [
         "static/css/app/error.css",
         "static/css/app/learning/czech-robot/page.css",
-        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Main_Main_module_scss.css"
       ]
@@ -512,8 +527,8 @@ self.__RSC_MANIFEST={
       "chunks": [
         "static/css/app/error.css",
         "static/css/app/learning/czech-robot/page.css",
-        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/web-scraper/page.css",
+        "static/css/app/learning/shortest-path/page.css",
         "static/css/app/learning/self-driving-car/page.css",
         "static/css/_app-client_components_Nav_Nav_module_scss.css"
       ]
@@ -541,32 +556,6 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "app/error:app/error"
-      ],
-      "async": false
-    }
-  },
-  "/Users/martin.svatek/Development/dobrey-repo/app/learning/czech-robot/page.tsx": {
-    "": {
-      "id": "(app-client)/./app/learning/czech-robot/page.tsx",
-      "name": "",
-      "chunks": [
-        "app/learning/czech-robot/page:app/learning/czech-robot/page"
-      ],
-      "async": false
-    },
-    "*": {
-      "id": "(app-client)/./app/learning/czech-robot/page.tsx",
-      "name": "*",
-      "chunks": [
-        "app/learning/czech-robot/page:app/learning/czech-robot/page"
-      ],
-      "async": false
-    },
-    "default": {
-      "id": "(app-client)/./app/learning/czech-robot/page.tsx",
-      "name": "default",
-      "chunks": [
-        "app/learning/czech-robot/page:app/learning/czech-robot/page"
       ],
       "async": false
     }
@@ -779,37 +768,54 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/Page.module.scss": {
-    "default": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/learning/shortest-path/page.css"
-      ]
-    }
-  },
-  "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/page.tsx": {
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/czech-robot/page.tsx": {
     "": {
-      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
+      "id": "(app-client)/./app/learning/czech-robot/page.tsx",
       "name": "",
       "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
+        "app/learning/czech-robot/page:app/learning/czech-robot/page"
       ],
       "async": false
     },
     "*": {
-      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
+      "id": "(app-client)/./app/learning/czech-robot/page.tsx",
       "name": "*",
       "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
+        "app/learning/czech-robot/page:app/learning/czech-robot/page"
       ],
       "async": false
     },
     "default": {
-      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
+      "id": "(app-client)/./app/learning/czech-robot/page.tsx",
       "name": "default",
       "chunks": [
-        "app/learning/shortest-path/page:app/learning/shortest-path/page"
+        "app/learning/czech-robot/page:app/learning/czech-robot/page"
+      ],
+      "async": false
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/web-scraper/page.tsx": {
+    "": {
+      "id": "(app-client)/./app/learning/web-scraper/page.tsx",
+      "name": "",
+      "chunks": [
+        "app/learning/web-scraper/page:app/learning/web-scraper/page"
+      ],
+      "async": false
+    },
+    "*": {
+      "id": "(app-client)/./app/learning/web-scraper/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/learning/web-scraper/page:app/learning/web-scraper/page"
+      ],
+      "async": false
+    },
+    "default": {
+      "id": "(app-client)/./app/learning/web-scraper/page.tsx",
+      "name": "default",
+      "chunks": [
+        "app/learning/web-scraper/page:app/learning/web-scraper/page"
       ],
       "async": false
     }
@@ -849,28 +855,37 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/Users/martin.svatek/Development/dobrey-repo/app/learning/web-scraper/page.tsx": {
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/Page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/learning/shortest-path/page.css"
+      ]
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/learning/shortest-path/page.tsx": {
     "": {
-      "id": "(app-client)/./app/learning/web-scraper/page.tsx",
+      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
       "name": "",
       "chunks": [
-        "app/learning/web-scraper/page:app/learning/web-scraper/page"
+        "app/learning/shortest-path/page:app/learning/shortest-path/page"
       ],
       "async": false
     },
     "*": {
-      "id": "(app-client)/./app/learning/web-scraper/page.tsx",
+      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
       "name": "*",
       "chunks": [
-        "app/learning/web-scraper/page:app/learning/web-scraper/page"
+        "app/learning/shortest-path/page:app/learning/shortest-path/page"
       ],
       "async": false
     },
     "default": {
-      "id": "(app-client)/./app/learning/web-scraper/page.tsx",
+      "id": "(app-client)/./app/learning/shortest-path/page.tsx",
       "name": "default",
       "chunks": [
-        "app/learning/web-scraper/page:app/learning/web-scraper/page"
+        "app/learning/shortest-path/page:app/learning/shortest-path/page"
       ],
       "async": false
     }
@@ -928,21 +943,21 @@ self.__RSC_MANIFEST={
       "async": false
     }
   },
-  "/Users/martin.svatek/Development/dobrey-repo/app/page.module.scss": {
-    "default": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/_app-client_app_page_module_scss.css"
-      ]
-    }
-  },
   "/Users/martin.svatek/Development/dobrey-repo/app/_global.scss": {
     "default": {
       "id": "null",
       "name": "default",
       "chunks": [
         "static/css/_app-client_app__global_scss.css"
+      ]
+    }
+  },
+  "/Users/martin.svatek/Development/dobrey-repo/app/page.module.scss": {
+    "default": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/_app-client_app_page_module_scss.css"
       ]
     }
   }

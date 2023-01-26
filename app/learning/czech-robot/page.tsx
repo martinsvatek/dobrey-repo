@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Input } from 'components';
+import { Button, Form, Input } from 'components';
 import { MESSAGE_SUCCESS } from 'pages/api/getAnswer/getAnswer.consts';
 import { ResponseData } from 'pages/api/getAnswer/getAnswer.types';
 import { ChangeEvent, FC, FormEvent, useState } from 'react';
@@ -37,12 +37,12 @@ const CzechRobot: FC = () => {
   return (
     <>
       <h1>Czech robot</h1>
-      <form onSubmit={onFormSubmitHandler}>
+      <Form onSubmit={onFormSubmitHandler}>
         <Input name="question" onChange={onInputChangeHandler} placeholder="Question" value={question} />
         <Button color="peach" isDisabled={!question} type="submit">
           {loading ? 'Loading...' : 'Get answer'}
         </Button>
-      </form>
+      </Form>
       {!loading &&
         (message === MESSAGE_SUCCESS ? (
           <>
