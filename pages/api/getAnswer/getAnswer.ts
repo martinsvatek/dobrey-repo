@@ -18,9 +18,8 @@ export const getAnswer = async (req: NextApiRequest, res: NextApiResponse<Respon
     max_tokens: 80,
     temperature: 0.1,
   });
-  console.log(response.data);
-  const answer = response.data.choices[0].text;
 
+  const answer = response.data.choices[0].text;
   if (answer) {
     return res.status(200).json({ answer, message: MESSAGE_SUCCESS });
   }
