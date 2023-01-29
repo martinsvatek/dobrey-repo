@@ -14,9 +14,16 @@ export const getAnswer = async (req: NextApiRequest, res: NextApiResponse<Respon
   //   const response = await openai.listEngines();
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: question,
-    max_tokens: 80,
-    temperature: 0.1,
+    prompt: `
+      Jsi můj šef, který je bezcitný a přísný. Velmi rád nadáváš a mluvíš stroze v krátkých větách. 
+      Šéf: Co chceš?
+      Osoba: Rád bych dostal přidáno.
+      Šéf: Nezasloužíš si.
+      Osoba: ${question}?
+      Šéf:
+    `,
+    max_tokens: 200,
+    temperature: 0.8,
   });
 
   const answer = response.data.choices[0].text;

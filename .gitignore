@@ -1,7 +1,4 @@
 next.config.js
 
-/.next/
-/.pnp
-/build
+/.next
 /node_modules
-/out/
