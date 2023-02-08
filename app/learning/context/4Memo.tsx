@@ -1,10 +1,9 @@
-/* eslint-disable react/display-name */
-import { createContext, Dispatch, FC, memo, ReactNode, SetStateAction, useContext, useMemo, useState } from 'react';
+/* eslint-disable */
+// @ts-nocheck
 
-export const MyContext = createContext<{ count: number; setCount: Dispatch<SetStateAction<number>> }>({
-  count: 0,
-  setCount: () => {},
-});
+import { createContext, memo, useContext, useMemo, useState } from 'react';
+
+export const MyContext = createContext({ color: 'red', setColor: () => {} });
 
 /**
  * In this case, when we change the letter,
@@ -12,53 +11,46 @@ export const MyContext = createContext<{ count: number; setCount: Dispatch<SetSt
  * even it's memoized because the value in the context changes.
  */
 
-export const MyProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [count, setCount] = useState(0);
+export const MyProvider = ({ children }) => {
+  const [color, setColor] = useState('red');
 
-  return <MyContext.Provider value={{ count, setCount }}>{children}</MyContext.Provider>;
+  return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
 };
 
 /****************
  * So instead do:
  ****************/
 
-export const MyProviderWithUseMemo: FC<{ children: ReactNode }> = ({ children }) => {
-  const [count, setCount] = useState(0);
+export const MyProviderWithUseMemo = ({ children }) => {
+  const [color, setColor] = useState('red');
 
-  const value = useMemo(
-    () => ({
-      count,
-      setCount,
-    }),
-    [count]
-  );
+  const value = useMemo(() => ({ color, setColor }), [color]);
 
   return <MyContext.Provider value={value}>{children}</MyContext.Provider>;
 };
 
-export const App: FC = () => {
+export const App = () => {
   const [letter, setLetter] = useState('A');
 
   return (
-    <>
+    <div>
       <p>Letter: {letter}</p>
-      <button onClick={(): void => setLetter('B')}>B</button>
-      <button onClick={(): void => setLetter('C')}>C</button>
+      <button onClick={() => setLetter('B')}>B</button>
+      <button onClick={() => setLetter('C')}>C</button>
       <MyProvider>
         <MemoizedContent />
       </MyProvider>
-    </>
+    </div>
   );
 };
 
-export const MemoizedContent: FC = memo(() => {
-  const { count, setCount } = useContext(MyContext);
+export const MemoizedContent = memo(() => {
+  const { color, setColor } = useContext(MyContext);
 
   return (
-    <>
-      <p>Count: {count}</p>
-      <button onClick={(): void => setCount((prevCount) => prevCount++)}>+</button>
-      <button onClick={(): void => setCount((prevCount) => prevCount--)}>-</button>
-    </>
+    <div style={{ backgroundColor: color }}>
+      <button onClick={() => setColor('blue')}>Blue</button>
+      <button onClick={() => setColor('green')}>Green</button>
+    </div>
   );
 });

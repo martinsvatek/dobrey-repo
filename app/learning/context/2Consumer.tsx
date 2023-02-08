@@ -1,21 +1,20 @@
-import { createContext, Dispatch, FC, SetStateAction, useContext } from 'react';
+/* eslint-disable */
+// @ts-nocheck
 
-export const MyContext = createContext<{ count: number; setCount: Dispatch<SetStateAction<number>> }>({
-  count: 0,
-  setCount: () => {},
-});
+import { createContext, useContext } from 'react';
+
+export const MyContext = createContext({ color: 'red', setColor: () => {} });
 
 /**
  * With the Consumer component provided by the context we created
  */
-export const ContentWithConsumer: FC = () => (
+export const ContentWithConsumer = () => (
   <MyContext.Consumer>
-    {({ count, setCount }): JSX.Element => (
-      <>
-        <p>Count: {count}</p>
-        <button onClick={(): void => setCount((prevCount) => prevCount++)}>+</button>
-        <button onClick={(): void => setCount((prevCount) => prevCount--)}>-</button>
-      </>
+    {({ color, setColor }) => (
+      <div style={{ backgroundColor: color }}>
+        <button onClick={() => setColor('blue')}>Blue</button>
+        <button onClick={() => setColor('green')}>Green</button>
+      </div>
     )}
   </MyContext.Consumer>
 );
@@ -24,14 +23,13 @@ export const ContentWithConsumer: FC = () => (
  * With useContext hook
  */
 
-export const ContentWithHook: FC = () => {
-  const { count, setCount } = useContext(MyContext);
+export const ContentWithHook = () => {
+  const { color, setColor } = useContext(MyContext);
 
   return (
-    <>
-      <p>Count: {count}</p>
-      <button onClick={(): void => setCount((prevCount) => prevCount++)}>+</button>
-      <button onClick={(): void => setCount((prevCount) => prevCount--)}>-</button>
-    </>
+    <div style={{ backgroundColor: color }}>
+      <button onClick={() => setColor('blue')}>Blue</button>
+      <button onClick={() => setColor('green')}>Green</button>
+    </div>
   );
 };

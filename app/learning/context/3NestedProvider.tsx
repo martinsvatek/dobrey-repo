@@ -1,11 +1,14 @@
-import { createContext, FC, useContext } from 'react';
+/* eslint-disable */
+// @ts-nocheck
+
+import { createContext, useContext } from 'react';
 
 export const MyContext = createContext('');
 
-export const App: FC = () => (
-  <MyContext.Provider value="parent">
+export const App = () => (
+  <MyContext.Provider value="red">
     <ParentSubscriber />
-    <MyContext.Provider value="nested">
+    <MyContext.Provider value="blue">
       <NestedSubscriber />
     </MyContext.Provider>
   </MyContext.Provider>
@@ -17,13 +20,13 @@ export const App: FC = () => (
  * and in the NestedSubscriber will get the value nested
  */
 
-export const ParentSubscriber: FC = () => {
+export const ParentSubscriber = () => {
   const value = useContext(MyContext);
 
   return <p>The value in ParentSubscriber is: {value}</p>;
 };
 
-export const NestedSubscriber: FC = () => {
+export const NestedSubscriber = () => {
   const value = useContext(MyContext);
 
   return <p>The value in NestedSubscriber is: {value}</p>;

@@ -1,48 +1,39 @@
-/* eslint-disable react/display-name */
-import { createContext, Dispatch, FC, memo, ReactNode, SetStateAction, useContext, useMemo, useState } from 'react';
+/* eslint-disable */
+// @ts-nocheck
 
-const MyContext = createContext<{ count: number; setCount: Dispatch<SetStateAction<number>> }>({
-  count: 0,
-  setCount: () => {},
-});
+import { createContext, useContext, useState } from 'react';
 
-const MyProviderWithUseMemo: FC<{ children: ReactNode }> = ({ children }) => {
-  const [count, setCount] = useState(0);
+const MyContext = createContext({ color: 'red', setColor: () => {} });
 
-  const value = useMemo(
-    () => ({
-      count,
-      setCount,
-    }),
-    [count]
-  );
+const MyProviderWithUseMemo = ({ children }) => {
+  const [color, setColor] = useState('red');
 
-  return <MyContext.Provider value={value}>{children}</MyContext.Provider>;
+  return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
 };
 
-export const App1: FC = () => (
+export const App1 = () => (
   <MyProviderWithUseMemo>
     <Title1 />
     <Controls1 />
   </MyProviderWithUseMemo>
 );
 
-const Title1: FC = memo(() => {
-  const { count } = useContext(MyContext);
+const Title1 = () => {
+  const { color } = useContext(MyContext);
 
-  return <h1>Count: {count}</h1>;
-});
+  return <div style={{ backgroundColor: color }} />;
+};
 
-const Controls1: FC = memo(() => {
-  const { setCount } = useContext(MyContext);
+const Controls1 = () => {
+  const { setColor } = useContext(MyContext);
 
   return (
-    <>
-      <button onClick={(): void => setCount((prevCount) => prevCount++)}>+</button>
-      <button onClick={(): void => setCount((prevCount) => prevCount--)}>-</button>
-    </>
+    <div>
+      <button onClick={() => setColor('blue')}>Blue</button>
+      <button onClick={() => setColor('green')}>Green</button>
+    </div>
   );
-});
+};
 
 /****************
  * So instead do:
@@ -52,39 +43,39 @@ const Controls1: FC = memo(() => {
  * Our strategy is to separate dynamic and static data in two different contexts
  */
 
-const MyContextDynamic = createContext(0);
-const MyContextStatic = createContext<Dispatch<SetStateAction<number>>>(() => {});
+const MyContextDynamic = createContext('red');
+const MyContextStatic = createContext(() => {});
 
-const MyProviderWithSplittedContexts: FC<{ children: ReactNode }> = ({ children }) => {
-  const [count, setCount] = useState(0);
+const MyProviderWithSplittedContexts = ({ children }) => {
+  const [color, setColor] = useState('red');
 
   return (
-    <MyContextDynamic.Provider value={count}>
-      <MyContextStatic.Provider value={setCount}>{children}</MyContextStatic.Provider>;
+    <MyContextDynamic.Provider value={color}>
+      <MyContextStatic.Provider value={setColor}>{children}</MyContextStatic.Provider>;
     </MyContextDynamic.Provider>
   );
 };
 
-export const App2: FC = () => (
+export const App2 = () => (
   <MyProviderWithSplittedContexts>
     <Title2 />
     <Controls2 />
   </MyProviderWithSplittedContexts>
 );
 
-const Title2: FC = memo(() => {
-  const count = useContext(MyContextDynamic);
+const Title2 = () => {
+  const color = useContext(MyContextDynamic);
 
-  return <h1>Count: {count}</h1>;
-});
+  return <div style={{ backgroundColor: color }} />;
+};
 
-const Controls2: FC = memo(() => {
-  const setCount = useContext(MyContextStatic);
+const Controls2 = () => {
+  const setColor = useContext(MyContextStatic);
 
   return (
-    <>
-      <button onClick={(): void => setCount((prevCount) => prevCount++)}>+</button>
-      <button onClick={(): void => setCount((prevCount) => prevCount--)}>-</button>
-    </>
+    <div>
+      <button onClick={() => setColor('blue')}>Blue</button>
+      <button onClick={() => setColor('green')}>Green</button>
+    </div>
   );
-});
+};

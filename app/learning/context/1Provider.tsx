@@ -1,7 +1,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { createContext, Dispatch, FC, ReactNode, SetStateAction, useState } from 'react';
+import { createContext, useState } from 'react';
 
 /**
  * Context provides a way to pass data through the component tree
@@ -12,19 +12,16 @@ import { createContext, Dispatch, FC, ReactNode, SetStateAction, useState } from
  * The creation is made thanks to
  * the createContext method calls from React
  */
-export const MyContext = createContext<{ count: number; setCount: Dispatch<SetStateAction<number>> }>({
-  count: 0,
-  setCount: () => {},
-});
+export const MyContext = createContext({ color: 'red', setColor: () => {} });
 
 /**
  * The provider is accessible through the created context
  */
-export const AppWithState: FC = () => {
-  const [count, setCount] = useState(0);
+export const AppWithState = () => {
+  const [color, setColor] = useState('red');
 
   return (
-    <MyContext.Provider value={{ count, setCount }}>
+    <MyContext.Provider value={{ color, setColor }}>
       <Panel>
         <Title />
         <Content />
@@ -34,7 +31,7 @@ export const AppWithState: FC = () => {
 };
 
 /**
- * Doing like this each time the setCount is called,
+ * Doing like this each time the setColor is called,
  * it will render all components Title, Content
  * and Panel even if they do not use the data
  */
@@ -43,13 +40,13 @@ export const AppWithState: FC = () => {
  * So instead do:
  ****************/
 
-export const MyProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [count, setCount] = useState(0);
+export const MyProvider = ({ children }) => {
+  const [color, setColor] = useState('red');
 
-  return <MyContext.Provider value={{ count, setCount }}>{children}</MyContext.Provider>;
+  return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
 };
 
-export const AppWithoutState: FC = () => (
+export const AppWithoutState = () => (
   <MyProvider>
     <Panel>
       <Title />
