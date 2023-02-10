@@ -1,52 +1,52 @@
 @import 'global/styles';
 
 .button {
-  display: flex;
+	display: flex;
 
-  border: none;
-  height: 4.8rem;
-  margin: 0.8rem;
-  max-width: 24rem;
-  width: 100%;
+	border: none;
+	height: 4.8rem;
+	margin: 0.8rem;
+	max-width: 24rem;
+	width: 100%;
 
-  align-items: center;
-  justify-content: center;
+	align-items: center;
+	justify-content: center;
 
-  box-shadow: $shadow-grey-200;
-  cursor: pointer;
+	box-shadow: $shadow-grey-200;
+	cursor: pointer;
 }
 
 .grey-200 {
-  color: $color-grey-900;
+	color: $color-grey-900;
 
-  background-color: $color-grey-200;
+	background-color: $color-grey-200;
 }
 
 .grey-700,
 .peach {
-  color: $color-grey-100;
+	color: $color-grey-100;
 }
 
 .grey-700 {
-  background-color: $color-grey-800;
+	background-color: $color-grey-800;
 }
 
 .peach {
-  background-color: $color-peach;
+	background-color: $color-peach;
 }
 
 .disabled {
-  color: $color-grey-400;
+	color: $color-grey-400;
 
-  background-color: $color-grey-600;
+	background-color: $color-grey-600;
 
-  cursor: not-allowed;
+	cursor: not-allowed;
 
-  &:hover {
-    opacity: 1;
-  }
+	&:hover {
+		opacity: 1;
+	}
 
-  &:active {
-    opacity: 1;
-  }
+	&:active {
+		opacity: 1;
+	}
 }

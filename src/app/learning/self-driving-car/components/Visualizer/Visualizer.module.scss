@@ -1,11 +1,11 @@
 @import 'global/styles';
 
 .visualizer {
-  margin: 0.8rem;
+	margin: 0.8rem;
 }
 
 @media (max-width: 1322px) {
-  .visualizer {
-    display: none;
-  }
+	.visualizer {
+		display: none;
+	}
 }

@@ -18,16 +18,16 @@ export const MyContext = createContext({ color: 'red', setColor: () => {} });
  * The provider is accessible through the created context
  */
 export const AppWithState = () => {
-  const [color, setColor] = useState('red');
+	const [color, setColor] = useState('red');
 
-  return (
-    <MyContext.Provider value={{ color, setColor }}>
-      <Panel>
-        <Title />
-        <Content />
-      </Panel>
-    </MyContext.Provider>
-  );
+	return (
+		<MyContext.Provider value={{ color, setColor }}>
+			<Panel>
+				<Title />
+				<Content />
+			</Panel>
+		</MyContext.Provider>
+	);
 };
 
 /**
@@ -41,18 +41,18 @@ export const AppWithState = () => {
  ****************/
 
 export const MyProvider = ({ children }) => {
-  const [color, setColor] = useState('red');
+	const [color, setColor] = useState('red');
 
-  return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
+	return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
 };
 
 export const AppWithoutState = () => (
-  <MyProvider>
-    <Panel>
-      <Title />
-      <Content />
-    </Panel>
-  </MyProvider>
+	<MyProvider>
+		<Panel>
+			<Title />
+			<Content />
+		</Panel>
+	</MyProvider>
 );
 
 /**

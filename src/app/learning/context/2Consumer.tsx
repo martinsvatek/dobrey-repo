@@ -9,14 +9,14 @@ export const MyContext = createContext({ color: 'red', setColor: () => {} });
  * With the Consumer component provided by the context we created
  */
 export const ContentWithConsumer = () => (
-  <MyContext.Consumer>
-    {({ color, setColor }) => (
-      <div style={{ backgroundColor: color }}>
-        <button onClick={() => setColor('blue')}>Blue</button>
-        <button onClick={() => setColor('green')}>Green</button>
-      </div>
-    )}
-  </MyContext.Consumer>
+	<MyContext.Consumer>
+		{({ color, setColor }) => (
+			<div style={{ backgroundColor: color }}>
+				<button onClick={() => setColor('blue')}>Blue</button>
+				<button onClick={() => setColor('green')}>Green</button>
+			</div>
+		)}
+	</MyContext.Consumer>
 );
 
 /**
@@ -24,12 +24,12 @@ export const ContentWithConsumer = () => (
  */
 
 export const ContentWithHook = () => {
-  const { color, setColor } = useContext(MyContext);
+	const { color, setColor } = useContext(MyContext);
 
-  return (
-    <div style={{ backgroundColor: color }}>
-      <button onClick={() => setColor('blue')}>Blue</button>
-      <button onClick={() => setColor('green')}>Green</button>
-    </div>
-  );
+	return (
+		<div style={{ backgroundColor: color }}>
+			<button onClick={() => setColor('blue')}>Blue</button>
+			<button onClick={() => setColor('green')}>Green</button>
+		</div>
+	);
 };

@@ -9,7 +9,6 @@ const AppError: FC<AppErrorProps> = ({ error, reset }) => {
 		/**
 		 * @NOTE: tady muzeme poslat error do nejakeho reportovaciho systemu
 		 */
-		console.error(error);
 	}, [error]);
 
 	return (

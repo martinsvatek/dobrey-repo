@@ -6,12 +6,12 @@ import { createContext, useContext } from 'react';
 export const MyContext = createContext('');
 
 export const App = () => (
-  <MyContext.Provider value="red">
-    <ParentSubscriber />
-    <MyContext.Provider value="blue">
-      <NestedSubscriber />
-    </MyContext.Provider>
-  </MyContext.Provider>
+	<MyContext.Provider value="red">
+		<ParentSubscriber />
+		<MyContext.Provider value="blue">
+			<NestedSubscriber />
+		</MyContext.Provider>
+	</MyContext.Provider>
 );
 
 /**
@@ -21,13 +21,13 @@ export const App = () => (
  */
 
 export const ParentSubscriber = () => {
-  const value = useContext(MyContext);
+	const value = useContext(MyContext);
 
-  return <p>The value in ParentSubscriber is: {value}</p>;
+	return <p>The value in ParentSubscriber is: {value}</p>;
 };
 
 export const NestedSubscriber = () => {
-  const value = useContext(MyContext);
+	const value = useContext(MyContext);
 
-  return <p>The value in NestedSubscriber is: {value}</p>;
+	return <p>The value in NestedSubscriber is: {value}</p>;
 };

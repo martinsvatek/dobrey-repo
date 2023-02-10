@@ -1,4 +1,4 @@
 export interface AppErrorProps {
-  error: Error;
-  reset: () => void;
+	error: Error;
+	reset: () => void;
 }

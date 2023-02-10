@@ -1,25 +1,25 @@
 @import 'global/styles';
 
 .grid {
-  border-radius: 0.8rem;
-  margin: 0.8rem;
+	border-radius: 0.8rem;
+	margin: 0.8rem;
 
-  background-color: $color-grey-200;
+	background-color: $color-grey-200;
 
-  box-shadow: $shadow-grey-200;
+	box-shadow: $shadow-grey-200;
 }
 
 .shortestPath,
 .controls {
-  display: flex;
+	display: flex;
 
-  width: 100%;
+	width: 100%;
 
-  flex-wrap: wrap;
-  justify-content: center;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .shortestPath {
-  align-items: center;
-  flex-direction: column;
+	align-items: center;
+	flex-direction: column;
 }

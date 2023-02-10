@@ -3,8 +3,8 @@
 :root {
 	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 	/**
-   * @NOTE: 10px = 1rem
-   */
+     * @NOTE: 10px = 1rem
+     */
 	font-size: 62.5%;
 
 	background-color: $color-grey-100;
@@ -20,8 +20,8 @@ body {
 	justify-content: center;
 
 	/**
-   * @NOTE: odstraneni modreho tap oznaceni
-   */
+     * @NOTE: odstraneni modreho tap oznaceni
+     */
 	-webkit-tap-highlight-color: transparent;
 
 	& h1 {
@@ -75,13 +75,12 @@ body {
 	}
 
 	/**
-   * @NOTE: pro zachovani stejneho stylovani na ios
-   */
+	 * @NOTE: pro zachovani stejneho stylovani na ios
+	 */
 	& button,
 	& input,
 	& textarea {
 		-webkit-appearance: none;
-
 		appearance: none;
 	}
 

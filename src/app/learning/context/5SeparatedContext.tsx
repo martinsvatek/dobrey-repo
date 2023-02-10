@@ -6,33 +6,33 @@ import { createContext, useContext, useState } from 'react';
 const MyContext = createContext({ color: 'red', setColor: () => {} });
 
 const MyProviderWithUseMemo = ({ children }) => {
-  const [color, setColor] = useState('red');
+	const [color, setColor] = useState('red');
 
-  return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
+	return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
 };
 
 export const App1 = () => (
-  <MyProviderWithUseMemo>
-    <Title1 />
-    <Controls1 />
-  </MyProviderWithUseMemo>
+	<MyProviderWithUseMemo>
+		<Title1 />
+		<Controls1 />
+	</MyProviderWithUseMemo>
 );
 
 const Title1 = () => {
-  const { color } = useContext(MyContext);
+	const { color } = useContext(MyContext);
 
-  return <div style={{ backgroundColor: color }} />;
+	return <div style={{ backgroundColor: color }} />;
 };
 
 const Controls1 = () => {
-  const { setColor } = useContext(MyContext);
+	const { setColor } = useContext(MyContext);
 
-  return (
-    <div>
-      <button onClick={() => setColor('blue')}>Blue</button>
-      <button onClick={() => setColor('green')}>Green</button>
-    </div>
-  );
+	return (
+		<div>
+			<button onClick={() => setColor('blue')}>Blue</button>
+			<button onClick={() => setColor('green')}>Green</button>
+		</div>
+	);
 };
 
 /****************
@@ -47,35 +47,35 @@ const MyContextDynamic = createContext('red');
 const MyContextStatic = createContext(() => {});
 
 const MyProviderWithSplittedContexts = ({ children }) => {
-  const [color, setColor] = useState('red');
+	const [color, setColor] = useState('red');
 
-  return (
-    <MyContextDynamic.Provider value={color}>
-      <MyContextStatic.Provider value={setColor}>{children}</MyContextStatic.Provider>;
-    </MyContextDynamic.Provider>
-  );
+	return (
+		<MyContextDynamic.Provider value={color}>
+			<MyContextStatic.Provider value={setColor}>{children}</MyContextStatic.Provider>;
+		</MyContextDynamic.Provider>
+	);
 };
 
 export const App2 = () => (
-  <MyProviderWithSplittedContexts>
-    <Title2 />
-    <Controls2 />
-  </MyProviderWithSplittedContexts>
+	<MyProviderWithSplittedContexts>
+		<Title2 />
+		<Controls2 />
+	</MyProviderWithSplittedContexts>
 );
 
 const Title2 = () => {
-  const color = useContext(MyContextDynamic);
+	const color = useContext(MyContextDynamic);
 
-  return <div style={{ backgroundColor: color }} />;
+	return <div style={{ backgroundColor: color }} />;
 };
 
 const Controls2 = () => {
-  const setColor = useContext(MyContextStatic);
+	const setColor = useContext(MyContextStatic);
 
-  return (
-    <div>
-      <button onClick={() => setColor('blue')}>Blue</button>
-      <button onClick={() => setColor('green')}>Green</button>
-    </div>
-  );
+	return (
+		<div>
+			<button onClick={() => setColor('blue')}>Blue</button>
+			<button onClick={() => setColor('green')}>Green</button>
+		</div>
+	);
 };
