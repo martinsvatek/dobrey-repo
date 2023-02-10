@@ -1,8 +1,8 @@
 export interface RequestBody {
-  packageName: string;
+	packageName: string;
 }
 
 export interface ResponseData {
-  downloads: number;
-  message: string;
+	downloads: number;
+	message: string;
 }

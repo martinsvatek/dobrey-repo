@@ -1,15 +1,15 @@
 @import 'global/styles';
 
 .main {
-  display: flex;
+	display: flex;
 
-  margin: 0 auto;
-  max-width: 160rem;
-  min-height: calc(100vh - 8rem);
-  padding: 0.8rem;
-  width: 100%;
+	margin: 0 auto;
+	max-width: 160rem;
+	min-height: calc(100vh - 8rem);
+	padding: 0.8rem;
+	width: 100%;
 
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 }

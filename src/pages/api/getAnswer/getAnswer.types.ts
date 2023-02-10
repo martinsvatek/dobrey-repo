@@ -1,8 +1,8 @@
 export interface RequestBody {
-  question: string;
+	question: string;
 }
 
 export interface ResponseData {
-  answer: string;
-  message: string;
+	answer: string;
+	message: string;
 }

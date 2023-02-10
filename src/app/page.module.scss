@@ -1,21 +1,21 @@
 @import 'global/styles';
 
 .image {
-  animation: pulse 6s ease-in-out infinite;
-  filter: drop-shadow($shadow-grey-200);
+	animation: pulse 6s ease-in-out infinite;
+	filter: drop-shadow($shadow-grey-200);
 }
 
 @keyframes pulse {
-  0% {
-    opacity: 0.4;
-    transform: scale(0.96);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0.4;
-    transform: scale(0.96);
-  }
+	0% {
+		opacity: 0.4;
+		transform: scale(0.96);
+	}
+	50% {
+		opacity: 0.6;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0.4;
+		transform: scale(0.96);
+	}
 }
