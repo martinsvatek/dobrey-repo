@@ -5,17 +5,17 @@ import { createContext, useContext, useState } from 'react';
 
 const MyContext = createContext({ color: 'red', setColor: () => {} });
 
-const MyProviderWithUseMemo = ({ children }) => {
+const MyProvider = ({ children }) => {
 	const [color, setColor] = useState('red');
 
 	return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
 };
 
 export const App1 = () => (
-	<MyProviderWithUseMemo>
+	<MyProvider>
 		<Title1 />
 		<Controls1 />
-	</MyProviderWithUseMemo>
+	</MyProvider>
 );
 
 const Title1 = () => {

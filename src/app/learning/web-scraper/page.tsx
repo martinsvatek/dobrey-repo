@@ -1,15 +1,15 @@
 'use client';
 
 import { Button, Input } from 'components';
-import { MESSAGE_SUCCESS } from 'pages/api/getDownloads/getDownloads.consts';
-import { ResponseData } from 'pages/api/getDownloads/getDownloads.types';
+import { MESSAGE_SUCCESS } from 'pages/api/webScraper/getDownloads/getDownloads.consts';
+import { ResponseData } from 'pages/api/webScraper/getDownloads/getDownloads.types';
 import { ChangeEvent, FC, useState } from 'react';
 
 const WebScraper: FC = () => {
-	const [downloads, setDownloads] = useState<number>(0);
-	const [loading, setLoading] = useState<boolean>(false);
-	const [message, setMessage] = useState<string>('');
-	const [packageName, setPackageName] = useState<string>('');
+	const [downloads, setDownloads] = useState(0);
+	const [loading, setLoading] = useState(false);
+	const [message, setMessage] = useState('');
+	const [packageName, setPackageName] = useState('');
 
 	const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
 		setPackageName(event.currentTarget.value);
@@ -18,7 +18,7 @@ const WebScraper: FC = () => {
 	const onButtonClickHandler = async (): Promise<void> => {
 		setLoading(true);
 
-		const res = await fetch(`http://localhost:3000/api/getDownloads`, {
+		const res = await fetch('http://localhost:3000/api/webScraper/getDownloads', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
