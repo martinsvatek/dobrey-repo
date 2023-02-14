@@ -6,8 +6,6 @@ import { createContext, useContext, useState } from 'react';
 const MyContext = createContext({ color: 'red', setColor: () => {} });
 
 const MyProvider = ({ children }) => {
-	const [color, setColor] = useState('red');
-
 	return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
 };
 
@@ -21,7 +19,11 @@ export const App1 = () => (
 const Title1 = () => {
 	const { color } = useContext(MyContext);
 
-	return <div style={{ backgroundColor: color }} />;
+	return (
+		<div style={{ backgroundColor: color }}>
+			<h1>Title</h1>
+		</div>
+	);
 };
 
 const Controls1 = () => {
@@ -66,7 +68,11 @@ export const App2 = () => (
 const Title2 = () => {
 	const color = useContext(MyContextDynamic);
 
-	return <div style={{ backgroundColor: color }} />;
+	return (
+		<div style={{ backgroundColor: color }}>
+			<h1>Title</h1>
+		</div>
+	);
 };
 
 const Controls2 = () => {

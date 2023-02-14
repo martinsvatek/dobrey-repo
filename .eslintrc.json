@@ -10,6 +10,7 @@
 				"allowExpressions": true
 			}
 		],
+		"arrow-body-style": ["error", "as-needed"],
 		"indent": ["error", "tab"],
 		"no-console": "error"
 	}
