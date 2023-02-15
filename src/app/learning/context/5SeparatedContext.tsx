@@ -6,6 +6,8 @@ import { createContext, useContext, useState } from 'react';
 const MyContext = createContext({ color: 'red', setColor: () => {} });
 
 const MyProvider = ({ children }) => {
+	const [color, setColor] = useState('red');
+
 	return <MyContext.Provider value={{ color, setColor }}>{children}</MyContext.Provider>;
 };
 
