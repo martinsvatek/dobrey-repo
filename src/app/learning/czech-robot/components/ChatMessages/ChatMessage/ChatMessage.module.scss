@@ -1,0 +1,13 @@
+@import 'global/styles';
+
+.answer {
+	margin-bottom: 1.6rem;
+}
+
+.question {
+	margin-top: 1.6rem;
+
+	.text {
+		color: $color-peach;
+	}
+}

@@ -24,40 +24,41 @@ body {
      */
 	-webkit-tap-highlight-color: transparent;
 
-	& h1 {
+	h1 {
 		margin: 3.2rem 0.8rem 1.6rem 0.8rem;
 
 		color: $color-grey-200;
 		font-size: 3.2rem;
 	}
 
-	& h2 {
+	h2 {
 		margin: 2.4rem 0.8rem 1.1rem 0.8rem;
 
 		color: $color-grey-300;
 		font-size: 2.4rem;
 	}
 
-	& h3 {
+	h3 {
 		margin: 1.6rem 0.8rem 0.8rem 0.8rem;
 
 		color: $color-grey-400;
 		font-size: 1.6rem;
 	}
 
-	& a,
-	& p,
-	& span {
+	a,
+	p,
+	span {
 		margin: 1.4rem 0.8rem 0.7rem 0.8rem;
 
 		color: $color-grey-900;
 		font-size: 1.4rem;
 	}
 
-	& a,
-	& button,
-	& input,
-	& textarea {
+	a,
+	button,
+	input,
+	select,
+	textarea {
 		border-radius: 0.8rem;
 
 		&:hover {
@@ -77,14 +78,15 @@ body {
 	/**
 	 * @NOTE: pro zachovani stejneho stylovani na ios
 	 */
-	& button,
-	& input,
-	& textarea {
+	button,
+	input,
+	select,
+	textarea {
 		-webkit-appearance: none;
 		appearance: none;
 	}
 
-	& * {
+	* {
 		box-sizing: border-box;
 
 		transition: all 0.2s ease-in-out;

@@ -1,8 +1,8 @@
 'use client';
 
 import { Button, Input } from 'components';
-import { MESSAGE_SUCCESS } from 'pages/api/webScraper/getDownloads/getDownloads.consts';
-import { ResponseData } from 'pages/api/webScraper/getDownloads/getDownloads.types';
+import { GET_DOWNLOADS_MESSAGE_SUCCESS } from 'pages/api/webScraper/getDownloads/getDownloads.consts';
+import { GetDownloadsResponseData } from 'pages/api/webScraper/getDownloads/getDownloads.types';
 import { ChangeEvent, FC, useState } from 'react';
 
 const WebScraper: FC = () => {
@@ -25,7 +25,7 @@ const WebScraper: FC = () => {
 			},
 			body: JSON.stringify({ packageName }),
 		});
-		const { downloads, message } = (await res.json()) as ResponseData;
+		const { downloads, message } = (await res.json()) as GetDownloadsResponseData;
 
 		setDownloads(downloads);
 		setMessage(message);
@@ -36,11 +36,11 @@ const WebScraper: FC = () => {
 		<>
 			<h1>Web scraper</h1>
 			<Input name="packageName" onChange={onInputChangeHandler} placeholder="Package name" value={packageName} />
-			<Button color="peach" isDisabled={!packageName} onClick={onButtonClickHandler}>
+			<Button color="peach" disabled={!packageName} onClick={onButtonClickHandler}>
 				{loading ? 'Loading...' : 'Get downloads count'}
 			</Button>
 			{!loading &&
-				(message === MESSAGE_SUCCESS ? (
+				(message === GET_DOWNLOADS_MESSAGE_SUCCESS ? (
 					<>
 						<p>{message}</p>
 						<p>

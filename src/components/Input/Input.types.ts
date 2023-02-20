@@ -6,6 +6,7 @@ export interface InputProps {
 	placeholder: string;
 	value: string;
 	autoComplete?: 'on' | 'off';
+	disabled?: boolean;
 	max?: number;
 	min?: number;
 	type?: 'text' | 'number' | 'password';

@@ -1,8 +1,8 @@
-export interface RequestBody {
+export interface GetDownloadsRequestBody {
 	packageName: string;
 }
 
-export interface ResponseData {
+export interface GetDownloadsResponseData {
 	downloads: number;
 	message: string;
 }

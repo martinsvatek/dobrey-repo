@@ -5,6 +5,7 @@ import { InputProps } from './Input.types';
 
 export const Input: FC<InputProps> = ({
 	autoComplete = 'off',
+	disabled = false,
 	max,
 	min,
 	name,
@@ -20,6 +21,7 @@ export const Input: FC<InputProps> = ({
 		<input
 			autoComplete={autoComplete}
 			className={styles.input}
+			disabled={disabled}
 			id={name}
 			max={max}
 			min={min}

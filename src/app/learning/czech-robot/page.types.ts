@@ -1,4 +1,4 @@
-type Type = 'user' | 'bot';
+export type Type = 'question' | 'answer';
 
 export interface ChatHistory {
 	type: Type;

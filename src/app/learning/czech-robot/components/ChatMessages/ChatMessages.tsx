@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { ChatMessage } from './ChatMessage/ChatMessage';
 import styles from './ChatMessages.module.scss';
 import { ChatMessagesProps } from './ChatMessages.types';
 
@@ -9,11 +10,8 @@ export const ChatMessages: FC<ChatMessagesProps> = ({ chatHistory }) => {
 
 	return (
 		<div className={styles.chatMessages}>
-			{chatHistory.map((chatMessage, index) => (
-				<div key={index}>
-					<h3>{chatMessage.type}</h3>
-					<p>{chatMessage.text}</p>
-				</div>
+			{chatHistory.map(({ text, type }, index) => (
+				<ChatMessage key={index} text={text} type={type} />
 			))}
 		</div>
 	);

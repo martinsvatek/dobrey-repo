@@ -4,15 +4,15 @@ import styles from './Button.module.scss';
 import { ButtonProps } from './Button.types';
 
 export const Button: FC<ButtonProps> = ({
-	children,
 	color = 'grey-200',
-	isDisabled = false,
+	disabled = false,
+	children,
 	onClick,
 	type = 'button',
 }) => (
 	<button
-		className={joinClassNames([styles.button, styles[color], isDisabled && styles.disabled])}
-		disabled={isDisabled}
+		className={joinClassNames([styles.button, styles[color], disabled && styles.disabled])}
+		disabled={disabled}
 		onClick={onClick}
 		type={type}
 	>
