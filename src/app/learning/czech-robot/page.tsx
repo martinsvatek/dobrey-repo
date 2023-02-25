@@ -49,8 +49,8 @@ const CzechRobot: FC = () => {
 	const onFormSubmitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
 		event.preventDefault();
 
-		setMessage('');
 		setLoading(true);
+		setMessage('');
 
 		const updatedChatHistory: ChatHistory[] = [...chatHistory, { type: 'question', text: question }];
 		const res = await fetch('http://localhost:3000/api/czechRobot/getAnswer', {

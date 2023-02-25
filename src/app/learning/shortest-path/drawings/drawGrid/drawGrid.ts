@@ -2,6 +2,12 @@ import { GRID_CANVAS_HEIGHT, GRID_CANVAS_WIDTH } from 'app/learning/shortest-pat
 import { GRID_COLOR } from './drawGrid.consts';
 
 export const drawGrid = (canvasContext: CanvasRenderingContext2D): void => {
+	/**
+	 * @NOTE: vse do vychoziho stavu
+	 */
+	canvasContext.beginPath();
+	canvasContext.clearRect(0, 0, GRID_CANVAS_WIDTH, GRID_CANVAS_HEIGHT);
+
 	for (let i = 0; i <= GRID_CANVAS_WIDTH; i += 10) {
 		canvasContext.moveTo(i, 0);
 		canvasContext.lineTo(i, GRID_CANVAS_HEIGHT);

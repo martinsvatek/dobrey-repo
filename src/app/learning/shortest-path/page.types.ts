@@ -3,6 +3,8 @@ export interface Coordinate {
 	column: number;
 }
 
+export type NodeType = 'default' | 'finish' | 'start' | 'wall';
+
 export interface Node {
 	column: number;
 	distance: number;
@@ -11,5 +13,3 @@ export interface Node {
 	row: number;
 	type: NodeType;
 }
-
-export type NodeType = 'default' | 'finish' | 'start' | 'wall';

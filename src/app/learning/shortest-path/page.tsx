@@ -19,7 +19,7 @@ const ShortestPath: FC = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	const [allowDrawing, setAllowDrawing] = useState(false);
-	const [finalNode, setFinalNode] = useState<Node | null>(null);
+	const [finalNode, setFinalNode] = useState<Node>();
 	const [finishNode, setFinishNode] = useState<Coordinate>();
 	const [grid, setGrid] = useState<Node[]>([]);
 	const [shortestPathInOrder, setShortestPathInOrder] = useState<Node[]>([]);
@@ -179,6 +179,26 @@ const ShortestPath: FC = () => {
 		}
 	};
 
+	/**
+	 * @NOTE: vse do vychoziho stavu
+	 */
+	const onClickClearButtonHandler = (): void => {
+		setAllowDrawing(false);
+		setFinalNode(undefined);
+		setFinishNode(undefined);
+		setGrid([]);
+		setShortestPathInOrder([]);
+		setStartNode(undefined);
+		setVisitedGridInOrder([]);
+		setWalls([]);
+
+		if (canvasRef.current) {
+			const canvas = canvasRef.current;
+			const context = canvas.getContext('2d');
+			context && drawGrid(context);
+		}
+	};
+
 	return (
 		<>
 			<h1>Shortest path</h1>
@@ -203,11 +223,11 @@ const ShortestPath: FC = () => {
 					width={GRID_CANVAS_WIDTH}
 				/>
 				<div className={styles.controls}>
-					<Button color="grey-700" onClick={onClickVisualizeButtonHandler}>
+					<Button color="grey-800" onClick={onClickVisualizeButtonHandler}>
 						VIsualize
 					</Button>
-					<Button color="peach" onClick={window.location.reload}>
-						Reload
+					<Button color="peach" onClick={onClickClearButtonHandler}>
+						Clear
 					</Button>
 				</div>
 			</div>
