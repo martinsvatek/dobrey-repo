@@ -3,6 +3,8 @@ export interface Coordinate {
 	y: number;
 }
 
+export type ZeroOne = 0 | 1;
+
 export interface Level {
 	inputs: number[];
 	outputs: ZeroOne[];
@@ -19,5 +21,3 @@ export interface Level {
 export interface Touch extends Coordinate {
 	offset: number;
 }
-
-export type ZeroOne = 0 | 1;

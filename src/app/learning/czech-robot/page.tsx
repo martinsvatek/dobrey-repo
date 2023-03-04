@@ -5,12 +5,12 @@ import { joinClassNames } from 'global/utils';
 import { GET_ANSWER_MESSAGE_FAIL, GET_ANSWER_MESSAGE_SUCCESS } from 'pages/api/czechRobot/getAnswer/getAnswer.consts';
 import { GetAnswerResponseData } from 'pages/api/czechRobot/getAnswer/getAnswer.types';
 import { GetEnginesListResponseData } from 'pages/api/czechRobot/getEnginesList/getEnginesList.types';
-import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { ChatMessages } from './components';
 import styles from './page.module.scss';
 import { ChatHistory } from './page.types';
 
-const CzechRobot: FC = () => {
+const CzechRobot = (): JSX.Element => {
 	const [loading, setLoading] = useState(false);
 	const [message, setMessage] = useState('');
 	const [question, setPrompt] = useState('');
@@ -78,7 +78,7 @@ const CzechRobot: FC = () => {
 		<>
 			<h1>Czech robot</h1>
 			<Form onSubmit={onFormSubmitHandler}>
-				<ChatMessages chatHistory={chatHistory} />
+				{chatHistory.length > 0 && <ChatMessages chatHistory={chatHistory} />}
 				<Select
 					name="engines"
 					onChange={onSelectChangeHandler}

@@ -1,10 +1,10 @@
 'use client';
 
 import { Button } from 'components';
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { AppErrorProps } from './error.types';
 
-const AppError: FC<AppErrorProps> = ({ error, reset }) => {
+const AppError = ({ error, reset }: AppErrorProps): JSX.Element => {
 	useEffect(() => {
 		/**
 		 * @NOTE: tady muzeme poslat error do nejakeho reportovaciho systemu
@@ -14,7 +14,7 @@ const AppError: FC<AppErrorProps> = ({ error, reset }) => {
 	return (
 		<>
 			<p>Something went wrong...</p>
-			<Button onClick={(): void => reset()}>Reset</Button>
+			<Button onClick={reset}>Reset</Button>
 		</>
 	);
 };

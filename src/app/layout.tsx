@@ -1,9 +1,8 @@
 import { Footer, Main, Nav } from 'components';
-import { FC } from 'react';
 import { AppLayoutProps } from './layout.types';
 import './_global.scss';
 
-const AppLayout: FC<AppLayoutProps> = ({ children }) => (
+const AppLayout = ({ children }: AppLayoutProps): JSX.Element => (
 	<html lang="en">
 		<head />
 		<body>

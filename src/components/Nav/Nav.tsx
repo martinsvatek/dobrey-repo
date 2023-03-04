@@ -1,9 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
 import styles from './Nav.module.scss';
 
-export const Nav: FC = () => (
+export const Nav = (): JSX.Element => (
 	<nav className={styles.nav}>
 		<Link className={styles.logo} href="/" aria-label="Dobrey">
 			<Image alt="Dobrey Logo" height={20} src="/dobrey_logo_peach.svg" width={20} />

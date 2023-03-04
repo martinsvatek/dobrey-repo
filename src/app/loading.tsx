@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
-const AppLoading: FC = () => <p>Loading...</p>;
+const AppLoading = (): JSX.Element => <p>Loading...</p>;
 
 export default AppLoading;

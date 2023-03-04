@@ -1,5 +1,5 @@
-export interface DirectionsResult extends google.maps.DirectionsResult {}
+export type DirectionsResult = google.maps.DirectionsResult;
 
-export interface LatLngLiteral extends google.maps.LatLngLiteral {}
+export type LatLngLiteral = google.maps.LatLngLiteral;
 
-export interface MapOptions extends google.maps.MapOptions {}
+export type MapOptions = google.maps.MapOptions;

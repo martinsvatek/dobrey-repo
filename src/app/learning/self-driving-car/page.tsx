@@ -2,7 +2,7 @@
 
 import { Button } from 'components';
 import { getLocalStorage, removeLocalStorage, setLocalStorage } from 'global/utils';
-import { FC, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { car, trafficCars } from './animations';
 import { Car } from './animations/car/car.types';
 import { Road, Visualizer } from './components';
@@ -20,7 +20,7 @@ import { getNeuralNetworkLevelsMutation } from './utils';
 
 let bestCar: Car;
 
-const SelfDrivingCar: FC = () => {
+const SelfDrivingCar = (): JSX.Element => {
 	const roadRef = useRef<HTMLCanvasElement>(null);
 	const visualizerRef = useRef<HTMLCanvasElement>(null);
 
@@ -114,12 +114,12 @@ const SelfDrivingCar: FC = () => {
 				<div className={styles.controls}>
 					<Button onClick={(): void => window.location.reload()}>Reload</Button>
 					<Button
-						color="grey-700"
+						color="grey-800"
 						onClick={(): void => setLocalStorage('bestNeuralNetwork', bestCar.getLevels())}
 					>
 						Save
 					</Button>
-					<Button color="grey-700" onClick={(): void => setLocalStorage('bestNeuralNetwork', BEST_CAR)}>
+					<Button color="grey-800" onClick={(): void => setLocalStorage('bestNeuralNetwork', BEST_CAR)}>
 						Set best saved
 					</Button>
 					<Button color="peach" onClick={(): void => removeLocalStorage('bestNeuralNetwork')}>

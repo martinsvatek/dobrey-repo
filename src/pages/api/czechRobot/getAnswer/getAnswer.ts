@@ -18,7 +18,7 @@ export const getAnswer = async (req: NextApiRequest, res: NextApiResponse<GetAns
 		temperature: 0.1,
 	});
 
-	const answer = response.data.choices[0].text.trim();
+	const answer = response.data.choices[0].text?.trim();
 	if (!answer) {
 		return res.status(403).json(RESPONSE_WITH_EMPTY_ANSWER);
 	}

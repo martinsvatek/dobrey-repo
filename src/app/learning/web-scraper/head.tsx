@@ -1,17 +1,15 @@
-import { FC } from 'react';
-
-const SelfDrivingCarHead: FC = () => (
+const SelfDrivingCarHead = (): JSX.Element => (
 	<>
 		<title>Dobrey | Web scraper</title>
-		<link rel="icon" type="image/svg+xml" href="/dobrey_logo_peach.svg" />
+		<link href="/dobrey_logo_peach.svg" rel="icon" type="image/svg+xml" />
 		<meta charSet="utf-8" />
 		<meta
-			name="description"
 			content="Web scraper project for better understanding of working with html data of a website."
+			name="description"
 		/>
-		<meta name="robots" content="index, follow" />
-		<meta name="theme-color" content="#cccccc" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta content="index, follow" name="robots" />
+		<meta content="#cccccc" name="theme-color" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 	</>
 );
 

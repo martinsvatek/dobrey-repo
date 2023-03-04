@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from 'components';
-import { FC, MouseEvent, useEffect, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 import { drawGrid, drawNode, drawShortestPath } from './drawings';
 import {
 	FINISH_NODE_COLOR,
@@ -15,7 +15,7 @@ import { Coordinate, Node } from './page.types';
 import { getShortestPathNodesInOrder, getUpdatedGrid } from './utils';
 import { getCoordinates } from './utils/getCoordinates';
 
-const ShortestPath: FC = () => {
+const ShortestPath = (): JSX.Element => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	const [allowDrawing, setAllowDrawing] = useState(false);
@@ -103,7 +103,7 @@ const ShortestPath: FC = () => {
 	/**
 	 * @NOTE: dijkstra algoritmus
 	 */
-	const onClickVisualizeButtonHandler = (): void => {
+	const onVisualizeButtonClickHandler = (): void => {
 		if (startNode && finishNode) {
 			const visitedNodesInOrder: Node[] = [];
 			const unvisitedNodes = [...grid];
@@ -182,7 +182,7 @@ const ShortestPath: FC = () => {
 	/**
 	 * @NOTE: vse do vychoziho stavu
 	 */
-	const onClickClearButtonHandler = (): void => {
+	const onClearButtonClickHandler = (): void => {
 		setAllowDrawing(false);
 		setFinalNode(undefined);
 		setFinishNode(undefined);
@@ -223,10 +223,10 @@ const ShortestPath: FC = () => {
 					width={GRID_CANVAS_WIDTH}
 				/>
 				<div className={styles.controls}>
-					<Button color="grey-800" onClick={onClickVisualizeButtonHandler}>
+					<Button color="grey-800" onClick={onVisualizeButtonClickHandler}>
 						VIsualize
 					</Button>
-					<Button color="peach" onClick={onClickClearButtonHandler}>
+					<Button color="peach" onClick={onClearButtonClickHandler}>
 						Clear
 					</Button>
 				</div>
