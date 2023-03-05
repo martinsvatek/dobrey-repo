@@ -1,3 +1,4 @@
+export { Alert } from './Alert';
 export { Button } from './Button';
 export { Footer } from './Footer';
 export { Form } from './Form';

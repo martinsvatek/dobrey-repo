@@ -223,7 +223,11 @@ const ShortestPath = (): JSX.Element => {
 					width={GRID_CANVAS_WIDTH}
 				/>
 				<div className={styles.controls}>
-					<Button color="grey-800" onClick={onVisualizeButtonClickHandler}>
+					<Button
+						color="grey-800"
+						disabled={!startNode || !finishNode}
+						onClick={onVisualizeButtonClickHandler}
+					>
 						VIsualize
 					</Button>
 					<Button color="peach" onClick={onClearButtonClickHandler}>

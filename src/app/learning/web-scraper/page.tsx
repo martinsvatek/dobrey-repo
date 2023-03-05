@@ -1,7 +1,6 @@
 'use client';
 
-import { Button, Form, Input } from 'components';
-import { Alert } from 'components/Alert';
+import { Alert, Button, Form, Input } from 'components';
 import { GetDownloadsResponseData } from 'pages/api/webScraper/getDownloads/getDownloads.types';
 import { ChangeEvent, FormEvent, useState } from 'react';
 
@@ -11,12 +10,14 @@ const WebScraper = (): JSX.Element => {
 	const [message, setMessage] = useState('');
 	const [packageName, setPackageName] = useState('');
 
+	const onAlertClickHandler = (): void => {
+		setMessage('');
+	};
+
 	const onFormSubmitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
 		event.preventDefault();
 
 		setLoading(true);
-		setMessage('');
-		setDownloads(0);
 
 		const res = await fetch('http://localhost:3000/api/webScraper/getDownloads', {
 			method: 'POST',
@@ -33,11 +34,8 @@ const WebScraper = (): JSX.Element => {
 	};
 
 	const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+		setDownloads(0);
 		setPackageName(event.currentTarget.value);
-	};
-
-	const onAlertClickHandler = (): void => {
-		setMessage('');
 	};
 
 	return (
