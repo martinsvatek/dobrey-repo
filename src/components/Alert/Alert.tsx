@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from 'components/Button';
 import { joinClassNames } from 'global/utils';
 import { MouseEvent, useState } from 'react';

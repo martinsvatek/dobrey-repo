@@ -56,7 +56,7 @@ const WebScraper = (): JSX.Element => {
 						{loading ? 'Loading...' : 'Get downloads count'}
 					</Button>
 				</Form>
-				{downloads && (
+				{downloads > 0 && (
 					<p>
 						<strong>{packageName || 'Package'}</strong> has <strong>{downloads}</strong> downloads.
 					</p>
