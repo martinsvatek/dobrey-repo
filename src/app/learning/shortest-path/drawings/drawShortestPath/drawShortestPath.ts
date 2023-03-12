@@ -1,11 +1,11 @@
 import { Node } from 'app/learning/shortest-path/page.types';
 import { SEARCH_COLOR, SHORTEST_PATH_COLOR } from './drawShortestPath.consts';
 
-export const drawShortestPath = (
+export const drawShortestPath = async (
 	canvasContext: CanvasRenderingContext2D,
 	visitedGridInOrder: Node[],
 	shortestPathInOrder: Node[],
-): void => {
+): Promise<void> => {
 	for (let i = 0; i < visitedGridInOrder.length; i++) {
 		setTimeout(() => {
 			const { column, row, type } = visitedGridInOrder[i];
@@ -27,6 +27,6 @@ export const drawShortestPath = (
 			canvasContext.beginPath();
 			canvasContext.arc(column, row, 4, 0, 2 * Math.PI);
 			canvasContext.fill();
-		}, 60 * i);
+		}, 100 * i);
 	}
 };

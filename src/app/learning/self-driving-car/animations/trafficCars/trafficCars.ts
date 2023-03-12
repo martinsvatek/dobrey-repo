@@ -39,9 +39,7 @@ export const trafficCars = (): TrafficCars => {
 		});
 	};
 
-	const getTrafficCoordinates = (): Coordinate[][] => {
-		return trafficCarsCoordinates;
-	};
+	const getTrafficCoordinates = (): Coordinate[][] => trafficCarsCoordinates;
 
 	return { animate, draw, getTrafficCoordinates };
 };
