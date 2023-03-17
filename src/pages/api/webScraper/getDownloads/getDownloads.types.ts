@@ -4,5 +4,5 @@ export interface GetDownloadsRequestBody {
 
 export interface GetDownloadsResponseData {
 	downloads: number;
-	message: string;
+	alert: string;
 }

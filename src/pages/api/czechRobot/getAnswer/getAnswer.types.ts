@@ -5,5 +5,5 @@ export interface GetAnswerRequestBody {
 
 export interface GetAnswerResponseData {
 	answer: string;
-	message: string;
+	alert: string;
 }

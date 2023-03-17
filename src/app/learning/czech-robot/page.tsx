@@ -3,7 +3,7 @@
 import { Alert, Button, Form, Input, Select } from 'components';
 import { GET_ANSWER_MESSAGE_SUCCESS } from 'pages/api/czechRobot/getAnswer/getAnswer.consts';
 import { GetAnswerResponseData } from 'pages/api/czechRobot/getAnswer/getAnswer.types';
-import { GetEnginesListResponseData } from 'pages/api/czechRobot/getEnginesList/getEnginesList.types';
+import { GetModelsListResponseData } from 'pages/api/czechRobot/getModelsList/getModelsList.types';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { ChatMessages } from './components';
 import { ChatHistory } from './page.types';
@@ -14,25 +14,25 @@ const CzechRobot = (): JSX.Element => {
 	const [question, setPrompt] = useState('');
 	const [chatHistory, setChatHistory] = useState<ChatHistory[]>([]);
 	const [currentEngine, setCurrentEngine] = useState('text-davinci-003');
-	const [enginesList, setEnginesList] = useState<string[]>([]);
+	const [modelsList, setModelsList] = useState<string[]>([]);
 
 	useEffect(() => {
 		window.scrollTo({ behavior: 'smooth', top: document.body.scrollHeight });
 	}, [chatHistory]);
 
 	useEffect(() => {
-		const getEnginesList = async (): Promise<void> => {
+		const getModelsList = async (): Promise<void> => {
 			setLoading(true);
 
-			const res = await fetch('http://localhost:3000/api/czechRobot/getEnginesList');
-			const { enginesList, message } = (await res.json()) as GetEnginesListResponseData;
-			setEnginesList(enginesList);
+			const res = await fetch('/api/czechRobot/getModelsList');
+			const { modelsList, message } = (await res.json()) as GetModelsListResponseData;
+			setModelsList(modelsList);
 
 			setMessage(message);
 			setLoading(false);
 		};
 
-		getEnginesList();
+		getModelsList();
 	}, []);
 
 	const onAlertClickHandler = (): void => {
@@ -45,7 +45,7 @@ const CzechRobot = (): JSX.Element => {
 		setLoading(true);
 
 		const updatedChatHistory: ChatHistory[] = [...chatHistory, { type: 'question', text: question }];
-		const res = await fetch('http://localhost:3000/api/czechRobot/getAnswer', {
+		const res = await fetch('/api/czechRobot/getAnswer', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -82,9 +82,9 @@ const CzechRobot = (): JSX.Element => {
 				<Form onSubmit={onFormSubmitHandler}>
 					{chatHistory.length > 0 && <ChatMessages chatHistory={chatHistory} />}
 					<Select
-						name="engines"
+						name="models"
 						onChange={onSelectChangeHandler}
-						options={enginesList}
+						options={modelsList}
 						placeholder="Select engine"
 						value={currentEngine}
 					/>

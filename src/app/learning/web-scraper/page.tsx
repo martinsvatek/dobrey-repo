@@ -19,7 +19,7 @@ const WebScraper = (): JSX.Element => {
 
 		setLoading(true);
 
-		const res = await fetch('http://localhost:3000/api/webScraper/getDownloads', {
+		const res = await fetch(`/api/webScraper/getDownloads`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
