@@ -1,0 +1,97 @@
+@import 'global/styles';
+
+.button {
+	position: absolute;
+	right: 0.8rem;
+	top: 0.8rem;
+
+	max-width: 4.8rem;
+}
+
+.iconMenu,
+.iconCross {
+	height: 2.4rem;
+	width: 2.4rem;
+}
+
+.iconMenu {
+	animation: rotateLeft 1s ease-in-out;
+}
+
+.iconCross {
+	animation: rotateRight 1s ease-in-out;
+}
+
+.nav {
+	display: flex;
+
+	left: 1.6rem;
+	position: absolute;
+	right: 1.6rem;
+	top: 9.6rem;
+	z-index: 10;
+
+	border-radius: $radius-8;
+	min-height: calc(100vh - 11.2rem);
+	padding: 0.8rem;
+
+	flex-wrap: wrap;
+	justify-content: center;
+
+	background-color: $color-grey-100;
+
+	animation: show 1s ease-in-out;
+	box-shadow: $shadow-grey-200;
+}
+
+.hideAnimation {
+	animation: hide 1s ease-in-out;
+}
+
+.iconLink {
+	height: 4.8rem;
+	margin-bottom: 0.8rem;
+	width: 4.8rem;
+
+	color: $color-peach;
+}
+
+@keyframes rotateLeft {
+	0% {
+		opacity: 0;
+		transform: rotate(45deg);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes rotateRight {
+	0% {
+		opacity: 0;
+		transform: rotate(-45deg);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes show {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes hide {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}

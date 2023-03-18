@@ -7,11 +7,11 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 const WebScraper = (): JSX.Element => {
 	const [downloads, setDownloads] = useState(0);
 	const [loading, setLoading] = useState(false);
-	const [message, setMessage] = useState('');
+	const [alert, setAlert] = useState('');
 	const [packageName, setPackageName] = useState('');
 
 	const onAlertClickHandler = (): void => {
-		setMessage('');
+		setAlert('');
 	};
 
 	const onFormSubmitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
@@ -26,10 +26,10 @@ const WebScraper = (): JSX.Element => {
 			},
 			body: JSON.stringify({ packageName }),
 		});
-		const { downloads, message } = (await res.json()) as GetDownloadsResponseData;
+		const { downloads, alert } = (await res.json()) as GetDownloadsResponseData;
 
 		setDownloads(downloads);
-		setMessage(message);
+		setAlert(alert);
 		setLoading(false);
 	};
 
@@ -40,7 +40,7 @@ const WebScraper = (): JSX.Element => {
 
 	return (
 		<>
-			{message && <Alert onClick={onAlertClickHandler} text={message} />}
+			{alert && <Alert onClick={onAlertClickHandler} text={alert} />}
 			<>
 				<h1>Web scraper</h1>
 				<Form onSubmit={onFormSubmitHandler}>

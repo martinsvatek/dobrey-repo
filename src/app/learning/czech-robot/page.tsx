@@ -1,16 +1,18 @@
 'use client';
 
 import { Alert, Button, Form, Input, Select } from 'components';
-import { GET_ANSWER_MESSAGE_SUCCESS } from 'pages/api/czechRobot/getAnswer/getAnswer.consts';
+import { ALERT } from 'global/consts';
 import { GetAnswerResponseData } from 'pages/api/czechRobot/getAnswer/getAnswer.types';
 import { GetModelsListResponseData } from 'pages/api/czechRobot/getModelsList/getModelsList.types';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { ChatMessages } from './components';
 import { ChatHistory } from './page.types';
 
+const { ACTION_SUCCESS } = ALERT;
+
 const CzechRobot = (): JSX.Element => {
 	const [loading, setLoading] = useState(false);
-	const [message, setMessage] = useState('');
+	const [alert, setAlert] = useState('');
 	const [question, setPrompt] = useState('');
 	const [chatHistory, setChatHistory] = useState<ChatHistory[]>([]);
 	const [currentEngine, setCurrentEngine] = useState('text-davinci-003');
@@ -25,10 +27,10 @@ const CzechRobot = (): JSX.Element => {
 			setLoading(true);
 
 			const res = await fetch('/api/czechRobot/getModelsList');
-			const { modelsList, message } = (await res.json()) as GetModelsListResponseData;
+			const { modelsList, alert } = (await res.json()) as GetModelsListResponseData;
 			setModelsList(modelsList);
 
-			setMessage(message);
+			setAlert(alert);
 			setLoading(false);
 		};
 
@@ -36,7 +38,7 @@ const CzechRobot = (): JSX.Element => {
 	}, []);
 
 	const onAlertClickHandler = (): void => {
-		setMessage('');
+		setAlert('');
 	};
 
 	const onFormSubmitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
@@ -51,17 +53,17 @@ const CzechRobot = (): JSX.Element => {
 			body: JSON.stringify({
 				model: currentEngine,
 				prompt: `${updatedChatHistory
-					.map(chatMessage => `${chatMessage.type}: ${chatMessage.text}`)
+					.map(chatAlert => `${chatAlert.type}: ${chatAlert.text}`)
 					.join('\n')}\nanswer: `,
 			}),
 		});
-		const { answer, message } = (await res.json()) as GetAnswerResponseData;
+		const { answer, alert } = (await res.json()) as GetAnswerResponseData;
 
 		setChatHistory([...updatedChatHistory, { type: 'answer', text: answer }]);
-		setMessage(message);
+		setAlert(alert);
 		setLoading(false);
 
-		if (message === GET_ANSWER_MESSAGE_SUCCESS) {
+		if (alert === ACTION_SUCCESS) {
 			setPrompt('');
 		}
 	};
@@ -76,7 +78,7 @@ const CzechRobot = (): JSX.Element => {
 
 	return (
 		<>
-			{message && <Alert onClick={onAlertClickHandler} text={message} />}
+			{alert && <Alert onClick={onAlertClickHandler} text={alert} />}
 			<>
 				<h1>Czech robot</h1>
 				<Form onSubmit={onFormSubmitHandler}>

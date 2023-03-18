@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react';
 
 export interface ButtonProps {
-	children: string;
+	children: string | JSX.Element;
 	className?: string;
 	color?: 'grey-200' | 'grey-800' | 'peach';
 	disabled?: boolean;

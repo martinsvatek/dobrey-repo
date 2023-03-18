@@ -1,0 +1,16 @@
+@import 'global/styles';
+
+.navLink {
+	display: flex;
+
+	height: 11.2rem;
+	margin: 0.8rem;
+	max-width: 11.2rem;
+	width: 100%;
+
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+
+	text-decoration: none;
+}
