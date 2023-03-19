@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useState } from 'react';
-import { UseNavMenu } from './useNavMenu.types';
+import { UseNavMenu } from './NavMenu.types';
 
 export const useNavMenu = (navRef: RefObject<HTMLElement>): UseNavMenu => {
 	/**

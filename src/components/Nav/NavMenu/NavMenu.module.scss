@@ -1,9 +1,10 @@
 @import 'global/styles';
 
 .button {
+	left: 0.8rem;
 	position: absolute;
-	right: 0.8rem;
 	top: 0.8rem;
+	z-index: 20;
 
 	max-width: 4.8rem;
 }
@@ -30,11 +31,11 @@
 	left: 1.6rem;
 	position: absolute;
 	right: 1.6rem;
-	top: 9.6rem;
+	top: 8rem;
 	z-index: 10;
 
 	border-radius: $radius-8;
-	min-height: calc(100vh - 11.2rem);
+	min-height: calc(100vh - 9.6rem);
 	padding: 0.8rem;
 
 	align-content: flex-start;
@@ -44,7 +45,7 @@
 	background-color: $color-grey-100;
 
 	animation: show 1s ease-in-out;
-	box-shadow: $shadow-grey-200;
+	box-shadow: 0 0 64rem $color-grey-300;
 }
 
 .hideAnimation {

@@ -1,5 +1,7 @@
 import { ChangeEvent } from 'react';
 
+export type InputType = 'text' | 'number' | 'password';
+
 export interface InputProps {
 	name: string;
 	placeholder: string;
@@ -8,6 +10,6 @@ export interface InputProps {
 	max?: number;
 	min?: number;
 	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-	type?: 'text' | 'number' | 'password';
+	type?: InputType;
 	value?: string;
 }

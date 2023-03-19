@@ -11,8 +11,8 @@ import {
 import { Button } from 'components/Button';
 import { joinClassNames } from 'global/utils';
 import { useRef } from 'react';
-import { useNavMenu } from './hooks';
 import { NavLink } from './NavLink';
+import { useNavMenu } from './NavMenu.hooks';
 import styles from './NavMenu.module.scss';
 
 export const NavMenu = (): JSX.Element => {
