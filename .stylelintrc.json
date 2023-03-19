@@ -188,7 +188,8 @@
 						"transition-property",
 						"transition-timing-function",
 						"transition",
-						"visibility"
+						"visibility",
+						"filter"
 					]
 				}
 			],

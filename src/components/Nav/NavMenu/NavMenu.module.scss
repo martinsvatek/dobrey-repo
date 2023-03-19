@@ -12,6 +12,8 @@
 .iconCross {
 	height: 2.4rem;
 	width: 2.4rem;
+
+	color: $color-grey-100;
 }
 
 .iconMenu {
@@ -35,6 +37,7 @@
 	min-height: calc(100vh - 11.2rem);
 	padding: 0.8rem;
 
+	align-content: flex-start;
 	flex-wrap: wrap;
 	justify-content: center;
 
@@ -58,8 +61,8 @@
 
 @keyframes rotateLeft {
 	0% {
-		opacity: 0;
-		transform: rotate(45deg);
+		opacity: 0.6;
+		transform: rotate(90deg);
 	}
 	100% {
 		opacity: 1;
@@ -69,8 +72,8 @@
 
 @keyframes rotateRight {
 	0% {
-		opacity: 0;
-		transform: rotate(-45deg);
+		opacity: 0.6;
+		transform: rotate(-90deg);
 	}
 	100% {
 		opacity: 1;
