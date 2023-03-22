@@ -7,7 +7,7 @@ import { MouseEvent, useState } from 'react';
 import styles from './Alert.module.scss';
 import { AlertProps } from './Alert.types';
 
-export const Alert = ({ onClick, text }: AlertProps): JSX.Element | null => {
+export const Alert = ({ onClick, text }: AlertProps): JSX.Element => {
 	const [isRemoved, setIsRemoved] = useState(false);
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 

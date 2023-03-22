@@ -1,13 +1,13 @@
 'use client';
 
-import { Alert, Button, Form, Input } from 'components';
-import { GetDownloadsResponseData } from 'pages/api/webScraper/getDownloads/getDownloads.types';
+import { Alert, Button, Form, Input, Loading } from 'components';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { getDownloads } from './page.utils';
 
 const WebScraper = (): JSX.Element => {
+	const [alert, setAlert] = useState('');
 	const [downloads, setDownloads] = useState(0);
 	const [loading, setLoading] = useState(false);
-	const [alert, setAlert] = useState('');
 	const [packageName, setPackageName] = useState('');
 
 	const onAlertClickHandler = (): void => {
@@ -19,17 +19,10 @@ const WebScraper = (): JSX.Element => {
 
 		setLoading(true);
 
-		const res = await fetch(`/api/webScraper/getDownloads`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ packageName }),
-		});
-		const { downloads, alert } = (await res.json()) as GetDownloadsResponseData;
+		const { alert, downloads } = await getDownloads(packageName);
 
-		setDownloads(downloads);
 		setAlert(alert);
+		setDownloads(downloads);
 		setLoading(false);
 	};
 
@@ -41,6 +34,7 @@ const WebScraper = (): JSX.Element => {
 	return (
 		<>
 			{alert && <Alert onClick={onAlertClickHandler} text={alert} />}
+			{loading && <Loading />}
 			<>
 				<h1>Web scraper</h1>
 				<Form onSubmit={onFormSubmitHandler}>
@@ -51,7 +45,7 @@ const WebScraper = (): JSX.Element => {
 						value={packageName}
 					/>
 					<Button color="peach" disabled={!packageName} type="submit">
-						{loading ? 'Loading...' : 'Get downloads count'}
+						Get downloads count
 					</Button>
 				</Form>
 				{downloads > 0 && (
