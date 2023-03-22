@@ -2,18 +2,20 @@
 
 import { Button } from 'components';
 import { MouseEvent, useEffect, useRef, useState } from 'react';
-import { drawGrid, drawNode, drawShortestPath } from './drawings';
-import {
-	FINISH_NODE_COLOR,
-	GRID_CANVAS_HEIGHT,
-	GRID_CANVAS_WIDTH,
-	START_NODE_COLOR,
-	WALL_NODE_COLOR,
-} from './page.consts';
 import styles from './Page.module.scss';
+import { CANVAS, COLOR } from './page.consts';
 import { Coordinate, Node } from './page.types';
-import { getShortestPathNodesInOrder, getUpdatedGrid } from './utils';
-import { getCoordinates } from './utils/getCoordinates';
+import {
+	drawGrid,
+	drawNode,
+	drawShortestPath,
+	getCoordinates,
+	getShortestPathNodesInOrder,
+	getUpdatedGrid,
+} from './page.utils';
+
+const { HEIGHT, WIDTH } = CANVAS;
+const { FINISH, START, WALL } = COLOR;
 
 const ShortestPath = (): JSX.Element => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -83,17 +85,17 @@ const ShortestPath = (): JSX.Element => {
 				const { row, column } = getCoordinates(rowClickPosition, columnClickPosition);
 
 				if (!startNode) {
-					drawNode(context, column, row, START_NODE_COLOR);
+					drawNode(context, column, row, START);
 					return setStartNode({ row, column });
 				}
 
 				if (startNode && !finishNode) {
-					drawNode(context, column, row, FINISH_NODE_COLOR);
+					drawNode(context, column, row, FINISH);
 					return setFinishNode({ row, column });
 				}
 
 				if (startNode && finishNode) {
-					drawNode(context, column, row, WALL_NODE_COLOR);
+					drawNode(context, column, row, WALL);
 					return setWalls(prevWalls => [...prevWalls, { row, column }]);
 				}
 			}
@@ -143,24 +145,16 @@ const ShortestPath = (): JSX.Element => {
 					const neighborNodes: Node[] = [];
 
 					if (row > 5) {
-						neighborNodes.push(
-							grid[(GRID_CANVAS_WIDTH / 10) * (Math.floor(row / 10) - 1) + Math.floor(column / 10)],
-						);
+						neighborNodes.push(grid[(WIDTH / 10) * (Math.floor(row / 10) - 1) + Math.floor(column / 10)]);
 					}
-					if (row < GRID_CANVAS_HEIGHT - 5) {
-						neighborNodes.push(
-							grid[(GRID_CANVAS_WIDTH / 10) * (Math.floor(row / 10) + 1) + Math.floor(column / 10)],
-						);
+					if (row < HEIGHT - 5) {
+						neighborNodes.push(grid[(WIDTH / 10) * (Math.floor(row / 10) + 1) + Math.floor(column / 10)]);
 					}
 					if (column > 5) {
-						neighborNodes.push(
-							grid[(GRID_CANVAS_WIDTH / 10) * Math.floor(row / 10) + Math.floor(column / 10) - 1],
-						);
+						neighborNodes.push(grid[(WIDTH / 10) * Math.floor(row / 10) + Math.floor(column / 10) - 1]);
 					}
-					if (column < GRID_CANVAS_WIDTH - 5) {
-						neighborNodes.push(
-							grid[(GRID_CANVAS_WIDTH / 10) * Math.floor(row / 10) + Math.floor(column / 10) + 1],
-						);
+					if (column < WIDTH - 5) {
+						neighborNodes.push(grid[(WIDTH / 10) * Math.floor(row / 10) + Math.floor(column / 10) + 1]);
 					}
 
 					/**
@@ -205,22 +199,18 @@ const ShortestPath = (): JSX.Element => {
 			<div className={styles.shortestPath}>
 				<canvas
 					className={styles.grid}
-					height={GRID_CANVAS_HEIGHT}
+					height={HEIGHT}
 					onClick={onMouseInteractionHandler}
 					onMouseDown={(): void => {
 						finishNode && startNode && setAllowDrawing(true);
 					}}
-					onMouseLeave={(): void => {
-						setAllowDrawing(false);
-					}}
+					onMouseLeave={(): void => setAllowDrawing(false)}
 					onMouseMove={(event): void => {
 						allowDrawing && onMouseInteractionHandler(event);
 					}}
-					onMouseUp={(): void => {
-						setAllowDrawing(false);
-					}}
+					onMouseUp={(): void => setAllowDrawing(false)}
 					ref={canvasRef}
-					width={GRID_CANVAS_WIDTH}
+					width={WIDTH}
 				/>
 				<div className={styles.controls}>
 					<Button
@@ -228,7 +218,7 @@ const ShortestPath = (): JSX.Element => {
 						disabled={!startNode || !finishNode}
 						onClick={onVisualizeButtonClickHandler}
 					>
-						VIsualize
+						Visualize
 					</Button>
 					<Button color="peach" onClick={onClearButtonClickHandler}>
 						Clear

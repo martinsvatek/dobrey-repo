@@ -41,7 +41,7 @@ const WebScraper = (): JSX.Element => {
 					<Input
 						name="packageName"
 						onChange={onInputChangeHandler}
-						placeholder="Package name"
+						placeholder="NPM package name"
 						value={packageName}
 					/>
 					<Button color="peach" disabled={!packageName} type="submit">

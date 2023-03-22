@@ -7,7 +7,7 @@ const SelfDrivingCarHead = (): JSX.Element => (
 			content="Web scraper project for better understanding of working with html data of a website."
 			name="description"
 		/>
-		<meta content="index, follow" name="robots" />
+		<meta content="noindex, nofollow" name="robots" />
 		<meta content="#cccccc" name="theme-color" />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 	</>

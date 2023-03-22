@@ -1,6 +1,13 @@
-export const GRID_CANVAS_HEIGHT = 680;
-export const GRID_CANVAS_WIDTH = 260;
+export const CANVAS = {
+	HEIGHT: 680,
+	WIDTH: 260,
+};
 
-export const FINISH_NODE_COLOR = '#999999';
-export const START_NODE_COLOR = '#999999';
-export const WALL_NODE_COLOR = '#1a1a1a';
+export const COLOR = {
+	FINISH: '#999999',
+	GRID: '#e5e5e5',
+	PATH: '#ff5555',
+	SEARCH: '#e5e5e5',
+	START: '#999999',
+	WALL: '#1a1a1a',
+};
