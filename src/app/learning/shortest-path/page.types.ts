@@ -1,3 +1,5 @@
+import { MouseEvent } from 'react';
+
 export interface Coordinate {
 	row: number;
 	column: number;
@@ -12,4 +14,12 @@ export interface Node {
 	previousNode: null | Node;
 	row: number;
 	type: NodeType;
+}
+
+export interface ShortestPath {
+	clear: () => void;
+	interact: (event: MouseEvent<HTMLCanvasElement>) => void;
+	visualize: () => void;
+	finishNode?: Coordinate;
+	startNode?: Coordinate;
 }
