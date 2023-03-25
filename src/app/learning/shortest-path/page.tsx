@@ -3,6 +3,7 @@
 import { Button } from 'components';
 import { MouseEvent, useEffect, useRef, useState } from 'react';
 import styles from './Page.module.scss';
+import { Grid } from './components';
 import { CANVAS, COLOR } from './page.consts';
 import { Coordinate, Node } from './page.types';
 import {
@@ -20,7 +21,6 @@ const { FINISH, START, WALL } = COLOR;
 const ShortestPath = (): JSX.Element => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
-	const [allowDrawing, setAllowDrawing] = useState(false);
 	const [finalNode, setFinalNode] = useState<Node>();
 	const [finishNode, setFinishNode] = useState<Coordinate>();
 	const [grid, setGrid] = useState<Node[]>([]);
@@ -177,7 +177,6 @@ const ShortestPath = (): JSX.Element => {
 	 * @NOTE: vse do vychoziho stavu
 	 */
 	const onClearButtonClickHandler = (): void => {
-		setAllowDrawing(false);
 		setFinalNode(undefined);
 		setFinishNode(undefined);
 		setGrid([]);
@@ -197,20 +196,11 @@ const ShortestPath = (): JSX.Element => {
 		<>
 			<h1>Shortest path</h1>
 			<div className={styles.shortestPath}>
-				<canvas
-					className={styles.grid}
-					height={HEIGHT}
-					onClick={onMouseInteractionHandler}
-					onMouseDown={(): void => {
-						finishNode && startNode && setAllowDrawing(true);
-					}}
-					onMouseLeave={(): void => setAllowDrawing(false)}
-					onMouseMove={(event): void => {
-						allowDrawing && onMouseInteractionHandler(event);
-					}}
-					onMouseUp={(): void => setAllowDrawing(false)}
+				<Grid
+					finishNode={finishNode}
+					onMouseInteraction={onMouseInteractionHandler}
 					ref={canvasRef}
-					width={WIDTH}
+					startNode={startNode}
 				/>
 				<div className={styles.controls}>
 					<Button

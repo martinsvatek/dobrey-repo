@@ -1,14 +1,3 @@
-@import 'global/styles';
-
-.grid {
-	border-radius: $radius-8;
-	margin: 0.8rem;
-
-	background-color: $color-grey-200;
-
-	box-shadow: $shadow-grey-200;
-}
-
 .shortestPath,
 .controls {
 	display: flex;
