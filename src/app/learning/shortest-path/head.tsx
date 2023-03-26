@@ -1,4 +1,4 @@
-const SelfDrivingCarHead = (): JSX.Element => (
+const ShortestPathHead = (): JSX.Element => (
 	<>
 		<title>Dobrey | Shortest path</title>
 		<link href="/dobrey_logo_peach.svg" rel="icon" type="image/svg+xml" />
@@ -10,4 +10,4 @@ const SelfDrivingCarHead = (): JSX.Element => (
 	</>
 );
 
-export default SelfDrivingCarHead;
+export default ShortestPathHead;

@@ -1,4 +1,4 @@
-const AppHead = (): JSX.Element => (
+const CzechRobotHead = (): JSX.Element => (
 	<>
 		<title>Dobrey | Czech robot</title>
 		<link href="/dobrey_logo_peach.svg" rel="icon" type="image/svg+xml" />
@@ -10,4 +10,4 @@ const AppHead = (): JSX.Element => (
 	</>
 );
 
-export default AppHead;
+export default CzechRobotHead;

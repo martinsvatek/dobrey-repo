@@ -1,16 +1,27 @@
-import { Footer, Main, Nav } from 'components';
-import { AppLayoutProps } from './layout.types';
+import { Footer, Main, Nav, Session } from 'components';
+import { getServerSession } from 'next-auth';
+import { authOptions } from 'pages/api/auth/[...nextauth]';
 import './_global.scss';
+import { HomeLayoutProps } from './layout.types';
 
-const AppLayout = ({ children }: AppLayoutProps): JSX.Element => (
-	<html lang="en">
-		<head />
-		<body>
-			<Nav />
-			<Main>{children}</Main>
-			<Footer />
-		</body>
-	</html>
-);
+const HomeLayout = async ({ children }: HomeLayoutProps): Promise<JSX.Element> => {
+	/**
+	 * @NOTE: sdileni session v cele aplikaci
+	 */
+	const session = await getServerSession(authOptions);
 
-export default AppLayout;
+	return (
+		<html lang="en">
+			<head />
+			<body>
+				<Session session={session}>
+					<Nav />
+					<Main>{children}</Main>
+					<Footer />
+				</Session>
+			</body>
+		</html>
+	);
+};
+
+export default HomeLayout;

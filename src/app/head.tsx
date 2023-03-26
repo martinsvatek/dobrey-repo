@@ -1,6 +1,6 @@
-const AppHead = (): JSX.Element => (
+const HomeHead = (): JSX.Element => (
 	<>
-		<title>Dobrey | App</title>
+		<title>Dobrey | Home</title>
 		<link href="/dobrey_logo_peach.svg" rel="icon" type="image/svg+xml" />
 		<meta charSet="utf-8" />
 		<meta content="A place where I try to improve my skills." name="description" />
@@ -10,4 +10,4 @@ const AppHead = (): JSX.Element => (
 	</>
 );
 
-export default AppHead;
+export default HomeHead;

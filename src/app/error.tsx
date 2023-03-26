@@ -2,9 +2,9 @@
 
 import { Button } from 'components';
 import { useEffect } from 'react';
-import { AppErrorProps } from './error.types';
+import { HomeErrorProps } from './error.types';
 
-const AppError = ({ error, reset }: AppErrorProps): JSX.Element => {
+const HomeError = ({ error, reset }: HomeErrorProps): JSX.Element => {
 	useEffect(() => {
 		/**
 		 * @NOTE: tady muzeme poslat error do nejakeho reportovaciho systemu
@@ -19,4 +19,4 @@ const AppError = ({ error, reset }: AppErrorProps): JSX.Element => {
 	);
 };
 
-export default AppError;
+export default HomeError;

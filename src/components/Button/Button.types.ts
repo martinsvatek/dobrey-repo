@@ -1,7 +1,7 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, ReactNode } from 'react';
 
 export interface ButtonProps {
-	children: string | JSX.Element;
+	children: ReactNode;
 	className?: string;
 	color?: 'grey-200' | 'grey-800' | 'peach';
 	disabled?: boolean;

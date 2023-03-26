@@ -1,4 +1,4 @@
-const SelfDrivingCarHead = (): JSX.Element => (
+const WebScraperHead = (): JSX.Element => (
 	<>
 		<title>Dobrey | Web scraper</title>
 		<link href="/dobrey_logo_peach.svg" rel="icon" type="image/svg+xml" />
@@ -13,4 +13,4 @@ const SelfDrivingCarHead = (): JSX.Element => (
 	</>
 );
 
-export default SelfDrivingCarHead;
+export default WebScraperHead;

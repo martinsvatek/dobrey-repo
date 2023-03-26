@@ -1,3 +1,3 @@
-const AppLoading = (): JSX.Element => <p>Loading...</p>;
+const HomeLoading = (): JSX.Element => <p>Loading...</p>;
 
-export default AppLoading;
+export default HomeLoading;

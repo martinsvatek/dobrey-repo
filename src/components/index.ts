@@ -7,3 +7,4 @@ export { Loading } from './Loading';
 export { Main } from './Main';
 export { Nav } from './Nav';
 export { Select } from './Select';
+export { Session } from './Session';
