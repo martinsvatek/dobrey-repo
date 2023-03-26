@@ -25,9 +25,16 @@
 	animation: rotateRight 1s ease-in-out;
 }
 
-.nav {
+.nav,
+.iconLinks {
 	display: flex;
 
+	align-content: flex-start;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.nav {
 	left: 1.6rem;
 	position: absolute;
 	right: 1.6rem;
@@ -38,10 +45,6 @@
 	min-height: calc(100vh - 9.6rem);
 	padding: 0.8rem;
 
-	align-content: flex-start;
-	flex-wrap: wrap;
-	justify-content: center;
-
 	background-color: $color-grey-100;
 
 	animation: show 1s ease-in-out;
@@ -50,6 +53,14 @@
 
 .hideAnimation {
 	animation: hide 1s ease-in-out;
+}
+
+.status {
+	text-transform: capitalize;
+}
+
+.iconLinks {
+	width: 100%;
 }
 
 .iconLink {
