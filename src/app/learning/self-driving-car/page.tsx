@@ -1,113 +1,29 @@
 'use client';
 
 import { Alert, Button } from 'components';
-import { getLocalStorage, removeLocalStorage, setLocalStorage } from 'global/utils';
-import { useEffect, useRef, useState } from 'react';
-import { car, trafficCars } from './animations';
+import { removeLocalStorage, setLocalStorage } from 'global/utils';
+import { useRef, useState } from 'react';
 import { Road, Visualizer } from './components';
-import { CAR, ROAD_CANVAS, TRAFFIC_CAR, VISUALIZER_CANVAS } from './page.consts';
+import { CAR } from './page.consts';
+import { useSelfDrivingCar } from './page.hooks';
 import styles from './page.module.scss';
-import { Car, Level } from './page.types';
-import { drawRoad, drawVisualizer, getNeuralNetworkLevelsMutation } from './page.utils';
-
-let bestCar: Car;
 
 const SelfDrivingCar = (): JSX.Element => {
 	const roadRef = useRef<HTMLCanvasElement>(null);
 	const visualizerRef = useRef<HTMLCanvasElement>(null);
 
-	const [message, setMessage] = useState('');
+	const { bestCar } = useSelfDrivingCar(roadRef, visualizerRef);
 
-	useEffect(() => {
-		const { DEFAULT_POSITION_Y } = CAR;
-		const { COUNT } = TRAFFIC_CAR;
-
-		const cars: Car[] = [];
-		const traffic = trafficCars();
-
-		for (let i = 0; i < COUNT; i++) {
-			cars.push(car());
-		}
-
-		bestCar = cars[0];
-		/**
-		 * @NOTE: pokud jiz mame nejakou neuronovou sit, ktera se nam libila a my si ji ulozili,
-		 * tak se tato sit stava vychozim stavem pro generovani dalsich - nepouzivame jiz nahodnou inicializaci
-		 */
-		if (getLocalStorage('bestNeuralNetwork', []).length) {
-			cars.forEach((car, index) => {
-				/**
-				 * @NOTE: auto s indexem 0 ma zachovanou neuronovou sit presne v te podobe, v jake jsme ji ulozili
-				 */
-				car.setLevels(getLocalStorage('bestNeuralNetwork', []) as Level[]);
-				index !== 0 && car.setLevels(getNeuralNetworkLevelsMutation(car.getLevels(), 0.08));
-			});
-		}
-
-		if (roadRef.current && visualizerRef.current) {
-			const roadCanvas = roadRef.current;
-			const roadContext = roadCanvas.getContext('2d');
-
-			const visualizerCanvas = visualizerRef.current;
-			const visualizerContext = visualizerCanvas.getContext('2d');
-			if (roadContext && visualizerContext) {
-				/**
-				 * @NOTE: funkce ktera se pousti stale dokola diky requestAnimationFrame()
-				 */
-				const animate = (time?: number): void => {
-					/**
-					 * @NOTE: rozpohybovani cele dopravy
-					 */
-					traffic.animate();
-					cars.forEach(car => {
-						car.animate(traffic.getTrafficCoordinates());
-					});
-
-					/**
-					 * @NOTE: aby se auto netahlo jako jedna cara, ale furt zachovavalo svuj puvodni tvar
-					 */
-					bestCar =
-						cars.find(
-							car => car.getCarPositionY() === Math.min(...cars.map(car => car.getCarPositionY())),
-						) || cars[0];
-
-					/**
-					 * @NOTE: aby se auto netahlo jako jedna cara, ale furt zachovavalo svuj puvodni tvar
-					 */
-					roadCanvas.height = ROAD_CANVAS.HEIGHT;
-					visualizerCanvas.height = VISUALIZER_CANVAS.HEIGHT;
-
-					/**
-					 * @NOTE: auto stoji na miste a pohybuje se silnice pod nim
-					 */
-					roadContext.save();
-					roadContext.translate(0, -bestCar.getCarPositionY() + DEFAULT_POSITION_Y);
-					drawRoad(roadContext);
-					traffic.draw(roadContext);
-					cars.forEach((car, index) => {
-						const isSensorVisible = car.getCarPositionY() === bestCar.getCarPositionY();
-						car.draw(roadContext, isSensorVisible, index);
-					});
-					roadContext.restore();
-
-					drawVisualizer(visualizerContext, bestCar.getLevels(), time);
-
-					requestAnimationFrame(animate);
-				};
-
-				animate();
-			}
-		}
-	}, []);
+	const [alert, setAlert] = useState('');
 
 	const onAlertClickHandler = (): void => {
-		setMessage('');
+		setAlert('');
 	};
 
 	const onSaveButtonClickHandler = (): void => {
 		setLocalStorage('bestNeuralNetwork', bestCar.getLevels());
 
-		setMessage('Neural network of this car was saved.');
+		setAlert('Neural network of this car was saved.');
 	};
 
 	const onSetButtonClickHandler = (): void => {
@@ -115,24 +31,24 @@ const SelfDrivingCar = (): JSX.Element => {
 
 		setLocalStorage('bestNeuralNetwork', BEST);
 
-		setMessage('Neural network of the best car (locally saved) was set.');
+		setAlert('Neural network of the best car (locally saved) was set.');
 	};
 
 	const onClearButtonClickHandler = (): void => {
 		removeLocalStorage('bestNeuralNetwork');
 
-		setMessage('Neural network was clear and set to random values.');
+		setAlert('Neural network was clear and set to random values.');
 	};
 
 	return (
 		<>
-			{message && <Alert onClick={onAlertClickHandler} text={message} />}
+			{alert && <Alert onClick={onAlertClickHandler} text={alert} />}
 			<>
 				<h1>Self driving car</h1>
 				<div className={styles.selfDrivingCar}>
 					<div className={styles.canvases}>
-						<Road roadRef={roadRef} />
-						<Visualizer visualizerRef={visualizerRef} />
+						<Road ref={roadRef} />
+						<Visualizer ref={visualizerRef} />
 					</div>
 					<div className={styles.controls}>
 						<Button onClick={(): void => window.location.reload()}>Reload</Button>

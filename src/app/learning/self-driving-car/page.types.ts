@@ -18,10 +18,6 @@ export interface Level {
 	weights: number[][];
 }
 
-export interface Touch extends Coordinate {
-	offset: number;
-}
-
 export interface Car {
 	animate: (trafficCarsCoordinates: Coordinate[][]) => void;
 	draw: (roadContext: CanvasRenderingContext2D, isSensorVisible: boolean, carIndex: number) => void;
@@ -30,8 +26,16 @@ export interface Car {
 	setLevels: (levelsOfBestCar: Level[]) => void;
 }
 
+export interface SelfDrivingCar {
+	bestCar: Car;
+}
+
 export interface TrafficCars {
 	animate: () => void;
 	draw: (roadContext: CanvasRenderingContext2D) => void;
 	getTrafficCoordinates: () => Coordinate[][];
+}
+
+export interface Touch extends Coordinate {
+	offset: number;
 }

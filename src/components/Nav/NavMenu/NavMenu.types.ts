@@ -1,4 +1,4 @@
-export interface UseNavMenu {
+export interface NavMenu {
 	isButtonDisabled: boolean;
 	isMenuOpen: boolean;
 	isRemoved: boolean;

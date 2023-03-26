@@ -1,6 +1,6 @@
 'use client';
 
-import { Alert, Button, Form, Input, Select } from 'components';
+import { Alert, Button, Form, Input, Loading, Select } from 'components';
 import { ALERT } from 'global/consts';
 import { GetAnswerResponseData } from 'pages/api/czechRobot/getAnswer/getAnswer.types';
 import { GetModelsListResponseData } from 'pages/api/czechRobot/getModelsList/getModelsList.types';
@@ -79,6 +79,7 @@ const CzechRobot = (): JSX.Element => {
 	return (
 		<>
 			{alert && <Alert onClick={onAlertClickHandler} text={alert} />}
+			{loading && <Loading />}
 			<>
 				<h1>Czech robot</h1>
 				<Form onSubmit={onFormSubmitHandler}>
@@ -92,7 +93,7 @@ const CzechRobot = (): JSX.Element => {
 					/>
 					<Input name="question" onChange={onInputChangeHandler} placeholder="Question" value={question} />
 					<Button color="peach" disabled={!question} type="submit">
-						{loading ? 'Loading...' : 'Get answer'}
+						Get answer
 					</Button>
 				</Form>
 			</>

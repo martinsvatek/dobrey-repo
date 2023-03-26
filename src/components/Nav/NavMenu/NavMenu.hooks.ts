@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useState } from 'react';
-import { UseNavMenu } from './NavMenu.types';
+import { NavMenu } from './NavMenu.types';
 
-export const useNavMenu = (navRef: RefObject<HTMLElement>): UseNavMenu => {
+export const useNavMenu = (navRef: RefObject<HTMLElement>): NavMenu => {
 	/**
 	 * @NOTE: prevence proti splasenemu klikani
 	 */
