@@ -3,4 +3,5 @@ export const ALERT = {
 	ACTION_SUCCESS: 'Action has succeeded.',
 	FETCH_FAILURE: 'Fetch has failed.',
 	FETCH_SUCCESS: 'Fetch has succeeded.',
+	UNAUTHORIZED: 'Unauthorized',
 };
