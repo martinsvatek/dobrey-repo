@@ -22,14 +22,14 @@ export const useNavMenu = (navRef: RefObject<HTMLElement>): NavMenu => {
 			setTimeout(() => setIsMenuOpen(prevIsMenuOpen => !prevIsMenuOpen), 1000);
 		};
 
-		if (isMenuOpen) {
+		if (isMenuOpen && !isButtonDisabled) {
 			document.addEventListener('click', onClickOutsideHandler);
 		}
 
 		return () => {
 			document.removeEventListener('click', onClickOutsideHandler);
 		};
-	}, [isMenuOpen, navRef]);
+	}, [isButtonDisabled, isMenuOpen, navRef]);
 
 	/**
 	 * @NOTE: pouze pro otevirani, zavirani handluje listener vyse

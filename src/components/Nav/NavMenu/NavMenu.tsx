@@ -9,9 +9,8 @@ import {
 	XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { Button } from 'components/Button';
-import { joinClassNames } from 'global/utils';
-import { useSession } from 'next-auth/react';
-import Link from 'next/link';
+import { isAdmin, joinClassNames } from 'global/utils';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { useRef } from 'react';
 import { NavLink } from './NavLink';
 import { useNavMenu } from './NavMenu.hooks';
@@ -36,35 +35,44 @@ export const NavMenu = (): JSX.Element => {
 			</Button>
 			{isMenuOpen && (
 				<nav className={joinClassNames([styles.nav, isRemoved && styles.hideAnimation])} ref={navRef}>
-					<Link className={styles.status} href={data ? '/signout' : 'signin'}>
-						{status}
-					</Link>
-					<div className={styles.iconLinks}>
-						<NavLink
-							href="/learning/self-driving-car"
-							icon={<StopCircleIcon className={styles.iconLink} />}
-							onClick={onLinkClickHandler}
-							title="Self driving car"
-						/>
-						<NavLink
-							href="/learning/shortest-path"
-							icon={<ArrowPathRoundedSquareIcon className={styles.iconLink} />}
-							onClick={onLinkClickHandler}
-							title="Shortest path"
-						/>
-						<NavLink
-							href="/learning/web-scraper"
-							icon={<ArrowDownOnSquareIcon className={styles.iconLink} />}
-							onClick={onLinkClickHandler}
-							title="Web scraper"
-						/>
-						<NavLink
-							href="/learning/czech-robot"
-							icon={<CodeBracketIcon className={styles.iconLink} />}
-							onClick={onLinkClickHandler}
-							title="Czech robot"
-						/>
-					</div>
+					<p className={styles.status}>{status}</p>
+					{data ? (
+						<Button color="peach" onClick={() => signOut()} type="button">
+							Signout
+						</Button>
+					) : (
+						<Button color="peach" onClick={() => signIn('google')} type="button">
+							Signin
+						</Button>
+					)}
+					{isAdmin(data) && (
+						<div className={styles.iconLinks}>
+							<NavLink
+								href="/learning/self-driving-car"
+								icon={<StopCircleIcon className={styles.iconLink} />}
+								onClick={onLinkClickHandler}
+								title="Self driving car"
+							/>
+							<NavLink
+								href="/learning/shortest-path"
+								icon={<ArrowPathRoundedSquareIcon className={styles.iconLink} />}
+								onClick={onLinkClickHandler}
+								title="Shortest path"
+							/>
+							<NavLink
+								href="/learning/web-scraper"
+								icon={<ArrowDownOnSquareIcon className={styles.iconLink} />}
+								onClick={onLinkClickHandler}
+								title="Web scraper"
+							/>
+							<NavLink
+								href="/learning/czech-robot"
+								icon={<CodeBracketIcon className={styles.iconLink} />}
+								onClick={onLinkClickHandler}
+								title="Czech robot"
+							/>
+						</div>
+					)}
 				</nav>
 			)}
 		</>

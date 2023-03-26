@@ -1,22 +1,16 @@
-import { ALERT, AUTH_OPTIONS, URL } from 'global/consts';
+import { ALERT, URL } from 'global/consts';
 import { JSDOM } from 'jsdom';
-import { getServerSession } from 'next-auth/next';
 import type { NextApiRequest, NextApiResponse } from 'next/types';
 import { DOWNLOADS_CLASSNAME } from './getDownloads.consts';
 import { GetDownloadsRequestBody, GetDownloadsResponseData } from './getDownloads.types';
 
-const { ACTION_FAILURE, ACTION_SUCCESS, UNAUTHORIZED } = ALERT;
+const { ACTION_FAILURE, ACTION_SUCCESS } = ALERT;
 const { NPMJS } = URL;
 
 export const getDownloads = async (
 	req: NextApiRequest,
 	res: NextApiResponse<GetDownloadsResponseData>,
 ): Promise<void> => {
-	const session = await getServerSession(req, res, AUTH_OPTIONS);
-	if (!session) {
-		return res.status(401).json({ downloads: 0, alert: UNAUTHORIZED });
-	}
-
 	const { packageName } = req.body as GetDownloadsRequestBody;
 	const trimedPackageNameInLowerCase = packageName.trim().toLowerCase();
 

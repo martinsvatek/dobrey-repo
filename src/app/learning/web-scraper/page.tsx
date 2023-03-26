@@ -1,10 +1,17 @@
 'use client';
 
 import { Alert, Button, Form, Input, Loading } from 'components';
+import { ALERT } from 'global/consts';
+import { isAdmin } from 'global/utils';
+import { useSession } from 'next-auth/react';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { getDownloads } from './page.utils';
 
+const { NO_ACCESS } = ALERT;
+
 const WebScraper = (): JSX.Element => {
+	const { data } = useSession();
+
 	const [alert, setAlert] = useState('');
 	const [downloads, setDownloads] = useState(0);
 	const [loading, setLoading] = useState(false);
@@ -30,6 +37,15 @@ const WebScraper = (): JSX.Element => {
 		setDownloads(0);
 		setPackageName(event.currentTarget.value);
 	};
+
+	if (!isAdmin(data)) {
+		return (
+			<>
+				<h1>Web scraper</h1>
+				<p>{NO_ACCESS}</p>
+			</>
+		);
+	}
 
 	return (
 		<>

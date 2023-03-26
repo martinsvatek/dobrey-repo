@@ -1,18 +1,12 @@
-import { ALERT, AUTH_OPTIONS } from 'global/consts';
-import { getServerSession } from 'next-auth/next';
+import { ALERT } from 'global/consts';
 import type { NextApiRequest, NextApiResponse } from 'next/types';
 import { OpenAIApi } from 'openai';
 import { OPENAI_CONFIGURATION } from '../czechRobot.consts';
 import { GetAnswerRequestBody, GetAnswerResponseData } from './getAnswer.types';
 
-const { ACTION_FAILURE, ACTION_SUCCESS, UNAUTHORIZED } = ALERT;
+const { ACTION_FAILURE, ACTION_SUCCESS } = ALERT;
 
 export const getAnswer = async (req: NextApiRequest, res: NextApiResponse<GetAnswerResponseData>): Promise<void> => {
-	const session = await getServerSession(req, res, AUTH_OPTIONS);
-	if (!session) {
-		return res.status(401).json({ answer: '', alert: UNAUTHORIZED });
-	}
-
 	const { model, prompt } = req.body as GetAnswerRequestBody;
 	if (prompt.length < 2) {
 		return res.status(403).json({ answer: '', alert: ACTION_FAILURE });

@@ -2,15 +2,19 @@
 
 import { Alert, Button, Form, Input, Loading, Select } from 'components';
 import { ALERT } from 'global/consts';
+import { isAdmin } from 'global/utils';
+import { useSession } from 'next-auth/react';
 import { GetAnswerResponseData } from 'pages/api/czechRobot/getAnswer/getAnswer.types';
 import { GetModelsListResponseData } from 'pages/api/czechRobot/getModelsList/getModelsList.types';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { ChatMessages } from './components';
 import { ChatHistory } from './page.types';
 
-const { ACTION_SUCCESS } = ALERT;
+const { ACTION_SUCCESS, NO_ACCESS } = ALERT;
 
 const CzechRobot = (): JSX.Element => {
+	const { data } = useSession();
+
 	const [loading, setLoading] = useState(false);
 	const [alert, setAlert] = useState('');
 	const [question, setPrompt] = useState('');
@@ -19,7 +23,7 @@ const CzechRobot = (): JSX.Element => {
 	const [modelsList, setModelsList] = useState<string[]>([]);
 
 	useEffect(() => {
-		window.scrollTo({ behavior: 'smooth', top: document.body.scrollHeight });
+		chatHistory.length && window.scrollTo({ behavior: 'smooth', top: document.body.scrollHeight });
 	}, [chatHistory]);
 
 	useEffect(() => {
@@ -75,6 +79,15 @@ const CzechRobot = (): JSX.Element => {
 	const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
 		setPrompt(event.currentTarget.value);
 	};
+
+	if (!isAdmin(data)) {
+		return (
+			<>
+				<h1>Web scraper</h1>
+				<p>{NO_ACCESS}</p>
+			</>
+		);
+	}
 
 	return (
 		<>
