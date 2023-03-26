@@ -1,1 +1,0 @@
-export { getIsDamaged } from './getIsDamaged';

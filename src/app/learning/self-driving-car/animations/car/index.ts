@@ -1,1 +1,0 @@
-export { car } from './car';

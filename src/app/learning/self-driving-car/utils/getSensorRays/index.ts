@@ -1,1 +1,0 @@
-export { getSensorRays } from './getSensorRays';

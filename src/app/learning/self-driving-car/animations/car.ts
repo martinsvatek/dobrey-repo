@@ -1,7 +1,8 @@
-import { drawCar, drawSensorRays } from '../../drawings';
-import { CAR_DEFAULT_POSITION_Y, SENSOR_RAYS_COUNT } from '../../page.consts';
-import { Coordinate, Level, Touch, ZeroOne } from '../../page.types';
+import { CAR, RAY, VISUALIZER } from '../page.consts';
+import { Car, Coordinate, Level, Touch, ZeroOne } from '../page.types';
 import {
+	drawCar,
+	drawSensorRays,
 	getCarCoordinates,
 	getIsDamaged,
 	getLaneCenter,
@@ -9,19 +10,23 @@ import {
 	getNeuralNetworkLevels,
 	getSensorRays,
 	getTouches,
-} from '../../utils';
-import {
-	CAR_ACCELERATION,
-	CAR_ANGLE_INCREMENT,
-	CAR_DEFAULT_ANGLE,
-	CAR_DEFAULT_SPEED,
-	CAR_FRICTION,
-	CAR_MAX_FORWARD_SPEED,
-	CAR_MAX_REVERSE_SPEED,
-	CAR_POSSIBLE_MOVE_DIRECTIONS_COUNT,
-	VISUALIZER_HIDDEN_LAYER_ARBITRARY_NUMBER,
-} from './car.consts';
-import { Car } from './car.types';
+} from '../page.utils';
+
+const {
+	ACCELERATION,
+	ANGLE_INCREMENT,
+	DEFAULT_ANGLE,
+	DEFAULT_SPEED,
+	FRICTION,
+	MAX_FORWARD_SPEED,
+	MAX_REVERSE_SPEED,
+	DEFAULT_POSITION_Y,
+	POSSIBLE_MOVE_DIRECTIONS_COUNT,
+} = CAR;
+
+const { COUNT } = RAY;
+
+const { HIDDEN_LAYER_ARBITRARY_NUMBER } = VISUALIZER;
 
 export const car = (): Car => {
 	let forward: ZeroOne = 0;
@@ -29,12 +34,12 @@ export const car = (): Car => {
 	let left: ZeroOne = 0;
 	let right: ZeroOne = 0;
 
-	let carAngle = CAR_DEFAULT_ANGLE;
+	let carAngle = DEFAULT_ANGLE;
 	let carPositionX = getLaneCenter(1);
-	let carPositionY = CAR_DEFAULT_POSITION_Y;
-	let carSpeed = CAR_DEFAULT_SPEED;
+	let carPositionY = DEFAULT_POSITION_Y;
+	let carSpeed = DEFAULT_SPEED;
 
-	const neurons = [SENSOR_RAYS_COUNT, VISUALIZER_HIDDEN_LAYER_ARBITRARY_NUMBER, CAR_POSSIBLE_MOVE_DIRECTIONS_COUNT];
+	const neurons = [COUNT, HIDDEN_LAYER_ARBITRARY_NUMBER, POSSIBLE_MOVE_DIRECTIONS_COUNT];
 
 	let levels: Level[] = [];
 	if (!levels.length) {
@@ -66,48 +71,48 @@ export const car = (): Car => {
 			 * @NOTE: akcelerace rychlosti
 			 */
 			if (forward && !reverse) {
-				carSpeed += CAR_ACCELERATION;
+				carSpeed += ACCELERATION;
 			}
 			if (reverse && !forward) {
-				carSpeed -= CAR_ACCELERATION;
+				carSpeed -= ACCELERATION;
 			}
 			/**
 			 * @NOTE: auto se nemuze otacet pri temer nulovem pohybu v pred
 			 */
-			if (Math.abs(carSpeed) > CAR_ACCELERATION) {
+			if (Math.abs(carSpeed) > ACCELERATION) {
 				/**
 				 * @NOTE: prevraceni ovladani pri couvani
 				 */
 				const flipCoefficient = carSpeed < 0 ? -1 : 1;
 
 				if (left && !right) {
-					carAngle += CAR_ANGLE_INCREMENT * flipCoefficient;
+					carAngle += ANGLE_INCREMENT * flipCoefficient;
 				}
 				if (right && !left) {
-					carAngle -= CAR_ANGLE_INCREMENT * flipCoefficient;
+					carAngle -= ANGLE_INCREMENT * flipCoefficient;
 				}
 			}
 
 			/**
 			 * @NOTE: omezeni rychlosti
 			 */
-			if (carSpeed > CAR_MAX_FORWARD_SPEED) {
-				carSpeed = CAR_MAX_FORWARD_SPEED;
+			if (carSpeed > MAX_FORWARD_SPEED) {
+				carSpeed = MAX_FORWARD_SPEED;
 			}
-			if (carSpeed < -CAR_MAX_REVERSE_SPEED) {
-				carSpeed = -CAR_MAX_REVERSE_SPEED;
+			if (carSpeed < -MAX_REVERSE_SPEED) {
+				carSpeed = -MAX_REVERSE_SPEED;
 			}
 
 			/**
 			 * @NOTE: setrvacnost auta bere v potaz treni
 			 */
 			if (carSpeed > 0) {
-				carSpeed -= CAR_FRICTION;
+				carSpeed -= FRICTION;
 			}
 			if (carSpeed < 0) {
-				carSpeed += CAR_FRICTION;
+				carSpeed += FRICTION;
 			}
-			if (Math.abs(carSpeed) < CAR_FRICTION && !forward && !reverse) {
+			if (Math.abs(carSpeed) < FRICTION && !forward && !reverse) {
 				carSpeed = 0;
 			}
 

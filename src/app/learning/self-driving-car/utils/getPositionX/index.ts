@@ -1,1 +1,0 @@
-export { getPositionX } from './getPositionX';

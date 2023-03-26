@@ -4,19 +4,11 @@ import { Alert, Button } from 'components';
 import { getLocalStorage, removeLocalStorage, setLocalStorage } from 'global/utils';
 import { useEffect, useRef, useState } from 'react';
 import { car, trafficCars } from './animations';
-import { Car } from './animations/car/car.types';
 import { Road, Visualizer } from './components';
-import { drawRoad, drawVisualizer } from './drawings';
-import {
-	BEST_CAR,
-	CARS_COUNT,
-	CAR_DEFAULT_POSITION_Y,
-	ROAD_CANVAS_HEIGHT,
-	VISUALIZER_CANVAS_HEIGHT,
-} from './page.consts';
+import { CAR, ROAD_CANVAS, TRAFFIC_CAR, VISUALIZER_CANVAS } from './page.consts';
 import styles from './page.module.scss';
-import { Level } from './page.types';
-import { getNeuralNetworkLevelsMutation } from './utils';
+import { Car, Level } from './page.types';
+import { drawRoad, drawVisualizer, getNeuralNetworkLevelsMutation } from './page.utils';
 
 let bestCar: Car;
 
@@ -27,10 +19,13 @@ const SelfDrivingCar = (): JSX.Element => {
 	const [message, setMessage] = useState('');
 
 	useEffect(() => {
+		const { DEFAULT_POSITION_Y } = CAR;
+		const { COUNT } = TRAFFIC_CAR;
+
 		const cars: Car[] = [];
 		const traffic = trafficCars();
 
-		for (let i = 0; i < CARS_COUNT; i++) {
+		for (let i = 0; i < COUNT; i++) {
 			cars.push(car());
 		}
 
@@ -79,14 +74,14 @@ const SelfDrivingCar = (): JSX.Element => {
 					/**
 					 * @NOTE: aby se auto netahlo jako jedna cara, ale furt zachovavalo svuj puvodni tvar
 					 */
-					roadCanvas.height = ROAD_CANVAS_HEIGHT;
-					visualizerCanvas.height = VISUALIZER_CANVAS_HEIGHT;
+					roadCanvas.height = ROAD_CANVAS.HEIGHT;
+					visualizerCanvas.height = VISUALIZER_CANVAS.HEIGHT;
 
 					/**
 					 * @NOTE: auto stoji na miste a pohybuje se silnice pod nim
 					 */
 					roadContext.save();
-					roadContext.translate(0, -bestCar.getCarPositionY() + CAR_DEFAULT_POSITION_Y);
+					roadContext.translate(0, -bestCar.getCarPositionY() + DEFAULT_POSITION_Y);
 					drawRoad(roadContext);
 					traffic.draw(roadContext);
 					cars.forEach((car, index) => {
@@ -116,7 +111,9 @@ const SelfDrivingCar = (): JSX.Element => {
 	};
 
 	const onSetButtonClickHandler = (): void => {
-		setLocalStorage('bestNeuralNetwork', BEST_CAR);
+		const { BEST } = CAR;
+
+		setLocalStorage('bestNeuralNetwork', BEST);
 
 		setMessage('Neural network of the best car (locally saved) was set.');
 	};
@@ -134,7 +131,7 @@ const SelfDrivingCar = (): JSX.Element => {
 				<h1>Self driving car</h1>
 				<div className={styles.selfDrivingCar}>
 					<div className={styles.canvases}>
-						<Road roadRef={roadRef} key="zadek" />
+						<Road roadRef={roadRef} />
 						<Visualizer visualizerRef={visualizerRef} />
 					</div>
 					<div className={styles.controls}>

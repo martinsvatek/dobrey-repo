@@ -1,17 +1,12 @@
-import { drawTrafficCar } from '../../drawings';
-import { Coordinate } from '../../page.types';
-import { getTrafficCarsCoordinates } from '../../utils';
-import {
-	TRAFFIC_CAR_ACCELERATION,
-	TRAFFIC_CAR_DEFAULT_POSITION_Y,
-	TRAFFIC_CAR_DEFAULT_SPEED,
-	TRAFFIC_CAR_MAX_FORWARD_SPEED,
-} from './trafficCars.consts';
-import { TrafficCars } from './trafficCars.types';
+import { TRAFFIC_CAR } from '../page.consts';
+import { Coordinate, TrafficCars } from '../page.types';
+import { drawTrafficCar, getTrafficCarsCoordinates } from '../page.utils';
+
+const { ACCELERATION, DEFAULT_POSITION_Y, DEFAULT_SPEED, MAX_FORWARD_SPEED } = TRAFFIC_CAR;
 
 export const trafficCars = (): TrafficCars => {
-	let trafficCarPositionY = TRAFFIC_CAR_DEFAULT_POSITION_Y;
-	let trafficCarSpeed = TRAFFIC_CAR_DEFAULT_SPEED;
+	let trafficCarPositionY = DEFAULT_POSITION_Y;
+	let trafficCarSpeed = DEFAULT_SPEED;
 
 	let trafficCarsCoordinates = getTrafficCarsCoordinates(trafficCarPositionY);
 
@@ -19,13 +14,13 @@ export const trafficCars = (): TrafficCars => {
 		/**
 		 * @NOTE: akcelerace rychlosti
 		 */
-		trafficCarSpeed += TRAFFIC_CAR_ACCELERATION;
+		trafficCarSpeed += ACCELERATION;
 
 		/**
 		 * @NOTE: omezeni rychlosti
 		 */
-		if (trafficCarSpeed > TRAFFIC_CAR_MAX_FORWARD_SPEED) {
-			trafficCarSpeed = TRAFFIC_CAR_MAX_FORWARD_SPEED;
+		if (trafficCarSpeed > MAX_FORWARD_SPEED) {
+			trafficCarSpeed = MAX_FORWARD_SPEED;
 		}
 
 		trafficCarPositionY -= trafficCarSpeed;

@@ -1,1 +1,0 @@
-export { drawCar } from './drawCar';

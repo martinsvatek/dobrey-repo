@@ -21,3 +21,17 @@ export interface Level {
 export interface Touch extends Coordinate {
 	offset: number;
 }
+
+export interface Car {
+	animate: (trafficCarsCoordinates: Coordinate[][]) => void;
+	draw: (roadContext: CanvasRenderingContext2D, isSensorVisible: boolean, carIndex: number) => void;
+	getCarPositionY: () => number;
+	getLevels: () => Level[];
+	setLevels: (levelsOfBestCar: Level[]) => void;
+}
+
+export interface TrafficCars {
+	animate: () => void;
+	draw: (roadContext: CanvasRenderingContext2D) => void;
+	getTrafficCoordinates: () => Coordinate[][];
+}
