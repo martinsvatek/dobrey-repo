@@ -30,8 +30,8 @@ const CzechRobot = (): JSX.Element => {
 			setIsLoading(false);
 
 			router.push(`/learning/czech-robot/${docRef.id}`);
-		} catch {
-			setAlert('');
+		} catch (error) {
+			setAlert(error.message);
 			return setIsLoading(false);
 		}
 	};
