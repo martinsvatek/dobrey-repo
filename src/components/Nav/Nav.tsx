@@ -12,9 +12,9 @@ import { Button } from 'components';
 import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, provider } from 'global/config';
 import { ALERT } from 'global/consts';
-import { getUserEmail, isAdmin, isAuth, joinClassNames } from 'global/utils';
+import { isAdmin, isAuth, joinClassNames } from 'global/utils';
 import { useRef } from 'react';
-import { useSetAlert, useSetIsLoading } from 'store';
+import { useAuthUser, useSetAlert, useSetAuthUser, useSetIsLoading } from 'store';
 import { useNav } from './Nav.hooks';
 import styles from './Nav.module.scss';
 import { NavLink } from './NavLink';
@@ -24,7 +24,9 @@ const { SIGNIN_FAILURE, SIGNIN_SUCCESS, SIGNOUT_FAILURE, SIGNOUT_SUCCESS } = ALE
 export const Nav = (): JSX.Element => {
 	const navRef = useRef<HTMLElement>(null);
 
+	const authUser = useAuthUser();
 	const setAlert = useSetAlert();
+	const setAuthUser = useSetAuthUser();
 	const setIsLoading = useSetIsLoading();
 
 	const { isButtonDisabled, isMenuOpen, isRemoved, onButtonClickHandler, onLinkClickHandler } = useNav(navRef);
@@ -34,6 +36,7 @@ export const Nav = (): JSX.Element => {
 
 		signOut(auth)
 			.then(() => {
+				setAuthUser('');
 				setAlert(SIGNOUT_SUCCESS);
 			})
 			.catch(() => {
@@ -47,7 +50,8 @@ export const Nav = (): JSX.Element => {
 		setIsLoading(true);
 
 		signInWithPopup(auth, provider)
-			.then(() => {
+			.then(result => {
+				setAuthUser(result.user.email || '');
 				setAlert(SIGNIN_SUCCESS);
 			})
 			.catch(() => {
@@ -69,11 +73,10 @@ export const Nav = (): JSX.Element => {
 			</Button>
 			{isMenuOpen && (
 				<nav className={joinClassNames([styles.nav, isRemoved && styles.hideAnimation])} ref={navRef}>
-					<p>
-						<span className={styles.status}>{isAuth() ? 'Authenticated: ' : 'Unauthenticated'}</span>
-						{isAuth() && getUserEmail()}
+					<p className={styles.status}>
+						{isAuth(authUser) ? `Authenticated: ${authUser}` : 'Unauthenticated'}
 					</p>
-					{isAuth() ? (
+					{isAuth(authUser) ? (
 						<Button color="peach" onClick={onSignoutClickHandler} type="button">
 							Signout
 						</Button>
@@ -82,7 +85,7 @@ export const Nav = (): JSX.Element => {
 							Signin
 						</Button>
 					)}
-					{isAdmin() && (
+					{isAdmin(authUser) && (
 						<div className={styles.iconLinks}>
 							<NavLink
 								href="/learning/self-driving-car"

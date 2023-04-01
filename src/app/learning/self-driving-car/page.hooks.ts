@@ -1,3 +1,5 @@
+'use client';
+
 import { getLocalStorage } from 'global/utils';
 import { RefObject, useEffect } from 'react';
 import { car, trafficCars } from './animations';

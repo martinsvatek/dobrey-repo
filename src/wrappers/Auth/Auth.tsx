@@ -2,36 +2,33 @@
 
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from 'global/config';
-import { ADMINS_LIST, ALERT } from 'global/consts';
+import { ALERT } from 'global/consts';
+import { isAdmin, isAuth, setLocalStorage } from 'global/utils';
 import { useEffect } from 'react';
-import { useAuthUser, useIsLoading, useSetAuthUser, useSetIsLoading } from 'store';
+import { useAuthUser, useSetAuthUser } from 'store';
 import { AuthProps } from './Auth.types';
 
 const { NO_ACCESS } = ALERT;
 
 export const Auth = ({ children, role = 'user' }: AuthProps): JSX.Element => {
 	const authUser = useAuthUser();
-	const isLoading = useIsLoading();
 	const setAuthUser = useSetAuthUser();
-	const setIsLoading = useSetIsLoading();
 
 	useEffect(() => {
-		setIsLoading(true);
-
 		onAuthStateChanged(auth, user => {
 			if (user?.email) {
 				setAuthUser(user.email);
+				setLocalStorage('authUser', user.email);
 			} else {
-				setAuthUser(null);
+				setAuthUser('');
+				setLocalStorage('authUser', '');
 			}
 		});
+	}, [setAuthUser]);
 
-		setIsLoading(false);
-	}, [setAuthUser, setIsLoading]);
-
-	if (!isLoading && role === 'admin' && ADMINS_LIST.includes(authUser || '')) {
+	if (role === 'admin' && !isAdmin(authUser)) {
 		return <p>{NO_ACCESS}</p>;
 	}
 
-	return !authUser && !isLoading ? <p>{NO_ACCESS}</p> : <>{children}</>;
+	return !isAuth(authUser) ? <p>{NO_ACCESS}</p> : <>{children}</>;
 };

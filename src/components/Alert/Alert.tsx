@@ -12,14 +12,13 @@ export const Alert = (): JSX.Element | null => {
 	const setAlert = useSetAlert();
 
 	const [isRemoved, setIsRemoved] = useState(false);
-	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-	const onClickHandler = (): void => {
-		setIsButtonDisabled(true);
+	const onButtonClickHandler = (): void => {
 		setIsRemoved(true);
 
 		setTimeout(() => {
 			setAlert('');
+			setIsRemoved(false);
 		}, 1000);
 	};
 
@@ -28,9 +27,9 @@ export const Alert = (): JSX.Element | null => {
 	}
 
 	return (
-		<div className={joinClassNames([styles.alert, isRemoved && styles.hideAnimation])}>
+		<div className={joinClassNames([styles.alert, isRemoved && styles.hideAnimation])} key={alert}>
 			<p className={styles.text}>{alert}</p>
-			<Button className={styles.button} color="peach" disabled={isButtonDisabled} onClick={onClickHandler}>
+			<Button className={styles.button} color="peach" disabled={isRemoved} onClick={onButtonClickHandler}>
 				<XMarkIcon className={styles.icon} />
 			</Button>
 		</div>

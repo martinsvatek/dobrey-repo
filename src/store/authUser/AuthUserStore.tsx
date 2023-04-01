@@ -1,16 +1,15 @@
 'use client';
 
 import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react';
-import { DEFAULT_STATE } from './AuthUserStore.consts';
 import { AuthUserProviderProps } from './AuthUserStore.types';
 
-const AuthUserContext = createContext(DEFAULT_STATE);
-const SetAuthUserContext = createContext<Dispatch<SetStateAction<string | null>>>(() => {
+const AuthUserContext = createContext('');
+const SetAuthUserContext = createContext<Dispatch<SetStateAction<string>>>(() => {
 	/* */
 });
 
 export const AuthUserProvider = ({ children }: AuthUserProviderProps): JSX.Element => {
-	const [authUser, setAuthUser] = useState(DEFAULT_STATE);
+	const [authUser, setAuthUser] = useState('');
 
 	return (
 		<AuthUserContext.Provider value={authUser}>
@@ -19,5 +18,5 @@ export const AuthUserProvider = ({ children }: AuthUserProviderProps): JSX.Eleme
 	);
 };
 
-export const useAuthUser = (): string | null => useContext(AuthUserContext);
-export const useSetAuthUser = (): Dispatch<SetStateAction<string | null>> => useContext(SetAuthUserContext);
+export const useAuthUser = (): string => useContext(AuthUserContext);
+export const useSetAuthUser = (): Dispatch<SetStateAction<string>> => useContext(SetAuthUserContext);

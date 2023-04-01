@@ -13,7 +13,7 @@ const ShortestPath = (): JSX.Element => {
 	const { clear, finishNode, interact, startNode, visualize } = useShortestPath(canvasRef);
 
 	return (
-		<Auth>
+		<Auth role="admin">
 			<h1>Shortest path</h1>
 			<div className={styles.shortestPath}>
 				<Grid finishNode={finishNode} onMouseInteraction={interact} ref={canvasRef} startNode={startNode} />

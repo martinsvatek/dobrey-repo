@@ -1,8 +1,9 @@
 'use client';
 
-import { Alert, Button } from 'components';
+import { Button } from 'components';
 import { removeLocalStorage, setLocalStorage } from 'global/utils';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import { useSetAlert } from 'store';
 import { Auth } from 'wrappers';
 import { Road, Visualizer } from './components';
 import { CAR } from './page.consts';
@@ -13,13 +14,9 @@ const SelfDrivingCar = (): JSX.Element => {
 	const roadRef = useRef<HTMLCanvasElement>(null);
 	const visualizerRef = useRef<HTMLCanvasElement>(null);
 
+	const setAlert = useSetAlert();
+
 	const { bestCar } = useSelfDrivingCar(roadRef, visualizerRef);
-
-	const [alert, setAlert] = useState('');
-
-	const onAlertClickHandler = (): void => {
-		setAlert('');
-	};
 
 	const onSaveButtonClickHandler = (): void => {
 		setLocalStorage('bestNeuralNetwork', bestCar.getLevels());
@@ -42,29 +39,26 @@ const SelfDrivingCar = (): JSX.Element => {
 	};
 
 	return (
-		<Auth>
-			{alert && <Alert onClick={onAlertClickHandler} text={alert} />}
-			<>
-				<h1>Self driving car</h1>
-				<div className={styles.selfDrivingCar}>
-					<div className={styles.canvases}>
-						<Road ref={roadRef} />
-						<Visualizer ref={visualizerRef} />
-					</div>
-					<div className={styles.controls}>
-						<Button onClick={(): void => window.location.reload()}>Reload</Button>
-						<Button color="grey-800" onClick={onSaveButtonClickHandler}>
-							Save
-						</Button>
-						<Button color="grey-800" onClick={onSetButtonClickHandler}>
-							Set best saved
-						</Button>
-						<Button color="peach" onClick={onClearButtonClickHandler}>
-							Clear
-						</Button>
-					</div>
+		<Auth role="admin">
+			<h1>Self driving car</h1>
+			<div className={styles.selfDrivingCar}>
+				<div className={styles.canvases}>
+					<Road ref={roadRef} />
+					<Visualizer ref={visualizerRef} />
 				</div>
-			</>
+				<div className={styles.controls}>
+					<Button onClick={(): void => window.location.reload()}>Reload</Button>
+					<Button color="grey-800" onClick={onSaveButtonClickHandler}>
+						Save
+					</Button>
+					<Button color="grey-800" onClick={onSetButtonClickHandler}>
+						Set best saved
+					</Button>
+					<Button color="peach" onClick={onClearButtonClickHandler}>
+						Clear
+					</Button>
+				</div>
+			</div>
 		</Auth>
 	);
 };

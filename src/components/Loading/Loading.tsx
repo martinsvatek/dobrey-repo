@@ -1,3 +1,5 @@
+'use client';
+
 import { useIsLoading } from 'store';
 import styles from './Loading.module.scss';
 
