@@ -1,33 +1,116 @@
 @import 'global/styles';
 
-.nav {
-	position: relative;
+.button {
+	left: 0.8rem;
+	position: absolute;
+	top: 0.8rem;
+	z-index: 20;
 
-	height: 8rem;
-	margin: 0 auto;
-	max-width: 160rem;
-	padding: 0.8rem;
-	width: 100%;
+	max-width: 4.8rem;
 }
 
-.link {
+.iconMenu,
+.iconCross {
+	height: 2.4rem;
+	width: 2.4rem;
+
+	color: $color-grey-100;
+}
+
+.iconMenu {
+	animation: rotateLeft 1s ease-in-out;
+}
+
+.iconCross {
+	animation: rotateRight 1s ease-in-out;
+}
+
+.nav,
+.iconLinks {
 	display: flex;
 
-	position: absolute;
-	right: 0.8rem;
-	top: 0.8rem;
-
-	border: none;
-	height: 4.8rem;
-	margin: 0.8rem;
-	max-width: 4.8rem;
-	width: calc(100% - 1.6rem);
-
 	align-items: center;
+}
+
+.nav {
+	left: 1.6rem;
+	position: absolute;
+	right: 1.6rem;
+	top: 8rem;
+	z-index: 10;
+
+	border-radius: $radius-8;
+	min-height: calc(100vh - 9.6rem);
+	padding: 0.8rem;
+
+	flex-direction: column;
+	justify-content: flex-start;
+
+	background-color: $color-grey-100;
+
+	animation: show 1s ease-in-out;
+	box-shadow: 0 0 64rem $color-grey-300;
+}
+
+.hideAnimation {
+	animation: hide 1s ease-in-out;
+}
+
+.status {
+	text-transform: capitalize;
+}
+
+.iconLinks {
+	width: 100%;
+
+	flex-wrap: wrap;
 	justify-content: center;
+}
 
-	background-color: $color-peach;
+.iconLink {
+	height: 4.8rem;
+	margin-bottom: 0.8rem;
+	width: 4.8rem;
 
-	box-shadow: $shadow-grey-200;
-	cursor: pointer;
+	color: $color-peach;
+}
+
+@keyframes rotateLeft {
+	0% {
+		opacity: 0.6;
+		transform: rotate(90deg);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes rotateRight {
+	0% {
+		opacity: 0.6;
+		transform: rotate(-90deg);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes show {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes hide {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }

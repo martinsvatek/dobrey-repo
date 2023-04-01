@@ -1,20 +1,15 @@
 'use client';
 
 import { Alert, Button } from 'components';
-import { ALERT } from 'global/consts';
-import { isAdmin, removeLocalStorage, setLocalStorage } from 'global/utils';
-import { useSession } from 'next-auth/react';
+import { removeLocalStorage, setLocalStorage } from 'global/utils';
 import { useRef, useState } from 'react';
+import { Auth } from 'wrappers';
 import { Road, Visualizer } from './components';
 import { CAR } from './page.consts';
 import { useSelfDrivingCar } from './page.hooks';
 import styles from './page.module.scss';
 
-const { NO_ACCESS } = ALERT;
-
 const SelfDrivingCar = (): JSX.Element => {
-	const { data } = useSession();
-
 	const roadRef = useRef<HTMLCanvasElement>(null);
 	const visualizerRef = useRef<HTMLCanvasElement>(null);
 
@@ -46,17 +41,8 @@ const SelfDrivingCar = (): JSX.Element => {
 		setAlert('Neural network was clear and set to random values.');
 	};
 
-	if (!isAdmin(data)) {
-		return (
-			<>
-				<h1>Web scraper</h1>
-				<p>{NO_ACCESS}</p>
-			</>
-		);
-	}
-
 	return (
-		<>
+		<Auth>
 			{alert && <Alert onClick={onAlertClickHandler} text={alert} />}
 			<>
 				<h1>Self driving car</h1>
@@ -79,7 +65,7 @@ const SelfDrivingCar = (): JSX.Element => {
 					</div>
 				</div>
 			</>
-		</>
+		</Auth>
 	);
 };
 

@@ -4,4 +4,8 @@ export const ALERT = {
 	FETCH_FAILURE: 'Fetch has failed.',
 	FETCH_SUCCESS: 'Fetch has succeeded.',
 	NO_ACCESS: 'You have no access to this page.',
-};
+	SIGNIN_FAILURE: 'Signin has failed.',
+	SIGNIN_SUCCESS: 'Signin has succeeded.',
+	SIGNOUT_FAILURE: 'Signout has failed.',
+	SIGNOUT_SUCCESS: 'Signout has succeeded.',
+} as const;

@@ -1,116 +1,56 @@
 'use client';
 
-import { Alert, Button, Form, Input, Loading, Select } from 'components';
-import { ALERT } from 'global/consts';
-import { isAdmin } from 'global/utils';
-import { useSession } from 'next-auth/react';
-import { GetAnswerResponseData } from 'pages/api/czechRobot/getAnswer/getAnswer.types';
-import { GetModelsListResponseData } from 'pages/api/czechRobot/getModelsList/getModelsList.types';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { ChatMessages } from './components';
-import { ChatHistory } from './page.types';
-
-const { ACTION_SUCCESS, NO_ACCESS } = ALERT;
+import { Alert, Button, Loading } from 'components';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { firestore } from 'global/config';
+import { getUserEmail } from 'global/utils';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { Auth } from 'wrappers';
 
 const CzechRobot = (): JSX.Element => {
-	const { data } = useSession();
+	const router = useRouter();
 
-	const [loading, setLoading] = useState(false);
 	const [alert, setAlert] = useState('');
-	const [question, setPrompt] = useState('');
-	const [chatHistory, setChatHistory] = useState<ChatHistory[]>([]);
-	const [currentEngine, setCurrentEngine] = useState('text-davinci-003');
-	const [modelsList, setModelsList] = useState<string[]>([]);
-
-	useEffect(() => {
-		chatHistory.length && window.scrollTo({ behavior: 'smooth', top: document.body.scrollHeight });
-	}, [chatHistory]);
-
-	useEffect(() => {
-		const getModelsList = async (): Promise<void> => {
-			setLoading(true);
-
-			const res = await fetch('/api/czechRobot/getModelsList');
-			const { modelsList, alert } = (await res.json()) as GetModelsListResponseData;
-			setModelsList(modelsList);
-
-			setAlert(alert);
-			setLoading(false);
-		};
-
-		getModelsList();
-	}, []);
+	const [loading, setIsLoading] = useState(false);
 
 	const onAlertClickHandler = (): void => {
 		setAlert('');
 	};
 
-	const onFormSubmitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
-		event.preventDefault();
+	const onButtonClickHandler = async (): Promise<void> => {
+		try {
+			setIsLoading(true);
 
-		setLoading(true);
+			const currentServerTimestamp = serverTimestamp();
+			const newChat = {
+				createdAt: currentServerTimestamp,
+				updatedAt: currentServerTimestamp,
+				userId: getUserEmail() || '',
+				title: '',
+			};
+			const docRef = await addDoc(collection(firestore, 'czechRobot_chat'), newChat);
 
-		const updatedChatHistory: ChatHistory[] = [...chatHistory, { type: 'question', text: question }];
-		const res = await fetch('/api/czechRobot/getAnswer', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				model: currentEngine,
-				prompt: `${updatedChatHistory
-					.map(chatAlert => `${chatAlert.type}: ${chatAlert.text}`)
-					.join('\n')}\nanswer: `,
-			}),
-		});
-		const { answer, alert } = (await res.json()) as GetAnswerResponseData;
+			setIsLoading(false);
 
-		setChatHistory([...updatedChatHistory, { type: 'answer', text: answer }]);
-		setAlert(alert);
-		setLoading(false);
-
-		if (alert === ACTION_SUCCESS) {
-			setPrompt('');
+			router.push(`/learning/czech-robot/${docRef.id}`);
+		} catch (e) {
+			setAlert('');
+			return setIsLoading(false);
 		}
 	};
 
-	const onSelectChangeHandler = (event: ChangeEvent<HTMLSelectElement>): void => {
-		setCurrentEngine(event.currentTarget.value);
-	};
-
-	const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-		setPrompt(event.currentTarget.value);
-	};
-
-	if (!isAdmin(data)) {
-		return (
-			<>
-				<h1>Web scraper</h1>
-				<p>{NO_ACCESS}</p>
-			</>
-		);
-	}
-
 	return (
-		<>
+		<Auth>
 			{alert && <Alert onClick={onAlertClickHandler} text={alert} />}
 			{loading && <Loading />}
 			<>
 				<h1>Czech robot</h1>
-				<Form onSubmit={onFormSubmitHandler}>
-					{chatHistory.length > 0 && <ChatMessages chatHistory={chatHistory} />}
-					<Select
-						name="models"
-						onChange={onSelectChangeHandler}
-						options={modelsList}
-						placeholder="Select engine"
-						value={currentEngine}
-					/>
-					<Input name="question" onChange={onInputChangeHandler} placeholder="Question" value={question} />
-					<Button color="peach" disabled={!question} type="submit">
-						Get answer
-					</Button>
-				</Form>
+				<Button color="peach" onClick={onButtonClickHandler} type="button">
+					Create new chat
+				</Button>
 			</>
-		</>
+		</Auth>
 	);
 };
 

@@ -1,1 +1,3 @@
-export const DOWNLOADS_CLASSNAME = '._9ba9a726';
+export const CLASSNAME = {
+	DOWNLOADS: '._9ba9a726',
+} as const;

@@ -1,20 +1,14 @@
 'use client';
 
 import { Alert, Button, Form, Input, Loading } from 'components';
-import { ALERT } from 'global/consts';
-import { isAdmin } from 'global/utils';
-import { useSession } from 'next-auth/react';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { Auth } from 'wrappers';
 import { getDownloads } from './page.utils';
 
-const { NO_ACCESS } = ALERT;
-
 const WebScraper = (): JSX.Element => {
-	const { data } = useSession();
-
 	const [alert, setAlert] = useState('');
 	const [downloads, setDownloads] = useState(0);
-	const [loading, setLoading] = useState(false);
+	const [loading, setIsLoading] = useState(false);
 	const [packageName, setPackageName] = useState('');
 
 	const onAlertClickHandler = (): void => {
@@ -23,14 +17,13 @@ const WebScraper = (): JSX.Element => {
 
 	const onFormSubmitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
 		event.preventDefault();
-
-		setLoading(true);
+		setIsLoading(true);
 
 		const { alert, downloads } = await getDownloads(packageName);
 
 		setAlert(alert);
 		setDownloads(downloads);
-		setLoading(false);
+		setIsLoading(false);
 	};
 
 	const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -38,17 +31,8 @@ const WebScraper = (): JSX.Element => {
 		setPackageName(event.currentTarget.value);
 	};
 
-	if (!isAdmin(data)) {
-		return (
-			<>
-				<h1>Web scraper</h1>
-				<p>{NO_ACCESS}</p>
-			</>
-		);
-	}
-
 	return (
-		<>
+		<Auth>
 			{alert && <Alert onClick={onAlertClickHandler} text={alert} />}
 			{loading && <Loading />}
 			<>
@@ -70,7 +54,7 @@ const WebScraper = (): JSX.Element => {
 					</p>
 				)}
 			</>
-		</>
+		</Auth>
 	);
 };
 

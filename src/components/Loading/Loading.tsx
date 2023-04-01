@@ -1,4 +1,12 @@
-import type { FC } from 'react';
+import { useIsLoading } from 'store';
 import styles from './Loading.module.scss';
 
-export const Loading: FC = () => <div className={styles.loading} />;
+export const Loading = (): JSX.Element | null => {
+	const isLoading = useIsLoading();
+
+	if (!isLoading) {
+		return null;
+	}
+
+	return <div className={styles.loading} />;
+};

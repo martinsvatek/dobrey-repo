@@ -3,27 +3,34 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { Button } from 'components/Button';
 import { joinClassNames } from 'global/utils';
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
+import { useAlert, useSetAlert } from 'store';
 import styles from './Alert.module.scss';
-import { AlertProps } from './Alert.types';
 
-export const Alert = ({ onClick, text }: AlertProps): JSX.Element => {
+export const Alert = (): JSX.Element | null => {
+	const alert = useAlert();
+	const setAlert = useSetAlert();
+
 	const [isRemoved, setIsRemoved] = useState(false);
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-	const onButtonClickHandler = (event: MouseEvent<HTMLButtonElement>): void => {
+	const onClickHandler = (): void => {
 		setIsButtonDisabled(true);
 		setIsRemoved(true);
 
 		setTimeout(() => {
-			onClick?.(event);
+			setAlert('');
 		}, 1000);
 	};
 
+	if (!alert) {
+		return null;
+	}
+
 	return (
 		<div className={joinClassNames([styles.alert, isRemoved && styles.hideAnimation])}>
-			<p className={styles.text}>{text}</p>
-			<Button className={styles.button} color="peach" disabled={isButtonDisabled} onClick={onButtonClickHandler}>
+			<p className={styles.text}>{alert}</p>
+			<Button className={styles.button} color="peach" disabled={isButtonDisabled} onClick={onClickHandler}>
 				<XMarkIcon className={styles.icon} />
 			</Button>
 		</div>

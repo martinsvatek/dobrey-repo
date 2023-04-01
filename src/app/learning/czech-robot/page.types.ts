@@ -1,6 +1,8 @@
-export type Type = 'question' | 'answer';
+import { FieldValue } from 'firebase/firestore';
 
-export interface ChatHistory {
-	type: Type;
-	text: string;
+export interface Chat {
+	createdAt: FieldValue;
+	updatedAt: FieldValue;
+	userId: string;
+	title: string;
 }

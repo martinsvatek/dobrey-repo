@@ -1,0 +1,33 @@
+@import 'global/styles';
+
+.header {
+	position: relative;
+
+	height: 8rem;
+	margin: 0 auto;
+	max-width: 160rem;
+	padding: 0.8rem;
+	width: 100%;
+}
+
+.link {
+	display: flex;
+
+	position: absolute;
+	right: 0.8rem;
+	top: 0.8rem;
+
+	border: none;
+	height: 4.8rem;
+	margin: 0.8rem;
+	max-width: 4.8rem;
+	width: calc(100% - 1.6rem);
+
+	align-items: center;
+	justify-content: center;
+
+	background-color: $color-peach;
+
+	box-shadow: $shadow-grey-200;
+	cursor: pointer;
+}
