@@ -12,8 +12,7 @@
 	border-left: 0.4rem solid $color-peach;
 	border-top-left-radius: 0.8rem;
 	margin-left: 0.8rem;
-	max-width: 80rem;
-	min-width: 24rem;
+	max-width: 24rem;
 
 	align-items: center;
 
@@ -28,9 +27,10 @@
 }
 
 .text {
-	width: 100%;
+	overflow: hidden;
 
 	text-align: center;
+	text-overflow: ellipsis;
 }
 
 .button {

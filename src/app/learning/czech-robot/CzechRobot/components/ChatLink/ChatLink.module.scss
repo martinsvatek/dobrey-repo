@@ -1,12 +1,12 @@
 @import 'global/styles';
 
-.navLink {
+.chatLink {
 	display: flex;
 
 	border-radius: $radius-8;
 	height: 11.2rem;
 	margin: 0.8rem;
-	max-width: 11.2rem;
+	max-width: 24rem;
 	width: calc(100% - 1.6rem);
 
 	align-items: center;
@@ -20,6 +20,14 @@
 	box-shadow: $shadow-grey-200;
 }
 
+.icon {
+	height: 2.4rem;
+	width: 2.4rem;
+
+	color: $color-peach;
+}
+
+.createdAt,
 .title {
 	max-width: calc(100% - 1.6rem);
 	overflow: hidden;
@@ -27,4 +35,9 @@
 	text-align: center;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.createdAt {
+	color: $color-grey-400;
+	font-size: 1rem;
 }

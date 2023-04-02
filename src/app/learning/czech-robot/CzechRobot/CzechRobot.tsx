@@ -1,10 +1,25 @@
 'use client';
 
 import { Button } from 'components';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import {
+	addDoc,
+	collection,
+	doc,
+	getDocs,
+	increment,
+	limit,
+	orderBy,
+	query,
+	serverTimestamp,
+	updateDoc,
+	where,
+} from 'firebase/firestore';
 import { firestore } from 'global/config';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { useAuthUser, useSetAlert, useSetIsLoading } from 'store';
+import { Chat } from './CzechRobot.types';
+import { ChatLink } from './components';
 
 export const CzechRobot = (): JSX.Element => {
 	const router = useRouter();
@@ -13,31 +28,83 @@ export const CzechRobot = (): JSX.Element => {
 	const setAlert = useSetAlert();
 	const setIsLoading = useSetIsLoading();
 
-	const onButtonClickHandler = async (): Promise<void> => {
-		try {
-			setIsLoading(true);
+	const [chats, setChats] = useState<Chat[]>([]);
 
+	useEffect((): void => {
+		const getChats = async (): Promise<void> => {
+			setIsLoading(true);
+			/* get last 14 recipes */
+			try {
+				const chatsRef = query(
+					collection(firestore, 'czechRobot_chats'),
+					where('userId', '==', authUser),
+					orderBy('createdAt', 'desc'),
+					limit(20),
+				);
+				const chatsSnap = await getDocs(chatsRef);
+
+				if (chatsSnap.empty) {
+					return;
+				}
+
+				const chats: Chat[] = [];
+
+				chatsSnap.forEach(doc => {
+					const chat = doc.data() as Chat;
+					chat.id = doc.id;
+
+					chats.push(chat);
+				});
+
+				setChats(chats);
+			} catch ({ message }) {
+				setAlert(message);
+			}
+
+			setIsLoading(false);
+		};
+
+		getChats();
+	}, [authUser, setAlert, setIsLoading]);
+
+	const onButtonClickHandler = async (): Promise<void> => {
+		setIsLoading(true);
+
+		try {
 			const currentServerTimestamp = serverTimestamp();
 			const newChat = {
 				createdAt: currentServerTimestamp,
 				updatedAt: currentServerTimestamp,
 				userId: authUser,
-				title: '',
+				title: 'Empty',
 			};
-			const docRef = await addDoc(collection(firestore, 'czechRobot_chat'), newChat);
+			const chatRef = await addDoc(collection(firestore, 'czechRobot_chats'), newChat);
 
-			setIsLoading(false);
+			try {
+				const userRef = doc(firestore, 'users', authUser);
+				await updateDoc(userRef, {
+					czechRobotChatsCount: increment(1),
+				});
 
-			router.push(`/learning/czech-robot/${docRef.id}`);
-		} catch (error) {
-			setAlert(error.message);
-			return setIsLoading(false);
+				router.push(`/learning/czech-robot/${chatRef.id}`);
+			} catch ({ message }) {
+				setAlert(message);
+			}
+		} catch ({ message }) {
+			setAlert(message);
 		}
+
+		setIsLoading(false);
 	};
 
 	return (
-		<Button color="peach" onClick={onButtonClickHandler} type="button">
-			Create new chat
-		</Button>
+		<>
+			<Button color="peach" onClick={onButtonClickHandler} type="button">
+				Create new chat
+			</Button>
+			{chats.map(({ createdAt, id, title }) => (
+				<ChatLink createdAt={createdAt} id={id} key={id} title={title} />
+			))}
+		</>
 	);
 };

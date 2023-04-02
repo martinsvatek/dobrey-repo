@@ -1,9 +1,7 @@
 import { Timestamp } from 'firebase/firestore';
 
-export interface Chat {
+export interface ChatLinkProps {
 	createdAt: Timestamp;
 	id: string;
 	title: string;
-	updatedAt: Timestamp;
-	userId: string;
 }

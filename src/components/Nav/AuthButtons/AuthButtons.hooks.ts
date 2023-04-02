@@ -1,7 +1,8 @@
 'use client';
 
 import { signInWithPopup, signOut } from 'firebase/auth';
-import { auth, provider } from 'global/config';
+import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { auth, firestore, provider } from 'global/config';
 import { ALERT } from 'global/consts';
 import { useSetAlert, useSetAuthUser, useSetIsLoading } from 'store';
 import { AuthButtons } from './AuthButtons.types';
@@ -21,8 +22,8 @@ export const useAuthButtons = (): AuthButtons => {
 				setAuthUser('');
 				setAlert(SIGNOUT_SUCCESS);
 			})
-			.catch(() => {
-				setAlert(SIGNOUT_FAILURE);
+			.catch(({ message }) => {
+				setAlert(message);
 			});
 
 		setIsLoading(false);
@@ -32,12 +33,39 @@ export const useAuthButtons = (): AuthButtons => {
 		setIsLoading(true);
 
 		signInWithPopup(auth, provider)
-			.then(result => {
-				setAuthUser(result.user.email || '');
-				setAlert(SIGNIN_SUCCESS);
+			.then(async result => {
+				const userEmail = result.user.email;
+				if (!userEmail) {
+					return setAlert(SIGNIN_FAILURE);
+				}
+
+				try {
+					const userRef = doc(firestore, 'users', userEmail);
+					const userSnap = await getDoc(userRef);
+
+					if (!userSnap.exists()) {
+						try {
+							const currentServerTimestamp = serverTimestamp();
+							const newUser = {
+								createdAt: currentServerTimestamp,
+								updatedAt: currentServerTimestamp,
+								czechRobotChatsCount: 0,
+							};
+
+							await setDoc(doc(firestore, 'users', userEmail), newUser);
+						} catch ({ message }) {
+							return setAlert(message);
+						}
+					}
+
+					setAuthUser(userEmail);
+					setAlert(SIGNIN_SUCCESS);
+				} catch ({ message }) {
+					setAlert(message);
+				}
 			})
-			.catch(() => {
-				setAlert(SIGNIN_FAILURE);
+			.catch(({ message }) => {
+				setAlert(message);
 			});
 
 		setIsLoading(false);
