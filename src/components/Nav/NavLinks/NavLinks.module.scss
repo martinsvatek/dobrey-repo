@@ -1,0 +1,19 @@
+@import 'global/styles';
+
+.adminLinks,
+.links {
+	display: flex;
+
+	width: 100%;
+
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.icon {
+	height: 2.4rem;
+	width: 2.4rem;
+
+	color: $color-peach;
+}
