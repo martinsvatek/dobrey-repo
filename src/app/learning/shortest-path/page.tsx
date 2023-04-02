@@ -1,33 +1,23 @@
-'use client';
-
-import { Button } from 'components';
-import { useRef } from 'react';
+import { Metadata } from 'next/types';
 import { Auth } from 'wrappers';
-import styles from './Page.module.scss';
-import { Grid } from './components';
-import { useShortestPath } from './page.hooks';
+import { ShortestPath } from './ShortestPath';
 
-const ShortestPath = (): JSX.Element => {
-	const canvasRef = useRef<HTMLCanvasElement>(null);
+const Page = (): JSX.Element => (
+	<Auth role="admin">
+		<h1>Shortest path</h1>
+		<ShortestPath />
+	</Auth>
+);
 
-	const { clear, finishNode, interact, startNode, visualize } = useShortestPath(canvasRef);
+export default Page;
 
-	return (
-		<Auth role="admin">
-			<h1>Shortest path</h1>
-			<div className={styles.shortestPath}>
-				<Grid finishNode={finishNode} onMouseInteraction={interact} ref={canvasRef} startNode={startNode} />
-				<div className={styles.controls}>
-					<Button color="grey-800" disabled={!startNode || !finishNode} onClick={visualize}>
-						Visualize
-					</Button>
-					<Button color="peach" onClick={clear}>
-						Clear
-					</Button>
-				</div>
-			</div>
-		</Auth>
-	);
+export const metadata: Metadata = {
+	title: 'Dobrey | Shortest path',
+	description: 'Shortest path project for better understanding of Canvas.',
+
+	robots: {
+		follow: false,
+		index: false,
+	},
+	themeColor: ' #cccccc',
 };
-
-export default ShortestPath;

@@ -1,9 +1,9 @@
 import { Footer, Header, Main } from 'components';
 import { AlertProvider, AuthUserProvider, IsLoadingProvider } from 'store';
 import './_global.scss';
-import { HomeLayoutProps } from './layout.types';
+import { MainLayoutProps } from './layout.types';
 
-const HomeLayout = async ({ children }: HomeLayoutProps): Promise<JSX.Element> => (
+const MainLayout = async ({ children }: MainLayoutProps): Promise<JSX.Element> => (
 	<html lang="en">
 		<head />
 		<body>
@@ -20,4 +20,4 @@ const HomeLayout = async ({ children }: HomeLayoutProps): Promise<JSX.Element> =
 	</html>
 );
 
-export default HomeLayout;
+export default MainLayout;

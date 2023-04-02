@@ -1,49 +1,23 @@
-'use client';
-
-import { Button } from 'components';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { firestore } from 'global/config';
-import { useRouter } from 'next/navigation';
-import { useAuthUser, useSetAlert, useSetIsLoading } from 'store';
+import { Metadata } from 'next/types';
 import { Auth } from 'wrappers';
+import { CzechRobot } from './CzechRobot';
 
-const CzechRobot = (): JSX.Element => {
-	const router = useRouter();
+const Page = (): JSX.Element => (
+	<Auth role="admin">
+		<h1>Czech robot</h1>
+		<CzechRobot />
+	</Auth>
+);
 
-	const authUser = useAuthUser();
-	const setAlert = useSetAlert();
-	const setIsLoading = useSetIsLoading();
+export default Page;
 
-	const onButtonClickHandler = async (): Promise<void> => {
-		try {
-			setIsLoading(true);
+export const metadata: Metadata = {
+	title: 'Dobrey | Czech robot',
+	description: 'Czech robot project for better understanding of openAI models.',
 
-			const currentServerTimestamp = serverTimestamp();
-			const newChat = {
-				createdAt: currentServerTimestamp,
-				updatedAt: currentServerTimestamp,
-				userId: authUser,
-				title: '',
-			};
-			const docRef = await addDoc(collection(firestore, 'czechRobot_chat'), newChat);
-
-			setIsLoading(false);
-
-			router.push(`/learning/czech-robot/${docRef.id}`);
-		} catch (error) {
-			setAlert(error.message);
-			return setIsLoading(false);
-		}
-	};
-
-	return (
-		<Auth role="admin">
-			<h1>Czech robot</h1>
-			<Button color="peach" onClick={onButtonClickHandler} type="button">
-				Create new chat
-			</Button>
-		</Auth>
-	);
+	robots: {
+		follow: false,
+		index: false,
+	},
+	themeColor: ' #cccccc',
 };
-
-export default CzechRobot;

@@ -1,5 +1,5 @@
 import { ForwardedRef, forwardRef } from 'react';
-import { ROAD_CANVAS } from '../../page.consts';
+import { ROAD_CANVAS } from '../../SelfDrivingCar.consts';
 import styles from './Road.module.scss';
 
 const { HEIGHT, WIDTH } = ROAD_CANVAS;

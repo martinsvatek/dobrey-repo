@@ -1,8 +1,8 @@
 'use client';
 
 import { MouseEvent, RefObject, useEffect, useState } from 'react';
-import { CANVAS, COLOR } from './page.consts';
-import { Coordinate, Node, ShortestPath } from './page.types';
+import { CANVAS, COLOR } from './ShortestPath.consts';
+import { Coordinate, Node, ShortestPath } from './ShortestPath.types';
 import {
 	drawGrid,
 	drawNode,
@@ -10,7 +10,7 @@ import {
 	getCoordinates,
 	getShortestPathNodesInOrder,
 	getUpdatedGrid,
-} from './page.utils';
+} from './ShortestPath.utils';
 
 const { HEIGHT, WIDTH } = CANVAS;
 const { FINISH, START, WALL } = COLOR;

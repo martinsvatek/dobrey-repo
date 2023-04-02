@@ -1,3 +1,5 @@
+'use client';
+
 import { isAuth } from 'global/utils';
 import { useAuthUser } from 'store';
 

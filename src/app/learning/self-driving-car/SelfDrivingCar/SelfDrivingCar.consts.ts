@@ -2,7 +2,7 @@ export const ROAD_CANVAS = {
 	HEIGHT: 680,
 	INFINITY: 10_000_000,
 	WIDTH: 260,
-} as const;
+};
 
 /**
  * @NOTE: 40 = margin
@@ -14,7 +14,7 @@ export const VISUALIZER_CANVAS = {
 	INNER_POSITION_RIGHT: 1000 - 40,
 	INNER_POSITION_TOP: 40,
 	WIDTH: 1000,
-} as const;
+};
 
 export const CAR = {
 	ACCELERATION: 0.1,
@@ -96,7 +96,7 @@ export const CAR = {
 	MAX_REVERSE_SPEED: 1,
 	POSSIBLE_MOVE_DIRECTIONS_COUNT: 4,
 	WIDTH: 40,
-} as const;
+};
 
 export const LANE = {
 	COLOR: '#e5e5e5',
@@ -105,7 +105,7 @@ export const LANE = {
 	RANDOM: [...Array(100)].map(() => Math.floor(Math.random() * 3)),
 	RIGHT_POSITION: ROAD_CANVAS.WIDTH - 20,
 	WIDTH: 8,
-} as const;
+};
 
 export const RAY = {
 	COLOR: '#999999',
@@ -114,7 +114,7 @@ export const RAY = {
 	LENGTH: 320,
 	SPREAD: Math.PI / 2.6,
 	WIDTH: 2,
-} as const;
+};
 
 export const TRAFFIC_CAR = {
 	ACCELERATION: 0.07,
@@ -123,7 +123,7 @@ export const TRAFFIC_CAR = {
 	DEFAULT_POSITION_Y: 400,
 	DEFAULT_SPEED: 0,
 	MAX_FORWARD_SPEED: 1,
-} as const;
+};
 
 export const VISUALIZER = {
 	ARROW_ALIGN: 'center',
@@ -133,4 +133,4 @@ export const VISUALIZER = {
 	LINE_WIDTH: 2,
 	NODE_RADIUS: 12,
 	HIDDEN_LAYER_ARBITRARY_NUMBER: 5,
-} as const;
+};

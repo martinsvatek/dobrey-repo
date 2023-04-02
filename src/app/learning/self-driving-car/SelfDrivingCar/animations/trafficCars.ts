@@ -1,6 +1,6 @@
-import { TRAFFIC_CAR } from '../page.consts';
-import { Coordinate, TrafficCars } from '../page.types';
-import { drawTrafficCar, getTrafficCarsCoordinates } from '../page.utils';
+import { TRAFFIC_CAR } from '../SelfDrivingCar.consts';
+import { Coordinate, TrafficCars } from '../SelfDrivingCar.types';
+import { drawTrafficCar, getTrafficCarsCoordinates } from '../SelfDrivingCar.utils';
 
 const { ACCELERATION, DEFAULT_POSITION_Y, DEFAULT_SPEED, MAX_FORWARD_SPEED } = TRAFFIC_CAR;
 

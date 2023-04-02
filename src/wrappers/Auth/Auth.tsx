@@ -1,3 +1,5 @@
+'use client';
+
 import { ALERT } from 'global/consts';
 import { useAuth } from './Auth.hooks';
 import { AuthProps } from './Auth.types';

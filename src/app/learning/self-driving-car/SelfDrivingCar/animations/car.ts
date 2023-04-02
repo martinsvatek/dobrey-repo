@@ -1,5 +1,5 @@
-import { CAR, RAY, VISUALIZER } from '../page.consts';
-import { Car, Coordinate, Level, Touch, ZeroOne } from '../page.types';
+import { CAR, RAY, VISUALIZER } from '../SelfDrivingCar.consts';
+import { Car, Coordinate, Level, Touch, ZeroOne } from '../SelfDrivingCar.types';
 import {
 	drawCar,
 	drawSensorRays,
@@ -10,7 +10,7 @@ import {
 	getNeuralNetworkLevels,
 	getSensorRays,
 	getTouches,
-} from '../page.utils';
+} from '../SelfDrivingCar.utils';
 
 const {
 	ACCELERATION,

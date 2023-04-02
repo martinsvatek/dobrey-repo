@@ -1,7 +1,7 @@
 'use-client';
 
 import { ForwardedRef, forwardRef, useState } from 'react';
-import { CANVAS } from '../../page.consts';
+import { CANVAS } from '../../ShortestPath.consts';
 import styles from './Grid.module.scss';
 import { GridProps } from './Grid.types';
 

@@ -2,10 +2,10 @@
 
 import { getLocalStorage } from 'global/utils';
 import { RefObject, useEffect } from 'react';
+import { CAR, ROAD_CANVAS, TRAFFIC_CAR, VISUALIZER_CANVAS } from './SelfDrivingCar.consts';
+import { Car, Level, SelfDrivingCar } from './SelfDrivingCar.types';
+import { drawRoad, drawVisualizer, getNeuralNetworkLevelsMutation } from './SelfDrivingCar.utils';
 import { car, trafficCars } from './animations';
-import { CAR, ROAD_CANVAS, TRAFFIC_CAR, VISUALIZER_CANVAS } from './page.consts';
-import { Car, Level, SelfDrivingCar } from './page.types';
-import { drawRoad, drawVisualizer, getNeuralNetworkLevelsMutation } from './page.utils';
 
 let bestCar: Car;
 

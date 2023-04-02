@@ -1,5 +1,5 @@
 import { MouseEvent } from 'react';
-import { Coordinate } from '../../page.types';
+import { Coordinate } from '../../ShortestPath.types';
 
 export interface GridProps {
 	onMouseInteraction: (event: MouseEvent<HTMLCanvasElement>) => void;

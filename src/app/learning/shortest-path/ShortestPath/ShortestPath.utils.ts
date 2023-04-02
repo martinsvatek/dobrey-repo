@@ -1,5 +1,5 @@
-import { CANVAS, COLOR } from './page.consts';
-import { Coordinate, Node, NodeType } from './page.types';
+import { CANVAS, COLOR } from './ShortestPath.consts';
+import { Coordinate, Node, NodeType } from './ShortestPath.types';
 
 const { HEIGHT, WIDTH } = CANVAS;
 const { GRID, PATH, SEARCH } = COLOR;

@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from 'components';
 import { isAuth } from 'global/utils';
 import { useAuthUser } from 'store';

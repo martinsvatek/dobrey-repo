@@ -1,4 +1,4 @@
-export interface HomeErrorProps {
+export interface MainErrorProps {
 	error: Error;
 	reset: () => void;
 }

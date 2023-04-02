@@ -1,11 +1,21 @@
-import Image from 'next/image';
-import styles from './page.module.scss';
+import { Metadata } from 'next/types';
 
-const Home = (): JSX.Element => (
+const Main = (): JSX.Element => (
 	<>
-		<Image alt="Dobrey Logo" className={styles.image} height={220} src="/dobrey_logo_grey_100.svg" width={220} />
+		<h1>Dobrey</h1>
 		<p>Under construction.</p>
 	</>
 );
 
-export default Home;
+export default Main;
+
+export const metadata: Metadata = {
+	title: 'Dobrey | Main',
+	description: 'A place where I try to improve my programming skills.',
+
+	robots: {
+		follow: true,
+		index: true,
+	},
+	themeColor: ' #cccccc',
+};

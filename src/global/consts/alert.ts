@@ -8,4 +8,4 @@ export const ALERT = {
 	SIGNIN_SUCCESS: 'Signin has succeeded.',
 	SIGNOUT_FAILURE: 'Signout has failed.',
 	SIGNOUT_SUCCESS: 'Signout has succeeded.',
-} as const;
+};

@@ -1,57 +1,23 @@
-'use client';
-
-import { Button, Form, Input } from 'components';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { useSetAlert, useSetIsLoading } from 'store';
+import { Metadata } from 'next/types';
 import { Auth } from 'wrappers';
-import { getDownloads } from './page.utils';
+import { WebScraper } from './WebScraper';
 
-const WebScraper = (): JSX.Element => {
-	const setAlert = useSetAlert();
-	const setIsLoading = useSetIsLoading();
+const Page = (): JSX.Element => (
+	<Auth role="admin">
+		<h1>Web scraper</h1>
+		<WebScraper />
+	</Auth>
+);
 
-	const [downloads, setDownloads] = useState(0);
-	const [packageName, setPackageName] = useState('');
+export default Page;
 
-	const onFormSubmitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
-		event.preventDefault();
+export const metadata: Metadata = {
+	title: 'Dobrey | Web scraper',
+	description: 'Web scraper project for better understanding of working with html data of a website.',
 
-		setIsLoading(true);
-
-		const { alert, downloads } = await getDownloads(packageName);
-
-		setAlert(alert);
-		setDownloads(downloads);
-
-		setIsLoading(false);
-	};
-
-	const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-		setDownloads(0);
-		setPackageName(event.currentTarget.value);
-	};
-
-	return (
-		<Auth role="admin">
-			<h1>Web scraper</h1>
-			<Form onSubmit={onFormSubmitHandler}>
-				<Input
-					name="packageName"
-					onChange={onInputChangeHandler}
-					placeholder="NPM package name"
-					value={packageName}
-				/>
-				<Button color="peach" disabled={!packageName} type="submit">
-					Get downloads count
-				</Button>
-			</Form>
-			{downloads > 0 && (
-				<p>
-					<strong>{packageName || 'Package'}</strong> has <strong>{downloads}</strong> downloads.
-				</p>
-			)}
-		</Auth>
-	);
+	robots: {
+		follow: false,
+		index: false,
+	},
+	themeColor: ' #cccccc',
 };
-
-export default WebScraper;

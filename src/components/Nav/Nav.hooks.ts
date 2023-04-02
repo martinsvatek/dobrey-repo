@@ -1,3 +1,5 @@
+'use client';
+
 import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, provider } from 'global/config';
 import { ALERT } from 'global/consts';

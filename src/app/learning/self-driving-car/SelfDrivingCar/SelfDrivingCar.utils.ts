@@ -1,5 +1,5 @@
-import { CAR, LANE, RAY, ROAD_CANVAS, TRAFFIC_CAR, VISUALIZER, VISUALIZER_CANVAS } from './page.consts';
-import { Coordinate, Level, Touch, ZeroOne } from './page.types';
+import { CAR, LANE, RAY, ROAD_CANVAS, TRAFFIC_CAR, VISUALIZER, VISUALIZER_CANVAS } from './SelfDrivingCar.consts';
+import { Coordinate, Level, Touch, ZeroOne } from './SelfDrivingCar.types';
 
 /**
  * @NOTE: souradnice auta, kterou berou v potaz i uhel
