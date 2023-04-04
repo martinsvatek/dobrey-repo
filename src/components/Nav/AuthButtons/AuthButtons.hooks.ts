@@ -44,18 +44,14 @@ export const useAuthButtons = (): AuthButtons => {
 					const userSnap = await getDoc(userRef);
 
 					if (!userSnap.exists()) {
-						try {
-							const currentServerTimestamp = serverTimestamp();
-							const newUser = {
-								createdAt: currentServerTimestamp,
-								updatedAt: currentServerTimestamp,
-								czechRobotChatsCount: 0,
-							};
+						const currentServerTimestamp = serverTimestamp();
+						const newUser = {
+							createdAt: currentServerTimestamp,
+							czechRobotChatsCount: 0,
+							updatedAt: currentServerTimestamp,
+						};
 
-							await setDoc(doc(firestore, 'users', userEmail), newUser);
-						} catch ({ message }) {
-							return setAlert(message);
-						}
+						await setDoc(doc(firestore, 'users', userEmail), newUser);
 					}
 
 					setAuthUser(userEmail);

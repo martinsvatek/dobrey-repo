@@ -13,7 +13,7 @@ export const Alert = (): JSX.Element | null => {
 
 	const [isRemoved, setIsRemoved] = useState(false);
 
-	const onButtonClickHandler = (): void => {
+	const onRemoveButtonClickHandler = (): void => {
 		setIsRemoved(true);
 
 		setTimeout(() => {
@@ -29,7 +29,7 @@ export const Alert = (): JSX.Element | null => {
 	return (
 		<div className={joinClassNames([styles.alert, isRemoved && styles.hideAnimation])} key={alert}>
 			<p className={styles.text}>{alert}</p>
-			<Button className={styles.button} color="peach" disabled={isRemoved} onClick={onButtonClickHandler}>
+			<Button className={styles.button} color="peach" disabled={isRemoved} onClick={onRemoveButtonClickHandler}>
 				<XMarkIcon className={styles.icon} />
 			</Button>
 		</div>
