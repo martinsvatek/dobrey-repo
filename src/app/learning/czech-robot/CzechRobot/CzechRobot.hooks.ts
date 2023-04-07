@@ -4,6 +4,7 @@ import {
 	addDoc,
 	collection,
 	doc,
+	getDoc,
 	getDocs,
 	increment,
 	limit,
@@ -14,10 +15,13 @@ import {
 	where,
 } from 'firebase/firestore';
 import { firestore } from 'global/config';
+import { ALERT } from 'global/consts';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useAuthUser, useSetAlert, useSetIsLoading } from 'store';
 import { Chat, CzechRobot } from './CzechRobot.types';
+
+const { CHATS_LIMIT } = ALERT;
 
 export const useCzechRobot = (): CzechRobot => {
 	const router = useRouter();
@@ -31,8 +35,11 @@ export const useCzechRobot = (): CzechRobot => {
 	useEffect((): void => {
 		const getChats = async (): Promise<void> => {
 			setIsLoading(true);
-			/* get last 14 recipes */
+
 			try {
+				/**
+				 * @NOTE: zisk vsech chatu, ktere patri uzivateli
+				 */
 				const chatsRef = query(
 					collection(firestore, 'czechRobot_chats'),
 					where('userId', '==', authUser),
@@ -69,12 +76,15 @@ export const useCzechRobot = (): CzechRobot => {
 		setIsLoading(true);
 
 		try {
+			/**
+			 * @NOTE: zisk chatu, ktery nema zadnou zpravu a pripadne nasverovani na tento chat misto vytvareni noveho
+			 */
 			const chatsRef = query(
 				collection(firestore, 'czechRobot_chats'),
 				where('czechRobotMessagesCount', '==', 0),
 				where('userId', '==', authUser),
 				orderBy('createdAt', 'desc'),
-				limit(20),
+				limit(1),
 			);
 			const chatsSnap = await getDocs(chatsRef);
 			if (!chatsSnap.empty) {
@@ -82,6 +92,19 @@ export const useCzechRobot = (): CzechRobot => {
 				return setIsLoading(false);
 			}
 
+			/**
+			 * @NOTE: hlidani limitu chatu (20 chatu)
+			 */
+			const userRef = doc(firestore, 'users', authUser);
+			const userSnap = await getDoc(userRef);
+			if (userSnap.data()?.czechRobotChatsCount >= 20) {
+				setAlert(CHATS_LIMIT);
+				return setIsLoading(false);
+			}
+
+			/**
+			 * @NOTE: vytvoreni noveho chatu
+			 */
 			const currentServerTimestamp = serverTimestamp();
 			const newChat = {
 				createdAt: currentServerTimestamp,
@@ -92,7 +115,6 @@ export const useCzechRobot = (): CzechRobot => {
 			};
 			const chatRef = await addDoc(collection(firestore, 'czechRobot_chats'), newChat);
 
-			const userRef = doc(firestore, 'users', authUser);
 			await updateDoc(userRef, {
 				czechRobotChatsCount: increment(1),
 				updatedAt: currentServerTimestamp,
