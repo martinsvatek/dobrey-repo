@@ -3,27 +3,27 @@
 .chatLink {
 	display: flex;
 
-	border-radius: $radius-8;
 	margin: 0.8rem;
 	max-width: 24rem;
 	width: calc(100% - 1.6rem);
 
 	align-items: center;
-	justify-content: space-between;
+}
+
+.link {
+	display: flex;
+
+	border-radius: $radius-8;
+	margin: 0 0.8rem 0 0;
+	width: calc(100% - 0.8rem);
+
+	flex-direction: column;
 
 	text-decoration: none;
 
 	background-color: $color-grey-100;
 
 	box-shadow: $shadow-grey-200;
-}
-
-.info {
-	display: flex;
-
-	width: 100%;
-
-	flex-direction: column;
 }
 
 .button {

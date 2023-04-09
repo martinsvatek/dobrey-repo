@@ -1,8 +1,10 @@
 'use client';
 
 import {
+	Timestamp,
 	addDoc,
 	collection,
+	deleteDoc,
 	doc,
 	getDoc,
 	getDocs,
@@ -21,7 +23,7 @@ import { useEffect, useState } from 'react';
 import { useAuthUser, useSetAlert, useSetIsLoading } from 'store';
 import { Chat, CzechRobot } from './CzechRobot.types';
 
-const { CHATS_LIMIT } = ALERT;
+const { CHATS_LIMIT, CHAT_NOT_EXISTS, CHAT_NOT_OWNER } = ALERT;
 
 export const useCzechRobot = (): CzechRobot => {
 	const router = useRouter();
@@ -105,16 +107,18 @@ export const useCzechRobot = (): CzechRobot => {
 			/**
 			 * @NOTE: vytvoreni noveho chatu
 			 */
-			const currentServerTimestamp = serverTimestamp();
-			const newChat = {
+			const currentServerTimestamp = serverTimestamp() as Timestamp;
+			const newChat: Omit<Chat, 'id'> = {
 				createdAt: currentServerTimestamp,
 				czechRobotMessagesCount: 0,
+				title: 'Empty',
 				updatedAt: currentServerTimestamp,
 				userId: authUser,
-				title: 'Empty',
 			};
 			const chatRef = await addDoc(collection(firestore, 'czechRobot_chats'), newChat);
-
+			/**
+			 * @NOTE: editace uzivatele
+			 */
 			await updateDoc(userRef, {
 				czechRobotChatsCount: increment(1),
 				updatedAt: currentServerTimestamp,
@@ -128,5 +132,65 @@ export const useCzechRobot = (): CzechRobot => {
 		setIsLoading(false);
 	};
 
-	return { chats, onCreateButtonClickHandler };
+	const onRemoveButtonClickHandler = async (chatId: string): Promise<void> => {
+		setIsLoading(true);
+
+		try {
+			/**
+			 * @NOTE: kontrola, zdali jiz chat neni smazany
+			 */
+			const chatRef = doc(firestore, 'czechRobot_chats', chatId);
+			const chatSnap = await getDoc(chatRef);
+			if (!chatSnap.exists()) {
+				setAlert(CHAT_NOT_EXISTS);
+				return setIsLoading(false);
+			}
+
+			const { czechRobotMessagesCount, userId } = chatSnap.data();
+
+			/**
+			 * @NOTE: kontrola, zdali je chat mazan opravnenym uzivatelem
+			 */
+			if (userId !== authUser) {
+				setAlert(CHAT_NOT_OWNER);
+				return setIsLoading(false);
+			}
+
+			/**
+			 * @NOTE: smazani vsech zprav chatu, pokud nejake jsou
+			 */
+			if (czechRobotMessagesCount > 0) {
+				const messagesRef = query(collection(firestore, 'czechRobot_messages'), where('chatId', '==', chatId));
+				const messagesSnap = await getDocs(messagesRef);
+				if (!messagesSnap.empty) {
+					messagesSnap.forEach(async doc => {
+						await deleteDoc(doc.ref);
+					});
+				}
+			}
+
+			await deleteDoc(chatRef);
+
+			/**
+			 * @NOTE: editace uzivatele
+			 */
+			const userRef = doc(firestore, 'users', authUser);
+			const currentServerTimestamp = serverTimestamp();
+			await updateDoc(userRef, {
+				czechRobotChatsCount: increment(-1),
+				updatedAt: currentServerTimestamp,
+			});
+
+			setChats(prevChats => {
+				const updatedChats = [...prevChats].filter(chat => chat.id !== chatId);
+				return updatedChats;
+			});
+		} catch ({ message }) {
+			setAlert(message);
+		}
+
+		setIsLoading(false);
+	};
+
+	return { chats, onCreateButtonClickHandler, onRemoveButtonClickHandler };
 };

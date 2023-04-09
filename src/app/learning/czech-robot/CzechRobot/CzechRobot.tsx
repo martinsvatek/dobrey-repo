@@ -1,20 +1,20 @@
 'use client';
 
 import { Button } from 'components';
+import { useIsLoading } from 'store';
 import { useCzechRobot } from './CzechRobot.hooks';
-import { ChatLink } from './components';
+import { ChatLinks } from './components';
 
 export const CzechRobot = (): JSX.Element => {
-	const { chats, onCreateButtonClickHandler } = useCzechRobot();
+	const isLoading = useIsLoading();
+	const { chats, onCreateButtonClickHandler, onRemoveButtonClickHandler } = useCzechRobot();
 
 	return (
 		<>
-			<Button color="peach" onClick={onCreateButtonClickHandler} type="button">
+			<Button color="peach" disabled={isLoading} onClick={onCreateButtonClickHandler} type="button">
 				Create new chat
 			</Button>
-			{chats.map(({ createdAt, id, title }) => (
-				<ChatLink createdAt={createdAt} id={id} key={id} title={title} />
-			))}
+			{chats.length > 0 && <ChatLinks chats={chats} onClick={onRemoveButtonClickHandler} />}
 		</>
 	);
 };

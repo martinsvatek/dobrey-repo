@@ -12,4 +12,5 @@ export interface Chat {
 export interface CzechRobot {
 	chats: Chat[];
 	onCreateButtonClickHandler: () => Promise<void>;
+	onRemoveButtonClickHandler: (chatId: string) => Promise<void>;
 }
